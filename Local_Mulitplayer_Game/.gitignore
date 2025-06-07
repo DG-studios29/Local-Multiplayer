@@ -2,6 +2,11 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+# Always include core folders
+!Assets/
+!ProjectSettings/
+!Packages/
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/
