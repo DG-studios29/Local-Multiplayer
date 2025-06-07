@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad84629b0027c4181fd20b34e60efa, type: 3}
+  m_Name: Blazeheart
+  m_EditorClassIdentifier: 
+  heroName: Blazeheart
+  ability1:
+    abilityName: Fireball
+    projectilePrefab: {fileID: 6294508013172393196, guid: 87e032775b3be0a4aac19ea9ae37ceab, type: 3}
+    cooldown: 5
+    damage: 5
+    icon: {fileID: 21300000, guid: 56dd6583b5c86d342b2bc54a35a5dc72, type: 3}
+  ability2:
+    abilityName: Fire
+    projectilePrefab: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+    cooldown: 10
+    damage: 10
+    icon: {fileID: 21300000, guid: 05aa6bc2da90319428c9b38f51263f04, type: 3}
+  ultimate:
+    abilityName: WorldFire
+    projectilePrefab: {fileID: 8764043878647920493, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
+    cooldown: 20
+    damage: 20
+    icon: {fileID: 21300000, guid: a167af1c252738d41874c27dec486608, type: 3}
+  itemRevolve: {fileID: 11400000, guid: 08ed9a8593a90a747ae946ef6da2e19d, type: 2}

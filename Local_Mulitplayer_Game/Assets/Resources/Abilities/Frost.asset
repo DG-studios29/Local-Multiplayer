@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad84629b0027c4181fd20b34e60efa, type: 3}
+  m_Name: Frost
+  m_EditorClassIdentifier: 
+  heroName: Frost
+  ability1:
+    abilityName: Frostball
+    projectilePrefab: {fileID: 5112403345868107898, guid: 68ebf3fe465519a4eb5746736483159c, type: 3}
+    cooldown: 5
+    damage: 5
+    icon: {fileID: 21300000, guid: ea00386aac86ae641b372884a4bda2e0, type: 3}
+  ability2:
+    abilityName: Frostspikes
+    projectilePrefab: {fileID: 5112403345868107898, guid: 2318e41a4018dc2488248af7dff70b11, type: 3}
+    cooldown: 10
+    damage: 10
+    icon: {fileID: 21300000, guid: 14cda08a6b188564bb8885916bfaa20f, type: 3}
+  ultimate:
+    abilityName: Iceage
+    projectilePrefab: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+    cooldown: 20
+    damage: 20
+    icon: {fileID: 21300000, guid: 4c3eb01d2cf6ff74a890a89c6a94f077, type: 3}
+  itemRevolve: {fileID: 11400000, guid: 5b53601012df259429250480b69d91c5, type: 2}

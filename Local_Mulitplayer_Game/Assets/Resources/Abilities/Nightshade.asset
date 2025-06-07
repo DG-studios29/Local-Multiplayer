@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad84629b0027c4181fd20b34e60efa, type: 3}
+  m_Name: Nightshade
+  m_EditorClassIdentifier: 
+  heroName: Nightshade
+  ability1:
+    abilityName: Shadeball
+    projectilePrefab: {fileID: 5112403345868107898, guid: 1181166aa412268428e2e2928579e655, type: 3}
+    cooldown: 5
+    damage: 5
+    icon: {fileID: 21300000, guid: 4553ac607ac0264469b54124e7444fc1, type: 3}
+  ability2:
+    abilityName: Shades
+    projectilePrefab: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
+    cooldown: 10
+    damage: 10
+    icon: {fileID: 21300000, guid: a88ffd98ac95cfb4e8dce52561358065, type: 3}
+  ultimate:
+    abilityName: Vortex
+    projectilePrefab: {fileID: 5824670795371433373, guid: f6fd568b816c64943a44efc3add3a881, type: 3}
+    cooldown: 20
+    damage: 20
+    icon: {fileID: 21300000, guid: f544d66294ae8464f928773dcfdf18c6, type: 3}
+  itemRevolve: {fileID: 11400000, guid: af7414e0d8aa49042b0dcf776426a41c, type: 2}
