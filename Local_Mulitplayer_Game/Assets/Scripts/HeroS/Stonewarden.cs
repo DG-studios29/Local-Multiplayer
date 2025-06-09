@@ -46,14 +46,34 @@ public class Stonewarden : HeroBase
 
     private IEnumerator Fortify()
     {
-        GetComponent<StatusEffects>()?.ApplyArmorBuff(5f, 0.5f); // Reduce 50% damage for 5 seconds
-        GameObject rock = Instantiate(abilities.ability2.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
+        var status = GetComponent<StatusEffects>();
+        status?.ApplyArmorBuff(5f, 0.5f); // 50% damage reduction
 
-        Destroy(rock, 5f);
-        yield return null;
+        // === VISUAL TRANSFORMATION START ===
+        if (abilities.ability2.projectilePrefab != null)
+        {
+            GameObject rockForm = Instantiate(abilities.ability2.projectilePrefab, transform);
+            rockForm.transform.localPosition = Vector3.zero;
+            rockForm.transform.localRotation = Quaternion.identity;
 
-        
+            // Optionally hide original visuals
+            SkinnedMeshRenderer[] renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+            foreach (var rend in renderers) rend.enabled = false;
+
+            yield return new WaitForSeconds(5f);
+
+            Destroy(rockForm); // Remove rock overlay
+
+            // Restore visuals
+            foreach (var rend in renderers) rend.enabled = true;
+        }
+        else
+        {
+            Debug.LogWarning("Fortify rock form prefab not assigned.");
+            yield return new WaitForSeconds(5f);
+        }
     }
+
 
     private IEnumerator SeismicRift()
     {
@@ -80,6 +100,7 @@ public class Stonewarden : HeroBase
             }
 
             yield return new WaitForSeconds(delayBetweenSegments);
+            Destroy(riftSegment, 3f); 
         }
     }
 }

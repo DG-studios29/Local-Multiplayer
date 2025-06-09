@@ -50,7 +50,7 @@ public class Nightshade : HeroBase
 
         if (clone != null) 
         {
-            Collider[] enemies = Physics.OverlapSphere(clone.transform.position, 3f);
+            Collider[] enemies = Physics.OverlapSphere(clone.transform.position, 5f);
             foreach (var enemy in enemies)
             {
                 if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
@@ -68,7 +68,13 @@ public class Nightshade : HeroBase
 
     private IEnumerator GraveSilence()
     {
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 4f);
+        if (abilities.ultimate.projectilePrefab != null)
+        {
+            GameObject effect = Instantiate(abilities.ultimate.projectilePrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+            Destroy(effect, 3f);
+        }
+
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 10f);
         foreach (var enemy in enemies)
         {
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
@@ -76,7 +82,7 @@ public class Nightshade : HeroBase
                 var status = enemy.GetComponent<StatusEffects>();
                 status?.ApplySilence(2f);
                 status?.ApplySlow(2f, 0.5f);
-                status?.ApplyBlind(2f); 
+                status?.ApplyBlind(2f);
             }
         }
 
@@ -91,4 +97,5 @@ public class Nightshade : HeroBase
             }
         }
     }
+
 }

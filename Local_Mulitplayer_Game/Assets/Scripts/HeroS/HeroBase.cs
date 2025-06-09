@@ -85,21 +85,33 @@ public abstract class HeroBase : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition = projectileSpawnPoint.position + transform.forward * 1f;
+        Vector3 spawnPosition = projectileSpawnPoint != null
+            ? projectileSpawnPoint.position
+            : transform.position + transform.forward * 1f;
 
-        GameObject projectile = Instantiate(ability.projectilePrefab, spawnPosition, Quaternion.identity);
+        Quaternion rotation = Quaternion.LookRotation(transform.forward);
+        GameObject projectile = Instantiate(ability.projectilePrefab, spawnPosition, rotation);
 
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 direction = transform.forward;
-            rb.linearVelocity = direction * projectileSpeed;
-        }
-
+        // Initialize the projectile with damage and owner
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
         {
             projScript.Initialize(gameObject, ability.damage);
+        }
+        else
+        {
+            Debug.LogWarning("Projectile prefab does not contain a Projectile script!");
+        }
+
+        // Add forward force if Rigidbody exists
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = transform.forward * projectileSpeed;
+        }
+        else
+        {
+            Debug.LogWarning("Projectile prefab has no Rigidbody for movement!");
         }
     }
 

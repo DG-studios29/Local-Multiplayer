@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
+  "WorkspaceRootPath": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\heroability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\heroability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\events\\arenaeventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\events\\arenaeventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HeroAbility.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\HeroAbility.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\HeroAbility.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\HeroAbility.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroS\\HeroAbility.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:31:56.727Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ArenaEventManager.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Events\\ArenaEventManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Events\\ArenaEventManager.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Events\\ArenaEventManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Events\\ArenaEventManager.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAAACwAAABbAAAAAAAAAA==",
+              "Title": "Nightshade.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAwEwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:27:39.659Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T12:12:19.784Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAAALoAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Stonewarden.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:23:18.037Z",
+              "WhenOpened": "2025-06-09T12:12:18.751Z",
               "EditorCaption": ""
             }
           ]

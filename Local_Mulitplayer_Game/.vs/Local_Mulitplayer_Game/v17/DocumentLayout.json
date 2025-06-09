@@ -1,25 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
+  "WorkspaceRootPath": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dhill\\Downloads\\Blazeheart_Updated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,64 +23,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Blazeheart_Updated.cs",
-              "DocumentMoniker": "C:\\Users\\dhill\\Downloads\\Blazeheart_Updated.cs",
-              "ToolTip": "C:\\Users\\dhill\\Downloads\\Blazeheart_Updated.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAqwIMAAAAAAAAAAAAAAA==",
+              "Title": "Nightshade.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAwEwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T16:12:20.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T12:12:19.784Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Blazeheart.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Blazeheart.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Blazeheart.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Blazeheart.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Blazeheart.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAqwGYAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T15:54:54.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Frost.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Frost.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Frost.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Frost.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Frost.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAqwD4AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T15:12:42.481Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Stonewarden.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
               "RelativeToolTip": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T14:46:54.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Nightshade.cs",
-              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Nightshade.cs",
-              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Nightshade.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAqwDIAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T14:46:43.523Z",
+              "WhenOpened": "2025-06-09T12:12:18.751Z",
               "EditorCaption": ""
             }
           ]
