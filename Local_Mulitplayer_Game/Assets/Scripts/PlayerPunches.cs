@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerPunches : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class PlayerPunches : MonoBehaviour
     public bool isPunchR = false;
     [SerializeField] private float punchDamage;
     [SerializeField] private float unscaledMAXDamage;
+    public static bool OnlyPunchesActive = false;
 
     [SerializeField] private float punchRadius;
     [SerializeField] private float punchDistance;
@@ -51,6 +52,7 @@ public class PlayerPunches : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         parentObject = playerController.gameObject;
+        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
     }
 
 
@@ -77,6 +79,10 @@ public class PlayerPunches : MonoBehaviour
 
     }
 
+    private void HandleArenaEvent(ArenaEventSO evt)
+    {
+        OnlyPunchesActive = evt.triggerOnlyPunches;
+    }
 
     public void PunchCall()
     {
@@ -98,7 +104,7 @@ public class PlayerPunches : MonoBehaviour
         //AnimatorChargeClear();
 
 
-        Debug.Log("Called Punch");
+        //Debug.Log("Called Punch");
 
 
         //ConfigureClip
@@ -274,7 +280,7 @@ public class PlayerPunches : MonoBehaviour
 
     private void ChargeSavedPower()
     {
-        Debug.Log("ChargingUp");
+        //Debug.Log("ChargingUp");
         chargeVal = chargeHoldTimer / maxChargeTime;
         if (chargeVal > 1) chargeVal = 1;
         dmgCalc = chargeVal;
@@ -292,6 +298,10 @@ public class PlayerPunches : MonoBehaviour
         animator.SetFloat("Charge", chargeVal, 0.05f, Time.deltaTime);
     }
 
+    private void OnDestroy()
+    {
+        ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
+    }
 
     private void OnDrawGizmos()
     {

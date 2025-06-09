@@ -11,7 +11,7 @@ public class MiniArmySpawner : MonoBehaviour
     public void InitializeUI(MiniArmySpawnerUI assignedUI)
     {
         ui = assignedUI;
-        ui.SetupInitialUI(); 
+        ui.SetupInitialUI();
     }
 
     public void SpawnArmyByKey1(InputAction.CallbackContext context)
@@ -33,7 +33,18 @@ public class MiniArmySpawner : MonoBehaviour
     {
         if (ui != null && ui.CanSpawn(index))
         {
-            SpawnMiniUnit(index);
+            //Arena Event: Double Army Support
+            int spawnCount = 1;
+            if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerDoubleArmy"))
+            {
+                spawnCount = 2;
+            }
+
+            for (int i = 0; i < spawnCount; i++)
+            {
+                SpawnMiniUnit(index);
+            }
+
             ui.OnUnitSpawned(index);
         }
     }

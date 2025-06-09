@@ -1,5 +1,4 @@
-
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Nightshade : HeroBase
@@ -8,9 +7,8 @@ public class Nightshade : HeroBase
     {
         if (ability1CooldownTimer <= 0f)
         {
-            // Shadow Bolt - marks enemy for bonus damage
             ShootProjectile(abilities.ability1);
-            ability1CooldownTimer = abilities.ability1.cooldown;
+            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
         {
@@ -22,9 +20,8 @@ public class Nightshade : HeroBase
     {
         if (ability2CooldownTimer <= 0f)
         {
-            Debug.Log("Nightshade deploys a Phantom Clone!");
             StartCoroutine(PhantomClone());
-            ability2CooldownTimer = abilities.ability2.cooldown;
+            ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
         {
@@ -36,9 +33,8 @@ public class Nightshade : HeroBase
     {
         if (ultimateCooldownTimer <= 0f)
         {
-            Debug.Log("Nightshade unleashes Grave Silence!");
             StartCoroutine(GraveSilence());
-            ultimateCooldownTimer = abilities.ultimate.cooldown;
+            ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
         {
@@ -48,52 +44,51 @@ public class Nightshade : HeroBase
 
     private IEnumerator PhantomClone()
     {
-        GameObject clone = Instantiate(abilities.ability2.projectilePrefab, transform.position, transform.rotation);
-        clone.transform.localScale = transform.localScale;
+        GameObject clone = Instantiate(abilities.ability2.projectilePrefab, transform.position + transform.forward * 1.5f, transform.rotation);
 
-        float cloneDuration = 3f;
-        yield return new WaitForSeconds(cloneDuration);
+        yield return new WaitForSeconds(3f);
 
-        Collider[] hit = Physics.OverlapSphere(clone.transform.position, 3f);
-        foreach (var enemy in hit)
+        if (clone != null) 
         {
-            if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+            Collider[] enemies = Physics.OverlapSphere(clone.transform.position, 3f);
+            foreach (var enemy in enemies)
             {
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
-
-                var status = enemy.GetComponent<StatusEffects>();
-                if (status != null)
-                    status.ApplySilence(2f);
+                if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+                {
+                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
+                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
+                    enemy.GetComponent<StatusEffects>()?.ApplySilence(2f);
+                }
             }
-        }
 
-        Destroy(clone);
+            Destroy(clone); 
+        }
     }
+
 
     private IEnumerator GraveSilence()
     {
-        float radius = 6f;
-        float blindDuration = 2f;
-
-        Collider[] enemies = Physics.OverlapSphere(transform.position, radius);
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 4f);
         foreach (var enemy in enemies)
         {
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
                 var status = enemy.GetComponent<StatusEffects>();
-                if (status != null)
-                {
-                    status.ApplySilence(3f);
-                    status.ApplySlow(2f, 0.5f);
-                }
+                status?.ApplySilence(2f);
+                status?.ApplySlow(2f, 0.5f);
+                status?.ApplyBlind(2f); 
+            }
+        }
 
-                // Shadow Spike
+        yield return new WaitForSeconds(1.5f);
+
+        foreach (var enemy in enemies)
+        {
+            if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+            {
                 enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
                 enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
             }
         }
-
-        yield return new WaitForSeconds(blindDuration);
     }
 }

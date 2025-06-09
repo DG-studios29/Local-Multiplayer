@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     public float moveSpeed = 10f;
     public bool isWalking = true;
     [SerializeField] private LayerMask objectsToCheckAgainst; //for collision detection
+    public static bool ReverseControlsActive = false;
+
 
     #region Pickup Variables
 
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     private void OnEnable()
     {
         StartCoroutine(ValidatePlayer());
+        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
+        ArenaEventManager.OnArenaEventEnd += HandleArenaEventEnd;
     }
 
     private IEnumerator ValidatePlayer()
@@ -50,6 +54,8 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     {
         rb = GetComponent<Rigidbody>();
         Debug.Log("[Player] Player prefab instantiated!");
+        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
+
 
 
         animator = GetComponent<Animator>();
@@ -59,12 +65,16 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        Vector2 input = context.ReadValue<Vector2>();
 
-        movementInput = context.ReadValue<Vector2>();
+        if (ReverseControlsActive)
+            input *= -1f;
 
+        movementInput = input;
     }
-    
-    
+
+
+
 
 
     public void OnPunch(InputAction.CallbackContext context)
@@ -123,6 +133,18 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
             animator.SetBool("isWalking", false);
         }
+    }
+
+    private void HandleArenaEvent(ArenaEventSO evt)
+    {
+        if (evt.triggerReverseControls)
+            ReverseControlsActive = true;
+    }
+
+    private void HandleArenaEventEnd(ArenaEventSO evt)
+    {
+        if (evt.triggerReverseControls)
+            ReverseControlsActive = false;
     }
 
     private void Update()
@@ -233,5 +255,9 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     }
     #endregion
 
-
+    private void OnDestroy()
+    {
+        ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
+        ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd; 
+    }
 }

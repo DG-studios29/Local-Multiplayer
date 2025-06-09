@@ -29,15 +29,22 @@ public class ArenaSampler : MonoBehaviour
         {
             GenerateRandomizedPositions();
 
-            spawnable = PickupSpawner.instance.GetComponent<ISpawnable>();
-
+            if (PickupSpawner.instance != null)
+            {
+                spawnable = PickupSpawner.instance.GetComponent<ISpawnable>();
+            }
+            else
+            {
+                Debug.LogWarning("ArenaSampler: PickupSpawner.instance is null!");
+            }
         }
-
-
     }
 
 
-    private void Update()
+
+
+
+private void Update()
     {
         if (boundingBox && generatedPositions.Count > 0)
         {
