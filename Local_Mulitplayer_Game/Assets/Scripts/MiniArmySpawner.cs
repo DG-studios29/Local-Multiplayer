@@ -31,6 +31,10 @@ public class MiniArmySpawner : MonoBehaviour
 
     private void TrySpawn(int index)
     {
+        //will need to check Mana amount, then use up Mana to spawn
+        
+        
+        
         if (ui != null && ui.CanSpawn(index))
         {
             SpawnMiniUnit(index);

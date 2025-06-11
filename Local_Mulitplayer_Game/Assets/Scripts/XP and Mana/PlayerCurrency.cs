@@ -10,21 +10,21 @@ public class PlayerCurrency : MonoBehaviour
     private float playerXP;
 
 
-    private float manaTimer;
-    private float manaGainTime;
-    private float manaGainAmount;
+    private float manaTimer = 0f;
+    [SerializeField]private float manaGainTime = 1f;
+    [SerializeField]private float manaGainAmount;
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         currentMana = maxMana;
 
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         manaTimer += Time.deltaTime;
 
@@ -51,13 +51,11 @@ public class PlayerCurrency : MonoBehaviour
     }
 
 
-    void ManaRegeneration()
+    private void ManaRegeneration()
     {
-        if(manaTimer >= manaGainTime)
-        {
-            ManaGain(manaGainAmount);
-            manaTimer = 0;
-        }
+        if (!(manaTimer >= manaGainTime)) return;
+        ManaGain(manaGainAmount);
+        manaTimer = 0;
     }
 
 

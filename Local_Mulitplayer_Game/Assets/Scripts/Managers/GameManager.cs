@@ -37,6 +37,12 @@ public class GameManager : MonoBehaviour
     public TMP_Text player1NameText;
     public TMP_Text player2NameText;
 
+    [Header("Resources UI")] 
+    public TMP_Text player1XPText;
+    public TMP_Text player2XPText;
+    public Image player1ManaBar;
+    public Image player2ManaBar;
+
     [Header("Army UI Panels")]
     public MiniArmySpawnerUI player1ArmyUI;
     public MiniArmySpawnerUI player2ArmyUI;
