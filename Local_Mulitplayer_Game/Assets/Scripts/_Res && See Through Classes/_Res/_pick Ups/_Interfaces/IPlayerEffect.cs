@@ -10,8 +10,6 @@ public interface IPlayerEffect
     void ActivateShield(float duration, GameObject shield);
     void GiveHealth(float health);
 
-    void RefillAbilityBar();
-
-    void ResetAbilityCooldownTimer(int cooldown);
+    void RefillAbilityBar(float energy);
     #endregion
 }

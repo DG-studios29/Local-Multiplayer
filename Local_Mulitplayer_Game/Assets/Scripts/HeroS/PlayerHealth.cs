@@ -226,16 +226,17 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
         if (!hasShieldBubble)
         {
-            GameObject shieldBubble = Instantiate(shield, transform);
+            shield = Instantiate(shield);
             hasShieldBubble = true;
-
-            shieldBubble.transform.localPosition = new Vector3(0, 0.5f, 0);
-            shieldBubble.transform.localRotation = Quaternion.identity;
-            shieldBubble.transform.localScale = new Vector3(.77f, .7f, .7f);
-
-            if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
-            shieldCoroutine = StartCoroutine(ShieldTime(duration, shieldBubble));
         }
+
+        shield.transform.SetParent(transform);
+        shield.transform.localPosition = new Vector3(0, 0.5f, 0);
+        shield.transform.localRotation = Quaternion.identity;
+        shield.transform.localScale = new Vector3(.77f, .7f, .7f);
+
+        if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
+        shieldCoroutine = StartCoroutine(ShieldTime(duration, shield));
 
         switch (isPlayer)
         {
@@ -285,9 +286,9 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         }
     }
 
-    public void RefillAbilityBar()
+    public void RefillAbilityBar(float energy)
     {
-        //
+        //throw new System.NotImplementedException();
     }
 
     private IEnumerator ShieldTime(float duration, GameObject shieldBubble)
@@ -313,11 +314,6 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
                 GameManager.Instance.playerTwoPowerUps[1].alpha = 0.4f;
                 break;
         }
-    }
-
-    public void ResetAbilityCooldownTimer(int cooldown)
-    {
-        //
     }
     #endregion
 }
