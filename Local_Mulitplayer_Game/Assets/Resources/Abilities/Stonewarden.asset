@@ -32,3 +32,4 @@ MonoBehaviour:
     damage: 20
     icon: {fileID: 21300000, guid: d8f5b633c2cd39d4d8ecba1acad43908, type: 3}
   itemRevolve: {fileID: 11400000, guid: abc9cef1d8da2bd4ca5fe58c3dcd6cde, type: 2}
+  itemShoot: {fileID: 11400000, guid: bac47a9e91f7a294dabf0b2ac8f80089, type: 2}

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2220471af5507143accde70e8a7da8b, type: 3}
-  m_Name: IceRotate
+  m_Name: Ice AutoShoot
   m_EditorClassIdentifier: 
-  itemName: IceRotate
+  itemName: BasicAutoBB
   itemIcon: {fileID: 0}
   atkDamage: 5
   atkRate: 2
-  atkRadius: 3
-  behavior: 1
-  description: 
-  objectInstance: {fileID: 6585421304354862384, guid: 93f1b94989dfe1446b110ba086edb1a7, type: 3}
+  atkRadius: 10
+  behavior: 0
+  description: Shoots basic bullets to the nearest enemy
+  objectInstance: {fileID: 189975902129390228, guid: e0650f72d35bb5e4aa7cf60abd8e787f, type: 3}
   trailRenderer: {fileID: 4222833773538097119, guid: b060c2166ceb1704cafc4a51c262081d, type: 3}
-  projectilePrefab: {fileID: 55373305946449101, guid: 5c9f737227dc5f1498a84d4c0e0780b5, type: 3}
+  projectilePrefab: {fileID: 55373305946449101, guid: ecdc5b13153e92a4c8d40bb5b1c086ac, type: 3}
   particleFX: {fileID: 3379312893944246363, guid: 1ce004ad4197c9d4cbec4e6d49d86f8c, type: 3}
