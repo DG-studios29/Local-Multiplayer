@@ -23,28 +23,21 @@ public class ArenaSampler : MonoBehaviour
     #endregion
 
     #region Built-In Methods
-    private void OnEnable()
+    private void Start()
     {
-        if (boundingBox)
+        if (boundingBox!= null)
         {
             GenerateRandomizedPositions();
 
-            if (PickupSpawner.instance != null)
-            {
-                spawnable = PickupSpawner.instance.GetComponent<ISpawnable>();
-            }
-            else
-            {
-                Debug.LogWarning("ArenaSampler: PickupSpawner.instance is null!");
-            }
+            spawnable = PickupSpawner.instance.GetComponent<ISpawnable>();
+
         }
+
+
     }
 
 
-
-
-
-private void Update()
+    private void Update()
     {
         if (boundingBox && generatedPositions.Count > 0)
         {
