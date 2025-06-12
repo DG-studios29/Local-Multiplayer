@@ -310,7 +310,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     //needs to make logical decisions in all posible cases of what to target
-    void DoTargetChase()
+    protected virtual void DoTargetChase()
     {
         if (nearestTarget == null && nearestPlayerTarget != null)
         {
