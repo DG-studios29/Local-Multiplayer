@@ -1,20 +1,19 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class PlayerCurrency : MonoBehaviour
 {
     [SerializeField]private float maxMana;
     [SerializeField]private float currentMana;
-
-
-    private float playerXP;
-
-
+    
+    private float playerXp;
+    
     private float manaTimer = 0f;
     [SerializeField]private float manaGainTime = 1f;
     [SerializeField]private float manaGainAmount;
 
-
+    private CurrencyUI currencyUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -32,6 +31,17 @@ public class PlayerCurrency : MonoBehaviour
         ManaRegeneration();
     }
 
+    public void SetupManaUI(CurrencyUI playerCurrencyUI)
+    {
+        currencyUI = playerCurrencyUI;
+    }
+
+    public bool CheckManaCost(float amount)
+    {
+        //true means we can pay the cost
+        return currentMana - amount >= 0;
+    }
+    
     public void ManaLoss(float amount)
     {
         currentMana -= amount;
@@ -39,6 +49,8 @@ public class PlayerCurrency : MonoBehaviour
         if(currentMana < 0) currentMana = 0;
 
         //Update any ui
+        currencyUI.ManaBarUpdate(currentMana/maxMana);
+        
     }
 
     public void ManaGain(float amount)
@@ -48,6 +60,7 @@ public class PlayerCurrency : MonoBehaviour
         if (currentMana > maxMana) currentMana = maxMana;
 
         //Update any ui
+        currencyUI.ManaBarUpdate(currentMana/maxMana);
     }
 
 

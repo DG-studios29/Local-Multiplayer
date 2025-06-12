@@ -7,6 +7,12 @@ public class MiniArmySpawner : MonoBehaviour
     public Transform spawnPoint;
 
     private MiniArmySpawnerUI ui;
+    private PlayerCurrency currency;
+
+    private void Start()
+    {
+        currency = GetComponent<PlayerCurrency>();
+    }
 
     public void InitializeUI(MiniArmySpawnerUI assignedUI)
     {
@@ -31,12 +37,21 @@ public class MiniArmySpawner : MonoBehaviour
 
     private void TrySpawn(int index)
     {
-        //will need to check Mana amount, then use up Mana to spawn
-        
-        
-        
         if (ui != null && ui.CanSpawn(index))
         {
+            //will need to check Mana amount required, then use up Mana to spawn
+            var spawnInfo = armyTypes[index].GetComponent<EnemyAI>().enemyData;
+           
+            if (currency.CheckManaCost(spawnInfo.ManaCost))
+            {
+                currency.ManaLoss(spawnInfo.ManaCost);
+            }
+            else
+            {
+                Debug.Log("Not enough mana to spend");
+                return;
+            }
+            
             SpawnMiniUnit(index);
             ui.OnUnitSpawned(index);
         }
