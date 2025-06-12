@@ -20,6 +20,6 @@ MonoBehaviour:
   behavior: 1
   description: 
   objectInstance: {fileID: 6585421304354862384, guid: 84d185ade95204d40ba198211ef4cbb9, type: 3}
-  trailRenderer: {fileID: 6051027523134144677, guid: b0e2d19bfe7e08041a14b622a2dc3244, type: 3}
+  trailRenderer: {fileID: 4222833773538097119, guid: b14e3894ca6d41f4d8442955ab3f3ff4, type: 3}
   projectilePrefab: {fileID: 55373305946449101, guid: 68d2504a1d4ab184e833a9c146cab168, type: 3}
   particleFX: {fileID: 3379312893944246363, guid: 1ce004ad4197c9d4cbec4e6d49d86f8c, type: 3}

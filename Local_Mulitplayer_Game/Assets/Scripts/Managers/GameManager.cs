@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
     public TMP_Text player1NameText;
     public TMP_Text player2NameText;
 
+    [Header("Resources UI")] 
+    public CurrencyUI p1CurrencyUI;
+    public CurrencyUI p2CurrencyUI;
+
     [Header("Army UI Panels")]
     public MiniArmySpawnerUI player1ArmyUI;
     public MiniArmySpawnerUI player2ArmyUI;
@@ -155,11 +159,20 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-
-
+            var playerCurrency = player.GetComponent<PlayerCurrency>();
+            if (player.name == "Player 1" && p1CurrencyUI != null)
+            {
+                playerCurrency.SetupManaUI(p1CurrencyUI);
+            }
+            else if (player.name == "Player 2" && p2CurrencyUI != null)
+            {
+                playerCurrency.SetupManaUI(p2CurrencyUI);
+            }
+    
             AssignHeroScript(player, selectedHeroes[index]);
             AssignPlayerMaterials(player, index);
             SetupPlayerUI(player, player.name);
+            SetupCurrency(player);
             SetupHeroAbilitiesUI(player);
             AddPlayerToCamera(player);
         }
@@ -237,6 +250,20 @@ public class GameManager : MonoBehaviour
             player2NameText.text = playerName;
         }
         hp.UpdateHealthUI();
+    }
+
+
+    private void SetupCurrency(GameObject player)
+    {
+        var playerCurrency = player.GetComponent<PlayerCurrency>();
+        if (player.name == "Player 1" && p1CurrencyUI)
+        {
+            playerCurrency.SetupManaUI(p1CurrencyUI);
+        }
+        else if (player.name == "Player 2" && p2CurrencyUI)
+        {
+            playerCurrency.SetupManaUI(p2CurrencyUI);
+        }
     }
 
     public void SetupHeroAbilitiesUI(GameObject player)

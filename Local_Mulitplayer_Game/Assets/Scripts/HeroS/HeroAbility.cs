@@ -21,5 +21,5 @@ public class HeroAbility : ScriptableObject
     public Ability ultimate; // Ultimate ability
 
     public ItemData itemRevolve;
- 
+    public ItemData itemShoot;
 }

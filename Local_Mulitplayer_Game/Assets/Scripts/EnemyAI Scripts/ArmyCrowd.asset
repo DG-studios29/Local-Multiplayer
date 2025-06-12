@@ -19,3 +19,4 @@ MonoBehaviour:
   openRange: 100
   attackRange: 3
   attackRate: 1
+  manaCost: 20

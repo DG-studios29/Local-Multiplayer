@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2220471af5507143accde70e8a7da8b, type: 3}
-  m_Name: BasicAutoBB
+  m_Name: Ice AutoShoot
   m_EditorClassIdentifier: 
   itemName: BasicAutoBB
   itemIcon: {fileID: 0}
-  atkDamage: 5
+  atkDamage: 3
   atkRate: 2
   atkRadius: 10
   behavior: 0
   description: Shoots basic bullets to the nearest enemy
-  objectInstance: {fileID: 189975902129390228, guid: e0650f72d35bb5e4aa7cf60abd8e787f, type: 3}
-  trailRenderer: {fileID: 6051027523134144677, guid: b0e2d19bfe7e08041a14b622a2dc3244, type: 3}
+  objectInstance: {fileID: 189975902129390228, guid: ed3ba58855ebde341ac08304525be92e, type: 3}
+  trailRenderer: {fileID: 4222833773538097119, guid: b060c2166ceb1704cafc4a51c262081d, type: 3}
   projectilePrefab: {fileID: 55373305946449101, guid: ecdc5b13153e92a4c8d40bb5b1c086ac, type: 3}
   particleFX: {fileID: 3379312893944246363, guid: 1ce004ad4197c9d4cbec4e6d49d86f8c, type: 3}

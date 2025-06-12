@@ -138,6 +138,8 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     private IEnumerator FreezeDuration()
     {
+        baseMaterial = playerMeshRenderers[0].material;
+        
         ChangeMat(frozenMaterial);
         yield return new WaitForSeconds(freezeDuration);
         isFrozen = false;
@@ -147,7 +149,8 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     private IEnumerator ShowHurt()
     {
-
+        baseMaterial = playerMeshRenderers[0].material;
+        
         alreadyHurting = true;
         yield return new WaitForSeconds(0.1f);
 

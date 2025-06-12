@@ -22,10 +22,6 @@ public class ItemShoot : ItemObject
     }
 
     // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
 
     protected override void DoAttack()
     {
