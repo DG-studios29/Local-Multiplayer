@@ -260,4 +260,14 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
         ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd; 
     }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+       
+    }
+
+    public void RefillAbilityBar()
+    {
+       
+    }
 }

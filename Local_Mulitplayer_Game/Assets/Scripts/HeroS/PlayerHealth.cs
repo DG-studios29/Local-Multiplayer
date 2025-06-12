@@ -315,5 +315,15 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
                 break;
         }
     }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        
+    }
+
+    public void RefillAbilityBar()
+    {
+        
+    }
     #endregion
 }
