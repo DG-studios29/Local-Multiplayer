@@ -117,7 +117,14 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     void Die()
     {
         Debug.Log(gameObject.name + " has died!");
-        // 🔹 You can add respawn logic or player death effects here
+
+        if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerPlayerRespawner"))
+        {
+            StartCoroutine(RespawnAfterDelay(2f));
+        }
+
+        Debug.Log(gameObject.name + " has died!");
+
     }
 
     public void Freeze(float duration)
@@ -192,6 +199,15 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
             preSuddenDeathHealth = -1;
         }
     }
+
+    private IEnumerator RespawnAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentHealth = maxHealth;
+        UpdateHealthUI();
+        Debug.Log($"{gameObject.name} has been auto-respawned!");
+    }
+
 
 
 
