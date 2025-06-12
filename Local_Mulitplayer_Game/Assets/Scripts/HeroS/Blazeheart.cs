@@ -5,14 +5,30 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Blazeheart : HeroBase
+public class Blazeheart : HeroBase, IPlayerEffect
 {
+    private int availableInstantCooldowns = 0;
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
         {
             ShootProjectile(abilities.ability1);
+
             ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+
+            //ability1CooldownTimer = abilities.ability1.cooldown;
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
+            Debug.LogWarning("Molten Shot is still on cooldown!");
+
         }
     }
 
@@ -21,7 +37,21 @@ public class Blazeheart : HeroBase
         if (ability2CooldownTimer <= 0f)
         {
             StartCoroutine(HeatwaveDash());
+
             ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
+
+            //ability2CooldownTimer = abilities.ability2.cooldown;
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
+            Debug.LogWarning("Heatwave Dash is still on cooldown!");
+
         }
     }
 
@@ -30,7 +60,20 @@ public class Blazeheart : HeroBase
         if (ultimateCooldownTimer <= 0f)
         {
             StartCoroutine(InfernalCage());
+
             ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
+
+            //ultimateCooldownTimer = abilities.ultimate.cooldown;
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
+            Debug.LogWarning("Infernal Cage is still on cooldown!");
         }
     }
 
@@ -110,4 +153,31 @@ public class Blazeheart : HeroBase
             }
         }
     }
+
+    #region Interface
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RefillAbilityBar()
+    {
+        //
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+    }
+    #endregion
 }

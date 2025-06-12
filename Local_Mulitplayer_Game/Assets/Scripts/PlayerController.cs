@@ -183,14 +183,13 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
         if (!hasTrail)
         {
-            trailEffect = Instantiate(trailEffect);
+            GameObject trail = Instantiate(trailEffect, transform);
             hasTrail = true;
-        }
 
-        trailEffect.transform.parent = transform;
-        trailEffect.transform.localPosition = new Vector3(0, .01f, 0);
-        if (speedCoroutine != null) StopCoroutine(speedCoroutine);
-        speedCoroutine = StartCoroutine(SpeedBoostEffect(duration, trailEffect));
+            trailEffect.transform.localPosition = new Vector3(0, .01f, 0);
+            if (speedCoroutine != null) StopCoroutine(speedCoroutine);
+            speedCoroutine = StartCoroutine(SpeedBoostEffect(duration, trail));
+        }
 
         switch (isPlayer)
         {
@@ -249,9 +248,14 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         //
     }
 
-    public void RefillAbilityBar(float energy)
+    public void RefillAbilityBar()
     {
         //
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+
     }
     #endregion
 
