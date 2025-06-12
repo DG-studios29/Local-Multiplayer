@@ -11,6 +11,7 @@ public class CurrencyUI : MonoBehaviour
     void Start()
     {
         ManaBarUpdate(1f);
+        XpTextUpdate(0);
     }
 
     // Update is called once per frame
@@ -25,9 +26,9 @@ public class CurrencyUI : MonoBehaviour
         manaFillImage.fillAmount = fillRatio;
     }
 
-    public void UpdateXpText(float xp)
+    public void XpTextUpdate(float xp)
     {
-        xpText.text = "XP: " + xp;
+        xpText.text = "XP : " + xp;
     }
     
 }

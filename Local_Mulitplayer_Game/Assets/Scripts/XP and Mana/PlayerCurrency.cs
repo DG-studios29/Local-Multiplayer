@@ -10,8 +10,13 @@ public class PlayerCurrency : MonoBehaviour
     private float playerXp;
     
     private float manaTimer = 0f;
-    [SerializeField]private float manaGainTime = 1f;
+    [SerializeField]private float manaGainTime = 0.25f;
     [SerializeField]private float manaGainAmount;
+    
+    private float xpTimer = 0f;
+    private float xpGainTime = 1f;
+    private float xpGainAmount = 1;
+    private float xpGainMultiplier = Mathf.Exp(1);
 
     private CurrencyUI currencyUI;
 
@@ -19,6 +24,7 @@ public class PlayerCurrency : MonoBehaviour
     private void Start()
     {
         currentMana = maxMana;
+        playerXp = 0f;
 
     }
 
@@ -26,9 +32,11 @@ public class PlayerCurrency : MonoBehaviour
     private void Update()
     {
         manaTimer += Time.deltaTime;
+        xpTimer += Time.deltaTime;
 
 
         ManaRegeneration();
+        XpSteadyGain();
     }
 
     public void SetupManaUI(CurrencyUI playerCurrencyUI)
@@ -71,5 +79,24 @@ public class PlayerCurrency : MonoBehaviour
         manaTimer = 0;
     }
 
+    public void XpGain(float amount)
+    {
+        playerXp += Mathf.Round(amount);
+        
+        //UI update
+        currencyUI.XpTextUpdate(playerXp);
+    }
+    
+    private void XpSteadyGain()
+    {
+        if(!(xpTimer >= xpGainTime)) return;
+
+        xpGainMultiplier = xpGainMultiplier * Mathf.Exp(1);
+        
+        xpGainAmount = xpGainAmount * xpGainMultiplier;
+        XpGain(xpGainAmount);
+    }
+    
+    
 
 }
