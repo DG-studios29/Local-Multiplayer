@@ -63,6 +63,7 @@ public abstract class HeroBase : MonoBehaviour
         if (autoattack != null && abilities != null)
         {
             autoattack.InstantiateRevolver(abilities.itemRevolve);
+            autoattack.InstantiateAutoShooter(abilities.itemShoot);
         }
     }
 

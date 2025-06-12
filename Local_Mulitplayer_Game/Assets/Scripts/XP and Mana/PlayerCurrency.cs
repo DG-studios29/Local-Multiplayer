@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 
 public class PlayerCurrency : MonoBehaviour
@@ -9,14 +8,14 @@ public class PlayerCurrency : MonoBehaviour
     
     [SerializeField]private float playerXp;
     
-    private float manaTimer = 0f;
+    private float manaTimer;
     [SerializeField]private float manaGainTime = 0.25f;
     [SerializeField]private float manaGainAmount;
     
-    private float xpTimer = 0f;
-    private float xpGainTime = 1f;
-    private float xpGainAmount = 1;
-    private float xpGainMultiplier = 1.2f;
+    private float xpTimer;
+    private readonly float xpGainTime = 1f;
+    private float xpGainAmount = 1f;
+    private float XpGainMultiplier { get; } = 1.2f;
 
     private CurrencyUI currencyUI;
 
@@ -57,7 +56,8 @@ public class PlayerCurrency : MonoBehaviour
         if(currentMana < 0) currentMana = 0;
 
         //Update any ui
-        currencyUI.ManaBarUpdate(currentMana/maxMana);
+        if(currencyUI)
+            currencyUI.ManaBarUpdate(currentMana/maxMana);
         
     }
 
@@ -68,7 +68,8 @@ public class PlayerCurrency : MonoBehaviour
         if (currentMana > maxMana) currentMana = maxMana;
 
         //Update any ui
-        currencyUI.ManaBarUpdate(currentMana/maxMana);
+        if(currencyUI)
+            currencyUI.ManaBarUpdate(currentMana/maxMana);
     }
 
 
@@ -84,14 +85,15 @@ public class PlayerCurrency : MonoBehaviour
         playerXp += Mathf.Round(amount);
         
         //UI update
-        currencyUI.XpTextUpdate(playerXp);
+        if(currencyUI)
+         currencyUI.XpTextUpdate(playerXp);
     }
     
     private void XpSteadyGain()
     {
         if(!(xpTimer >= xpGainTime)) return;
         
-        xpGainAmount = xpGainAmount * xpGainMultiplier;
+        xpGainAmount = xpGainAmount * XpGainMultiplier;
         XpGain(xpGainAmount);
         xpTimer = 0;
     }

@@ -50,9 +50,16 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
     }
 
 
+    public void InstantiateAutoShooter(ItemData shootingData)
+    {
+        Debug.Log("Auto Shooter Instantiated on creation");
+        itemHolder.Add(shootingData);
+        Instantiate(shootingData.objectInstance,this.transform.position,Quaternion.identity,this.transform);
+    }
+
     public void InstantiateRevolver(ItemData revolvingData)
     {
-        Debug.Log("CAlled on creation");
+        Debug.Log("Called on creation");
         itemHolder.Add(revolvingData);
         Instantiate(revolvingData.objectInstance, this.transform.position, Quaternion.identity, this.transform);
     }
