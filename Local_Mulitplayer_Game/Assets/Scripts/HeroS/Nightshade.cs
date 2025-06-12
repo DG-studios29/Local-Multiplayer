@@ -2,8 +2,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class Nightshade : HeroBase
+public class Nightshade : HeroBase, IPlayerEffect
 {
+    private int availableInstantCooldowns = 0;
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
@@ -14,6 +16,12 @@ public class Nightshade : HeroBase
         }
         else
         {
+            if(availableInstantCooldowns>0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Shadow Bolt is still on cooldown!");
         }
     }
@@ -28,6 +36,12 @@ public class Nightshade : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Phantom Clone is still on cooldown!");
         }
     }
@@ -42,6 +56,12 @@ public class Nightshade : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Grave Silence is still on cooldown!");
         }
     }
@@ -96,4 +116,31 @@ public class Nightshade : HeroBase
 
         yield return new WaitForSeconds(blindDuration);
     }
+
+    #region Interface
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RefillAbilityBar()
+    {
+        //
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+    }
+    #endregion
 }

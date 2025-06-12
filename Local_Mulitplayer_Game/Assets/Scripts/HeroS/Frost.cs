@@ -2,8 +2,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class Frost : HeroBase
+public class Frost : HeroBase, IPlayerEffect
 {
+    private int availableInstantCooldowns = 0;
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
@@ -14,6 +16,12 @@ public class Frost : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Ice Javelin is still on cooldown!");
         }
     }
@@ -28,6 +36,12 @@ public class Frost : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Frozen Wall is still on cooldown!");
         }
     }
@@ -42,6 +56,12 @@ public class Frost : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Absolute Zero is still on cooldown!");
         }
     }
@@ -100,4 +120,31 @@ public class Frost : HeroBase
             }
         }
     }
+
+    #region Interface
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RefillAbilityBar()
+    {
+        //
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+    }
+    #endregion
 }

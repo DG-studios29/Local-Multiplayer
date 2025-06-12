@@ -1,26 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\",
+  "WorkspaceRootPath": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\assets\\scripts\\achievements\\playerachievementtracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\achievements\\playerachievementtracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|c:\\users\\succe\\desktop\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\vfxselfdestruct .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\vfxselfdestruct .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local_multiplayer_game\\local_mulitplayer_game\\assets\\scripts\\heros\\playerstatsui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\playerstatsui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_utility \u0026\u0026 buff pickups\\speedboost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_utility \u0026\u0026 buff pickups\\speedboost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local_multiplayer_game\\local_mulitplayer_game\\assets\\scripts\\enemyai scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyai scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_defensive\\healingherb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_defensive\\healingherb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\assets\\scripts\\achievements\\achievementui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\achievements\\achievementui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_defensive\\tempshield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_defensive\\tempshield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\assets\\scripts\\achievements\\achievement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\achievements\\achievement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_utility \u0026\u0026 buff pickups\\energycrystal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_utility \u0026\u0026 buff pickups\\energycrystal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_utility \u0026\u0026 buff pickups\\cooldownreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_utility \u0026\u0026 buff pickups\\cooldownreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_interfaces\\iplayereffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_pick ups\\_interfaces\\iplayereffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +42,104 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerStatsUI.cs",
-              "DocumentMoniker": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerStatsUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\PlayerStatsUI.cs",
-              "ToolTip": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerStatsUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroS\\PlayerStatsUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:25:22.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EnemyAI.cs",
-              "DocumentMoniker": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\EnemyAI Scripts\\EnemyAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAI Scripts\\EnemyAI.cs",
-              "ToolTip": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\EnemyAI Scripts\\EnemyAI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemyAI Scripts\\EnemyAI.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwCoAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:11:22.923Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PlayerAchievementTracker.cs",
-              "DocumentMoniker": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\Achievements\\PlayerAchievementTracker.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Achievements\\PlayerAchievementTracker.cs",
-              "ToolTip": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\Achievements\\PlayerAchievementTracker.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Achievements\\PlayerAchievementTracker.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwCQAAAAAAAAAAAAAAA==",
+              "Title": "VFxSelfDestruct .cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\VFxSelfDestruct .cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\VFxSelfDestruct .cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\VFxSelfDestruct .cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\VFxSelfDestruct .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:03:11.477Z",
+              "WhenOpened": "2025-06-10T21:04:11.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AchievementUI.cs",
-              "DocumentMoniker": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\Achievements\\AchievementUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Achievements\\AchievementUI.cs",
-              "ToolTip": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\Achievements\\AchievementUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Achievements\\AchievementUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "CooldownReset.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\CooldownReset.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\CooldownReset.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\CooldownReset.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\CooldownReset.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:03:10.38Z"
+              "WhenOpened": "2025-06-10T21:00:57.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SpeedBoost.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\SpeedBoost.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\SpeedBoost.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\SpeedBoost.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\SpeedBoost.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAiwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T21:00:07.81Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Achievement.cs",
-              "DocumentMoniker": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\Achievements\\Achievement.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Achievements\\Achievement.cs",
-              "ToolTip": "D:\\Unity\\Local_Multiplayer_Game\\Local_Mulitplayer_Game\\Assets\\Scripts\\Achievements\\Achievement.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Achievements\\Achievement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "EnergyCrystal.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\EnergyCrystal.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\EnergyCrystal.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\EnergyCrystal.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_utility \u0026\u0026 Buff Pickups\\EnergyCrystal.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:01:52.064Z"
+              "WhenOpened": "2025-06-10T21:00:06.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TempShield.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\TempShield.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\TempShield.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\TempShield.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\TempShield.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T21:00:03.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HealingHerb.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\HealingHerb.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\HealingHerb.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\HealingHerb.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_defensive\\HealingHerb.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAiwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T20:59:56.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IPlayerEffect.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_Interfaces\\IPlayerEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_Interfaces\\IPlayerEffect.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_Interfaces\\IPlayerEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_pick Ups\\_Interfaces\\IPlayerEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T20:58:42.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\PlayerHealth.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\PlayerHealth.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAABRwKQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T17:05:07.846Z"
             }
           ]
         }

@@ -98,9 +98,14 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
 
     }
 
-    public void RefillAbilityBar(float energy)
+    public void RefillAbilityBar()
     {
         TestClear();
         print("Orb restored");
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        //
     }
 }
