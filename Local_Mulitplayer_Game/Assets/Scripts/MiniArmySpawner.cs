@@ -1,12 +1,56 @@
 ﻿using UnityEngine.InputSystem;
 using UnityEngine;
+using System.Collections;
 
 public class MiniArmySpawner : MonoBehaviour
 {
     public GameObject[] armyTypes; // 0 = Melee, 1 = Ranged, 2 = Defense
     public Transform spawnPoint;
 
+    [Header("Spam Spawn Settings")]
+    public float spamSpawnInterval = 3f;
+
     private MiniArmySpawnerUI ui;
+    private Coroutine spamRoutine;
+
+    private void OnEnable()
+    {
+        ArenaEventManager.OnArenaEventStart += OnEventStart;
+        ArenaEventManager.OnArenaEventEnd += OnEventEnd;
+    }
+
+    private void OnDisable()
+    {
+        ArenaEventManager.OnArenaEventStart -= OnEventStart;
+        ArenaEventManager.OnArenaEventEnd -= OnEventEnd;
+    }
+
+    private void OnEventStart(ArenaEventSO evt)
+    {
+        if (evt.triggerSpamSpawner && spamRoutine == null)
+        {
+            spamRoutine = StartCoroutine(SpamSpawnRoutine());
+        }
+    }
+
+    private void OnEventEnd(ArenaEventSO evt)
+    {
+        if (evt.triggerSpamSpawner && spamRoutine != null)
+        {
+            StopCoroutine(spamRoutine);
+            spamRoutine = null;
+        }
+    }
+
+    private IEnumerator SpamSpawnRoutine()
+    {
+        while (true)
+        {
+            int index = Random.Range(0, armyTypes.Length);
+            SpawnMiniUnit(index);
+            yield return new WaitForSeconds(spamSpawnInterval);
+        }
+    }
 
     public void InitializeUI(MiniArmySpawnerUI assignedUI)
     {
@@ -33,7 +77,6 @@ public class MiniArmySpawner : MonoBehaviour
     {
         if (ui != null && ui.CanSpawn(index))
         {
-            //Arena Event: Double Army Support
             int spawnCount = 1;
             if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerDoubleArmy"))
             {

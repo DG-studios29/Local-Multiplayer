@@ -17,6 +17,8 @@ public class ArenaEventSO : ScriptableObject
     public bool triggerPortalSpawn;
     public bool triggerSuddenDeath;
     public bool triggerChainReaction;
+    public bool triggerPlayerRespawner;
+    public bool triggerSpamSpawner;
 
     // Add more toggles here as needed
 }
