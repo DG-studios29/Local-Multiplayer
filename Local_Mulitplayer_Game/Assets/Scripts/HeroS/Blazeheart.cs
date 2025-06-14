@@ -5,14 +5,24 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Blazeheart : HeroBase
+public class Blazeheart : HeroBase, IPlayerEffect
 {
+    private int availableInstantCooldowns;
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
         {
             ShootProjectile(abilities.ability1);
             ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
         }
     }
 
@@ -23,6 +33,14 @@ public class Blazeheart : HeroBase
             StartCoroutine(HeatwaveDash());
             ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+        }
     }
 
     protected override void UseUltimate()
@@ -31,6 +49,14 @@ public class Blazeheart : HeroBase
         {
             StartCoroutine(InfernalCage());
             ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
         }
     }
 
@@ -110,4 +136,33 @@ public class Blazeheart : HeroBase
             }
         }
     }
+
+    #region
+
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RefillAbilityBar()
+    {
+
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+    }
+
+    #endregion
 }

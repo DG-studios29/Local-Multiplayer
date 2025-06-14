@@ -102,6 +102,7 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
         //transform.position = playerObjOrigin.position;
     }
 
+    #region Interface
     public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
     {
 
@@ -117,10 +118,9 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
 
     }
 
-    public void RefillAbilityBar(float energy)
+    public void RefillAbilityBar()
     {
         TestClear();
-        print("Orb restored");
     }
 
     public void ResetAbilityCooldownTimer(int cooldown)
@@ -128,8 +128,5 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
        
     }
 
-    public void RefillAbilityBar()
-    {
-       
-    }
+    #endregion
 }

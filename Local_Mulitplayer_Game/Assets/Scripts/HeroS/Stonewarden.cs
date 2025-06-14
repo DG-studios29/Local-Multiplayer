@@ -3,8 +3,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Stonewarden : HeroBase
+public class Stonewarden : HeroBase, IPlayerEffect
 {
+    private int availableInstantCooldowns;
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
@@ -14,6 +16,12 @@ public class Stonewarden : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Stone Fist is still on cooldown!");
         }
     }
@@ -27,6 +35,12 @@ public class Stonewarden : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Fortify is still on cooldown!");
         }
     }
@@ -40,6 +54,12 @@ public class Stonewarden : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+            }
+
             Debug.LogWarning("Seismic Rift is still on cooldown!");
         }
     }
@@ -103,4 +123,33 @@ public class Stonewarden : HeroBase
             Destroy(riftSegment, 3f); 
         }
     }
+
+    #region
+
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RefillAbilityBar()
+    {
+
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+    }
+
+    #endregion
 }

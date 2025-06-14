@@ -249,9 +249,14 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         //
     }
 
-    public void RefillAbilityBar(float energy)
+    public void ResetAbilityCooldownTimer(int cooldown)
     {
-        //
+
+    }
+
+    public void RefillAbilityBar()
+    {
+
     }
     #endregion
 
@@ -259,15 +264,5 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     {
         ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
         ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd; 
-    }
-
-    public void ResetAbilityCooldownTimer(int cooldown)
-    {
-       
-    }
-
-    public void RefillAbilityBar()
-    {
-       
     }
 }
