@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 2800242413094262655}
   - component: {fileID: -1367476590841090514}
   - component: {fileID: 3813123546783778120}
+  - component: {fileID: -1384688274643606976}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPunchR: 0
   punchDamage: 1
-  unscaledMAXDamage: 10
+  unscaledMaxDamage: 10
   punchRadius: 1
   punchDistance: 3.3
   playerMask:
@@ -293,7 +294,7 @@ MonoBehaviour:
     m_Bits: 192
   timePushed: 0.2
   distancePushed: 1
-  maxChargeTime: 1.25
+  maxChargeTime: 0.4
   upperCutFX: {fileID: 6414144072921805648, guid: e53d795fe84e7944c83e2e44abd3760e, type: 3}
   audioSource: {fileID: -1367476590841090514}
   punchSound: {fileID: 8300000, guid: 6ee0d3c2d97ec014db30225b28d43133, type: 3}
@@ -657,6 +658,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b74a15cc5bf05c40b91dd071fb4fa2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1384688274643606976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093234706080368204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a11a7011ad4ad0448d64818d8130233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 100
+  currentMana: 0
+  playerXp: 0
+  manaGainTime: 0.25
+  manaGainAmount: 1
 --- !u!1 &3408003879747189824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1166,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1905853290165408421, guid: 618ef773d943d94459e226265c5df73a, type: 3}
+      propertyPath: autoShootObject
+      value: 
+      objectReference: {fileID: 189975902129390228, guid: e0650f72d35bb5e4aa7cf60abd8e787f, type: 3}
     - target: {fileID: 6889060643873704330, guid: 618ef773d943d94459e226265c5df73a, type: 3}
       propertyPath: m_Name
       value: AutoAttackingObj
