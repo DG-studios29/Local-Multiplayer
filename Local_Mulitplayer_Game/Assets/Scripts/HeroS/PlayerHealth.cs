@@ -1,14 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
 using TMPro;
-using UnityEngine.AI;
-using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IPlayerEffect
 {
     [Header("Health Settings")]
     public int maxHealth = 100;
     public int currentHealth;
+    public static bool SuddenDeathActive = false;
+    public static bool NoHealingActive = false;
+
+
 
     [Header("UI Elements")]
     public Slider healthSlider;
@@ -28,8 +31,9 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     bool alreadyHurting = false;
     private Material baseMaterial;
     private MeshRenderer[] playerMeshRenderers;
-    
-    
+    private int preSuddenDeathHealth = -1;
+
+
 
 
     #region Interface Vars
@@ -38,21 +42,28 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     private bool hasShieldBubble;
     private Coroutine shieldCoroutine;
     private Coroutine healthCoroutine;
-    
-    #endregion
 
-    private void Awake()
-    {
-        currentHealth = maxHealth;
-        UpdateHealthUI();
-    }
+    #endregion
 
     private void Start()
     {
         playerMeshRenderers = GetComponentsInChildren<MeshRenderer>();
         baseMaterial = playerMeshRenderers[0].material;
         StartCoroutine(ValidatePlayer());
+        currentHealth = maxHealth;
+        UpdateHealthUI();
+
+        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
+        ArenaEventManager.OnArenaEventEnd += HandleArenaEventEnd; 
     }
+
+    private void OnDestroy()
+    {
+        ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
+        ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd; 
+    }
+
+
 
     private IEnumerator ValidatePlayer()
     {
@@ -71,13 +82,14 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
         Debug.Log($"{gameObject.name} took {damage} damage. Current Health: {currentHealth}");
 
-        if(!alreadyHurting && !isFrozen)
-        StartCoroutine(ShowHurt());
+        if (!alreadyHurting && !isFrozen)
+            StartCoroutine(ShowHurt());
 
         if (currentHealth <= 0)
         {
             Die();
         }
+
     }
 
     public void Heal(int amount)
@@ -85,6 +97,12 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
+
+        if (NoHealingActive)
+        {
+            Debug.Log("Healing blocked due to No Healing arena event!");
+            return;
+        }
     }
 
     public void UpdateHealthUI()
@@ -99,7 +117,14 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     void Die()
     {
         Debug.Log(gameObject.name + " has died!");
-        // 🔹 You can add respawn logic or player death effects here
+
+        if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerPlayerRespawner"))
+        {
+            StartCoroutine(RespawnAfterDelay(2f));
+        }
+
+        Debug.Log(gameObject.name + " has died!");
+
     }
 
     public void Freeze(float duration)
@@ -140,13 +165,56 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     private void ChangeMat(Material materialStatus)
     {
-        foreach(var part in playerMeshRenderers)
+        foreach (var part in playerMeshRenderers)
         {
             part.material = materialStatus;
         }
     }
+    private void HandleArenaEvent(ArenaEventSO evt)
+    {
+        if (evt.triggerSuddenDeath)
+        {
+            SuddenDeathActive = true;
 
-    
+            // Save current health to restore later
+            preSuddenDeathHealth = currentHealth;
+
+            // Drop player to 1 HP
+            currentHealth = 1;
+            UpdateHealthUI();
+        }
+    }
+
+    private void HandleArenaEventEnd(ArenaEventSO evt)
+    {
+        if (evt.triggerSuddenDeath)
+        {
+            SuddenDeathActive = false;
+
+            // Restore saved health only if still alive
+            if (currentHealth > 0 && preSuddenDeathHealth > 0)
+            {
+                currentHealth = preSuddenDeathHealth;
+                UpdateHealthUI();
+            }
+
+            // Clear saved value
+            preSuddenDeathHealth = -1;
+        }
+    }
+
+    private IEnumerator RespawnAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentHealth = maxHealth;
+        UpdateHealthUI();
+        Debug.Log($"{gameObject.name} has been auto-respawned!");
+    }
+
+
+
+
+
 
     #region Interfaces
 
@@ -249,6 +317,16 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
                 GameManager.Instance.playerTwoPowerUps[1].alpha = 0.4f;
                 break;
         }
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        
+    }
+
+    public void RefillAbilityBar()
+    {
+        
     }
     #endregion
 }

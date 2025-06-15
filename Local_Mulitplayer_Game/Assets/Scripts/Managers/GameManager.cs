@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject forestMap;
     public GameObject cemeteryMap;
     public GameObject wintermap;
+    public string CurrentMapName { get; private set; }
 
     [Header("Camera")]
     public CinemachineTargetGroup targetGroup;
@@ -192,6 +193,13 @@ public class GameManager : MonoBehaviour
             case "Cemetery": cemeteryMap.SetActive(true); currentSpawnPoints = cemeterySpawnPoints; break;
             case "Winter": wintermap.SetActive(true); currentSpawnPoints = winterSpawnPoints; break;
         }
+
+
+        var portalSpawner = Object.FindAnyObjectByType<PortalSpawner>();
+        if (portalSpawner != null)
+            portalSpawner.SetCurrentMap(mapName);
+
+        CurrentMapName = mapName;
     }
 
     public void AssignHeroScript(GameObject player, string heroName)
