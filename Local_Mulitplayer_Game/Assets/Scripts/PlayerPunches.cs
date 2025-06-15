@@ -52,7 +52,6 @@ public class PlayerPunches : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         parentObject = playerController.gameObject;
-        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
     }
 
 
@@ -79,10 +78,6 @@ public class PlayerPunches : MonoBehaviour
 
     }
 
-    private void HandleArenaEvent(ArenaEventSO evt)
-    {
-        OnlyPunchesActive = evt.triggerOnlyPunches;
-    }
 
     public void PunchCall()
     {
@@ -104,7 +99,7 @@ public class PlayerPunches : MonoBehaviour
         //AnimatorChargeClear();
 
 
-        //Debug.Log("Called Punch");
+        Debug.Log("Called Punch");
 
 
         //ConfigureClip
@@ -296,10 +291,6 @@ public class PlayerPunches : MonoBehaviour
         animator.SetFloat("Charge", chargeVal, 0.05f, Time.deltaTime);
     }
 
-    private void OnDestroy()
-    {
-        ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
-    }
 
     private void OnDrawGizmos()
     {

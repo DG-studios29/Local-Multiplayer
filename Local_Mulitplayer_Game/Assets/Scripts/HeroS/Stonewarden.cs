@@ -1,7 +1,7 @@
 
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Stonewarden : HeroBase
 {
@@ -9,8 +9,9 @@ public class Stonewarden : HeroBase
     {
         if (ability1CooldownTimer <= 0f)
         {
+            // Stone Fist - creates rubble on impact
             ShootProjectile(abilities.ability1);
-            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+            ability1CooldownTimer = abilities.ability1.cooldown;
         }
         else
         {
@@ -22,8 +23,9 @@ public class Stonewarden : HeroBase
     {
         if (ability2CooldownTimer <= 0f)
         {
+            Debug.Log("Stonewarden activates Fortify!");
             StartCoroutine(Fortify());
-            ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
+            ability2CooldownTimer = abilities.ability2.cooldown;
         }
         else
         {
@@ -35,8 +37,9 @@ public class Stonewarden : HeroBase
     {
         if (ultimateCooldownTimer <= 0f)
         {
+            Debug.Log("Stonewarden unleashes Seismic Rift!");
             StartCoroutine(SeismicRift());
-            ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
+            ultimateCooldownTimer = abilities.ultimate.cooldown;
         }
         else
         {
@@ -46,61 +49,52 @@ public class Stonewarden : HeroBase
 
     private IEnumerator Fortify()
     {
+        float shieldDuration = 5f;
+
         var status = GetComponent<StatusEffects>();
-        status?.ApplyArmorBuff(5f, 0.5f); // 50% damage reduction
-
-        // === VISUAL TRANSFORMATION START ===
-        if (abilities.ability2.projectilePrefab != null)
+        if (status != null)
         {
-            GameObject rockForm = Instantiate(abilities.ability2.projectilePrefab, transform);
-            rockForm.transform.localPosition = Vector3.zero;
-            rockForm.transform.localRotation = Quaternion.identity;
-
-            // Optionally hide original visuals
-            SkinnedMeshRenderer[] renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
-            foreach (var rend in renderers) rend.enabled = false;
-
-            yield return new WaitForSeconds(5f);
-
-            Destroy(rockForm); // Remove rock overlay
-
-            // Restore visuals
-            foreach (var rend in renderers) rend.enabled = true;
+            status.ApplyArmorBuff(shieldDuration, 0.5f); // 50% damage reduction
         }
-        else
-        {
-            Debug.LogWarning("Fortify rock form prefab not assigned.");
-            yield return new WaitForSeconds(5f);
-        }
+
+        // Reflect projectiles manually if needed in your combat system
+        yield return new WaitForSeconds(shieldDuration);
     }
-
 
     private IEnumerator SeismicRift()
     {
-        int segments = 6;
+        float riftRange = 10f;
+        float width = 2f;
+        int segments = 5;
         float delayBetweenSegments = 0.2f;
-        float range = 7f;
-        float segmentSpacing = range / segments;
-        Vector3 direction = transform.forward;
 
-        for (int i = 1; i <= segments; i++)
+        Vector3 start = transform.position + transform.forward * 2f;
+
+        for (int i = 0; i < segments; i++)
         {
-            Vector3 segmentPosition = transform.position + direction * (i * segmentSpacing);
-            GameObject riftSegment = Instantiate(abilities.ultimate.projectilePrefab, segmentPosition, Quaternion.identity);
+            Vector3 segmentPos = start + transform.forward * i * (riftRange / segments);
+            GameObject riftEffect = Instantiate(abilities.ultimate.projectilePrefab, segmentPos, Quaternion.identity);
+            Destroy(riftEffect, 2f);
 
-            Collider[] enemies = Physics.OverlapBox(segmentPosition, new Vector3(2f, 2f, 2f));
-            foreach (var enemy in enemies)
+            Collider[] hit = Physics.OverlapBox(segmentPos, new Vector3(width, 1, width));
+            foreach (var enemy in hit)
             {
                 if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
                 {
                     enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
                     enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
-                    enemy.GetComponent<StatusEffects>()?.ApplyStun(1f);
+
+                    var status = enemy.GetComponent<StatusEffects>();
+                    if (status != null)
+                        status.ApplyStun(1f);
+
+                    Rigidbody rb = enemy.GetComponent<Rigidbody>();
+                    if (rb != null)
+                        rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
                 }
             }
 
             yield return new WaitForSeconds(delayBetweenSegments);
-            Destroy(riftSegment, 3f); 
         }
     }
 }

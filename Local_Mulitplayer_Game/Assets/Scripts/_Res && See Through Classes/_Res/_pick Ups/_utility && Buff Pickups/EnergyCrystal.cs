@@ -8,9 +8,6 @@ public class EnergyCrystal : PickUpsBase
     #region Custom Variables
 
     [SerializeField] private float energyFillAmount;
-    [SerializeField] private GameObject vFx;
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private AudioSource audioSource;
 
     #endregion
 
@@ -18,27 +15,16 @@ public class EnergyCrystal : PickUpsBase
 
     protected override void ApplyEffect(GameObject player)
     {
-        IPlayerEffect[] playerEffect = player.GetComponents<IPlayerEffect>();
-
+        IPlayerEffect[] playerEffect = player.GetComponentsInChildren<IPlayerEffect>();
         if (playerEffect.Length > 0)
         {
             foreach (var effect in playerEffect)
             {
-                if (effect != null)
-                {
-                    effect.RefillAbilityBar();
-
-                    if (audioSource != null && audioClip != null) audioSource.PlayOneShot(audioClip);
-
-                    if (vFx != null)
-                    {
-                        Instantiate(vFx, transform.position, Quaternion.identity);
-                    }
-                }
+                effect.RefillAbilityBar(energyFillAmount);
             }
         }
 
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     #endregion

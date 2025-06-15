@@ -1,4 +1,3 @@
-﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
+//https://docs.unity3d.com/Packages/com.unity.inputsystem@1.5/manual/Actions.html#action-callbacks
+
 public abstract class HeroBase : MonoBehaviour
 {
     public HeroAbility abilities;
     private PlayerInput playerInput;
     private Transform projectileSpawnPoint;
     private float projectileSpeed = 20f;
-    public static bool PowerSurgeActive = false;
 
     public float ability1CooldownTimer = 0f;
     public float ability2CooldownTimer = 0f;
     public float ultimateCooldownTimer = 0f;
+
+
+  
 
     private AutoAttack autoattack;
 
@@ -24,6 +27,7 @@ public abstract class HeroBase : MonoBehaviour
     public TMP_Text ability2CooldownText;
     public TMP_Text ultimateCooldownText;
 
+  
     public Image ability1Icon;
     public Image ability2Icon;
     public Image ultimateIcon;
@@ -36,8 +40,6 @@ public abstract class HeroBase : MonoBehaviour
     protected virtual void Start()
     {
         casterID = gameObject.GetInstanceID();
-        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
-        ArenaEventManager.OnArenaEventEnd += HandleArenaEventEnd;
 
         if (ability1Icon) originalAbility1Color = ability1Icon.color;
         if (ability2Icon) originalAbility2Color = ability2Icon.color;
@@ -46,18 +48,9 @@ public abstract class HeroBase : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         if (playerInput != null)
         {
-            playerInput.actions["Ability1"].performed += ctx =>
-            {
-                if (!PlayerPunches.OnlyPunchesActive) UseAbility1();
-            };
-            playerInput.actions["Ability2"].performed += ctx =>
-            {
-                if (!PlayerPunches.OnlyPunchesActive) UseAbility2();
-            };
-            playerInput.actions["Ultimate"].performed += ctx =>
-            {
-                if (!PlayerPunches.OnlyPunchesActive) UseUltimate();
-            };
+            playerInput.actions["Ability1"].performed += ctx => UseAbility1();
+            playerInput.actions["Ability2"].performed += ctx => UseAbility2();
+            playerInput.actions["Ultimate"].performed += ctx => UseUltimate();
         }
 
         projectileSpawnPoint = transform.Find("ProjectileSpawnPoint");
@@ -74,6 +67,7 @@ public abstract class HeroBase : MonoBehaviour
         }
     }
 
+
     protected abstract void UseAbility1();
     protected abstract void UseAbility2();
     protected abstract void UseUltimate();
@@ -86,35 +80,31 @@ public abstract class HeroBase : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition = projectileSpawnPoint != null
-            ? projectileSpawnPoint.position
-            : transform.position + transform.forward * 1f;
+        // Ensure the projectile spawns in front of the player
+        Vector3 spawnPosition = projectileSpawnPoint.position + transform.forward * 1f; // 1f is the offset to spawn in front of the player, adjust as needed
 
-        Quaternion rotation = Quaternion.LookRotation(transform.forward);
-        GameObject projectile = Instantiate(ability.projectilePrefab, spawnPosition, rotation);
+        // Instantiate the projectile and initialize it with the correct damage
+        GameObject projectile = Instantiate(ability.projectilePrefab, spawnPosition, Quaternion.identity);
 
-        // Initialize the projectile with damage and owner
-        Projectile projScript = projectile.GetComponent<Projectile>();
-        if (projScript != null)
-        {
-            projScript.Initialize(gameObject, ability.damage);
-        }
-        else
-        {
-            Debug.LogWarning("Projectile prefab does not contain a Projectile script!");
-        }
-
-        // Add forward force if Rigidbody exists
+        // Get the Rigidbody component to apply velocity
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.linearVelocity = transform.forward * projectileSpeed;
+            // Get the direction of the player (either the facing direction or velocity direction)
+            Vector3 direction = transform.forward;
+
+            // Apply the velocity to the projectile
+            rb.linearVelocity = direction * projectileSpeed; // Apply the speed to the direction
         }
-        else
+
+        // Initialize the projectile with the shooter and damage
+        Projectile projScript = projectile.GetComponent<Projectile>();
+        if (projScript != null)
         {
-            Debug.LogWarning("Projectile prefab has no Rigidbody for movement!");
+            projScript.Initialize(gameObject, ability.damage); // Pass the shooter and damage value
         }
     }
+
 
     private void Update()
     {
@@ -129,20 +119,22 @@ public abstract class HeroBase : MonoBehaviour
         UpdateAbilityUI(ultimateCooldownTimer, ultimateIcon, ultimateCooldownText);
     }
 
+
     void UpdateCooldowns()
     {
-        float cooldownRate = PowerSurgeActive ? 2f : 1f;
-
         if (ability1CooldownTimer > 0)
-            ability1CooldownTimer -= Time.deltaTime * cooldownRate;
-
+        {
+            ability1CooldownTimer -= Time.deltaTime;
+        }
         if (ability2CooldownTimer > 0)
-            ability2CooldownTimer -= Time.deltaTime * cooldownRate;
-
+        {
+            ability2CooldownTimer -= Time.deltaTime;
+        }
         if (ultimateCooldownTimer > 0)
-            ultimateCooldownTimer -= Time.deltaTime * cooldownRate;
+        {
+            ultimateCooldownTimer -= Time.deltaTime;
+        }
     }
-
     void UpdateAbilityUI(float cooldownTimer, Image abilityIcon, TMP_Text cooldownText)
     {
         if (abilityIcon == null || cooldownText == null)
@@ -158,6 +150,7 @@ public abstract class HeroBase : MonoBehaviour
         {
             cooldownText.gameObject.SetActive(false);
 
+            // Safely reset icon color
             if (abilityIcon == ability1Icon)
                 abilityIcon.color = originalAbility1Color;
             else if (abilityIcon == ability2Icon)
@@ -167,23 +160,6 @@ public abstract class HeroBase : MonoBehaviour
         }
     }
 
-    private void HandleArenaEvent(ArenaEventSO evt)
-    {
-        if (evt.triggerPowerSurge)
-            PowerSurgeActive = true;
-
-        if (evt.triggerOnlyPunches)
-            PlayerPunches.OnlyPunchesActive = true;
-    }
-
-    private void HandleArenaEventEnd(ArenaEventSO evt)
-    {
-        if (evt.triggerPowerSurge)
-            PowerSurgeActive = false;
-
-        if (evt.triggerOnlyPunches)
-            PlayerPunches.OnlyPunchesActive = false;
-    }
 
     public void ResetCooldowns()
     {
@@ -192,9 +168,4 @@ public abstract class HeroBase : MonoBehaviour
         ultimateCooldownTimer = abilities.ultimate.cooldown;
     }
 
-    private void OnDestroy()
-    {
-        ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
-        ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd;
-    }
 }
