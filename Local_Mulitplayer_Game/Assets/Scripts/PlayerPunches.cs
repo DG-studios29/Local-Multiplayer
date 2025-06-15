@@ -43,9 +43,7 @@ public class PlayerPunches : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip punchSound;
     [SerializeField] private AudioClip hitSound;
-
-
-
+    public static bool OnlyPunchesActive { get; set; }
 
 
     private void Awake()
