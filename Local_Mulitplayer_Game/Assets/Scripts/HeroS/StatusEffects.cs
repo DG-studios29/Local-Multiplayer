@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class StatusEffects : MonoBehaviour
 {
-    private Coroutine burnRoutine, slowRoutine, stunRoutine, silenceRoutine, armorRoutine;
+    private Coroutine burnRoutine, slowRoutine, stunRoutine, silenceRoutine, armorRoutine, blindRoutine;
 
     public bool IsStunned { get; private set; }
     public bool IsSlowed { get; private set; }
     public bool IsSilenced { get; private set; }
     public bool HasArmorBuff { get; private set; }
+
+    public bool IsBlinded { get; private set; }
 
     private float damageReductionMultiplier = 1f;
 
@@ -41,6 +43,12 @@ public class StatusEffects : MonoBehaviour
     {
         if (armorRoutine != null) StopCoroutine(armorRoutine);
         armorRoutine = StartCoroutine(ArmorBuff(duration, reductionPercent));
+    }
+
+    public void ApplyBlind(float duration)
+    {
+        if (blindRoutine != null) StopCoroutine(blindRoutine);
+        blindRoutine = StartCoroutine(Blind(duration));
     }
 
     private IEnumerator Burn(float duration, int dps)
@@ -87,6 +95,15 @@ public class StatusEffects : MonoBehaviour
         HasArmorBuff = false;
         damageReductionMultiplier = 1f;
     }
+
+    private IEnumerator Blind(float duration)
+    {
+        IsBlinded = true;
+        // OPTIONAL: trigger screen UI fade or disable aiming
+        yield return new WaitForSeconds(duration);
+        IsBlinded = false;
+    }
+
 
     public int ModifyIncomingDamage(int baseDamage)
     {

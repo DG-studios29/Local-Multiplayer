@@ -18,18 +18,18 @@ MonoBehaviour:
     projectilePrefab: {fileID: 6294508013172393196, guid: 7a167110d27a657448f482f6c1f6735c, type: 3}
     cooldown: 5
     damage: 5
-    icon: {fileID: 21300000, guid: 1a02f355c9391c5458eb5e72ea40baf4, type: 3}
+    icon: {fileID: -1486755793, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
   ability2:
     abilityName: Rockroll
-    projectilePrefab: {fileID: 8656522925564163052, guid: e509867be4f82f246a95eca1ee5a2d61, type: 3}
+    projectilePrefab: {fileID: 919132149155446097, guid: d0bd3227554f45c45bb1c4d5d626f93b, type: 3}
     cooldown: 10
     damage: 10
-    icon: {fileID: 21300000, guid: f9d9a36e9e955c046a066b6e12fb9610, type: 3}
+    icon: {fileID: -617299761, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
   ultimate:
     abilityName: EarthCrack
-    projectilePrefab: {fileID: 4593184484909914552, guid: 2fc0416aa0c859b41bcc2a6f85995281, type: 3}
+    projectilePrefab: {fileID: 919132149155446097, guid: dcbddf98e656e3d488401f2701fd453b, type: 3}
     cooldown: 20
     damage: 20
-    icon: {fileID: 21300000, guid: d8f5b633c2cd39d4d8ecba1acad43908, type: 3}
+    icon: {fileID: 1231072608, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
   itemRevolve: {fileID: 11400000, guid: abc9cef1d8da2bd4ca5fe58c3dcd6cde, type: 2}
   itemShoot: {fileID: 11400000, guid: bac47a9e91f7a294dabf0b2ac8f80089, type: 2}

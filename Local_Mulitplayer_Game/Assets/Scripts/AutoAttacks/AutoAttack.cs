@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -20,6 +20,18 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (PlayerPunches.OnlyPunchesActive)
+        {
+            Debug.Log("AutoAttack disabled due to Only Punches event.");
+            return; // Don't spawn auto-attacks
+        }
+
+        ItemHolder(); 
+        foreach (ItemData item in itemHolder)
+        {
+            Instantiate(item.objectInstance, this.transform.position, Quaternion.identity, this.transform);
+        }
+
         /*playerTestObj = GameObject.FindGameObjectWithTag(playerTag);
 
         if (playerTestObj != null)
@@ -31,7 +43,7 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
             this.transform.position = playerObjOrigin.position;
         }
 */
-        ItemHolder();  // initialising the item slots
+        //ItemHolder();  // initialising the item slots
 
         // will fix this to make it cleaner, and place it in a function for it to be dynamic
         //itemHolder.Add(basicAutoBB.GetComponent<ItemObject>());
@@ -39,13 +51,13 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
 
         //itemHolder.Add(revolverObject.GetComponent<ItemObject>());
 
-     /*   foreach(ItemObject item in itemHolder)
-        {
-            //Instantiate(itemHolder[0].itemData.objectInstance, this.transform.position, Quaternion.identity, this.transform);
-            Instantiate(item.itemData.objectInstance, this.transform.position, Quaternion.identity, this.transform);
+        /*   foreach(ItemObject item in itemHolder)
+           {
+               //Instantiate(itemHolder[0].itemData.objectInstance, this.transform.position, Quaternion.identity, this.transform);
+               Instantiate(item.itemData.objectInstance, this.transform.position, Quaternion.identity, this.transform);
 
-        }*/
-        
+           }*/
+
 
     }
 
@@ -109,5 +121,15 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
     {
         TestClear();
         print("Orb restored");
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+       
+    }
+
+    public void RefillAbilityBar()
+    {
+       
     }
 }

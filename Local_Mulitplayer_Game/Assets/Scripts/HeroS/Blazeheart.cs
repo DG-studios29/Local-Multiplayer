@@ -1,4 +1,6 @@
-﻿
+﻿// ------------------------
+// Blazeheart.cs (Fixed)
+// ------------------------
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,13 +11,8 @@ public class Blazeheart : HeroBase
     {
         if (ability1CooldownTimer <= 0f)
         {
-            // Molten Shot - applies ignite and armor reduction
             ShootProjectile(abilities.ability1);
-            ability1CooldownTimer = abilities.ability1.cooldown;
-        }
-        else
-        {
-            Debug.LogWarning("Molten Shot is still on cooldown!");
+            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
     }
 
@@ -23,13 +20,8 @@ public class Blazeheart : HeroBase
     {
         if (ability2CooldownTimer <= 0f)
         {
-            Debug.Log("Blazeheart uses Heatwave Dash!");
             StartCoroutine(HeatwaveDash());
-            ability2CooldownTimer = abilities.ability2.cooldown;
-        }
-        else
-        {
-            Debug.LogWarning("Heatwave Dash is still on cooldown!");
+            ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
     }
 
@@ -37,86 +29,85 @@ public class Blazeheart : HeroBase
     {
         if (ultimateCooldownTimer <= 0f)
         {
-            Debug.Log("Blazeheart casts Infernal Cage!");
             StartCoroutine(InfernalCage());
-            ultimateCooldownTimer = abilities.ultimate.cooldown;
-        }
-        else
-        {
-            Debug.LogWarning("Infernal Cage is still on cooldown!");
+            ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
     }
 
     private IEnumerator HeatwaveDash()
     {
-        float dashDistance = 7f;
+        float dashDistance = 5f;
         float dashDuration = 0.5f;
-        float trailDuration = 3f;
+        float trailInterval = 0.05f;
+
         Vector3 startPosition = transform.position;
         Vector3 endPosition = startPosition + transform.forward * dashDistance;
 
         float elapsed = 0f;
+
         while (elapsed < dashDuration)
         {
             transform.position = Vector3.Lerp(startPosition, endPosition, elapsed / dashDuration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
+            Vector3 spawnPos = transform.position + Vector3.up * 0.5f;
 
-        GameObject trail = Instantiate(abilities.ability2.projectilePrefab, transform.position, Quaternion.identity);
-        Destroy(trail, trailDuration);
-
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 3f);
-        foreach (var enemy in enemies)
-        {
-            if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+            if (abilities.ability2.projectilePrefab)
             {
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
+                GameObject trail = Instantiate(abilities.ability2.projectilePrefab, spawnPos, Quaternion.identity);
+                Destroy(trail, 2f);
+            }
 
-                var status = enemy.GetComponent<StatusEffects>();
-                if (status != null)
+            Collider[] enemies = Physics.OverlapSphere(transform.position, 1.5f);
+            foreach (var enemy in enemies)
+            {
+                if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
                 {
-                    status.ApplyBurn(3f, 5);
-                    status.ApplySlow(2f, 0.5f);
+                    enemy.attachedRigidbody?.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
+                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
                 }
             }
+            elapsed += trailInterval;
+            yield return new WaitForSeconds(trailInterval);
         }
     }
 
     private IEnumerator InfernalCage()
     {
-        float duration = 6f;
-        float radius = 6f;
         int pillarCount = 8;
-
+        float radius = 3f;
         List<GameObject> pillars = new List<GameObject>();
+
         for (int i = 0; i < pillarCount; i++)
         {
             float angle = i * Mathf.PI * 2f / pillarCount;
-            Vector3 pos = transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-            GameObject pillar = Instantiate(abilities.ultimate.projectilePrefab, pos, Quaternion.identity);
-            pillars.Add(pillar);
+            Vector3 spawnPos = transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius + Vector3.up * 0.5f;
+
+            if (abilities.ultimate.projectilePrefab)
+            {
+                GameObject pillar = Instantiate(abilities.ultimate.projectilePrefab, spawnPos, Quaternion.identity);
+                pillars.Add(pillar);
+                Destroy(pillar, 2f);
+            }
         }
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(0.25f);
 
-        foreach (GameObject pillar in pillars)
+        foreach (var pillar in pillars)
         {
-            Collider[] enemies = Physics.OverlapSphere(pillar.transform.position, 3f);
-            foreach (var enemy in enemies)
+            if (pillar != null)
             {
-                if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+                Collider[] enemies = Physics.OverlapSphere(pillar.transform.position, 2f);
+                foreach (var enemy in enemies)
                 {
-                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
-                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
-
-                    var status = enemy.GetComponent<StatusEffects>();
-                    if (status != null)
-                        status.ApplyBurn(3f, 10);
+                    if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+                    {
+                        enemy.attachedRigidbody?.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+                        enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
+                        enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
+                        enemy.GetComponent<StatusEffects>()?.ApplyBurn(3f, 5);
+                    }
                 }
             }
-            Destroy(pillar);
         }
     }
 }

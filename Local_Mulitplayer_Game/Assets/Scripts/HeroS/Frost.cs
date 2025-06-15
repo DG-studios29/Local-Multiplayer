@@ -8,9 +8,8 @@ public class Frost : HeroBase
     {
         if (ability1CooldownTimer <= 0f)
         {
-            // Ice Javelin - slows and shatters frozen targets
             ShootProjectile(abilities.ability1);
-            ability1CooldownTimer = abilities.ability1.cooldown;
+            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
         {
@@ -22,9 +21,8 @@ public class Frost : HeroBase
     {
         if (ability2CooldownTimer <= 0f)
         {
-            Debug.Log("Frost conjures a Frozen Wall!");
             StartCoroutine(FrozenWall());
-            ability2CooldownTimer = abilities.ability2.cooldown;
+            ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
         {
@@ -36,9 +34,8 @@ public class Frost : HeroBase
     {
         if (ultimateCooldownTimer <= 0f)
         {
-            Debug.Log("Frost activates Absolute Zero!");
             StartCoroutine(AbsoluteZero());
-            ultimateCooldownTimer = abilities.ultimate.cooldown;
+            ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
         {
@@ -48,8 +45,7 @@ public class Frost : HeroBase
 
     private IEnumerator FrozenWall()
     {
-        Vector3 wallPosition = transform.position + transform.forward * 2f;
-        GameObject wall = Instantiate(abilities.ability2.projectilePrefab, wallPosition, Quaternion.identity);
+        GameObject wall = Instantiate(abilities.ability2.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
 
         yield return new WaitForSeconds(3f);
 
@@ -58,14 +54,9 @@ public class Frost : HeroBase
         {
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
-                var status = enemy.GetComponent<StatusEffects>();
-                if (status != null)
-                {
-                    status.ApplyStun(1f); // explosion freezes briefly
-                }
-
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage(abilities.ability2.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage(abilities.ability2.damage);
+                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
+                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
+                enemy.GetComponent<StatusEffects>()?.ApplyStun(2f);
             }
         }
 
@@ -74,30 +65,29 @@ public class Frost : HeroBase
 
     private IEnumerator AbsoluteZero()
     {
-        float freezeRadius = 5f;
-        float freezeTime = 1.5f;
-        float explosionDelay = 1.5f;
+        GameObject zero = Instantiate(abilities.ultimate.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
 
-        Collider[] frozenTargets = Physics.OverlapSphere(transform.position, freezeRadius);
-        foreach (var enemy in frozenTargets)
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 4f);
+        foreach (var enemy in enemies)
         {
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
                 var status = enemy.GetComponent<StatusEffects>();
-                if (status != null)
-                    status.ApplyStun(freezeTime);
+                status?.ApplyStun(1.5f);
             }
         }
 
-        yield return new WaitForSeconds(explosionDelay);
+        yield return new WaitForSeconds(1.5f);
 
-        foreach (var enemy in frozenTargets)
+        foreach (var enemy in enemies)
         {
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage(abilities.ultimate.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage(abilities.ultimate.damage);
+                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
+                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
             }
         }
+
+        Destroy(zero, 10f);
     }
 }
