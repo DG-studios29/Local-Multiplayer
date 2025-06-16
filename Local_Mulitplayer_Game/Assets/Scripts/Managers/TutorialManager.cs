@@ -17,12 +17,15 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField]private int tipCounter;
     private TutorialText currentTip; //keep track of what we are tracking
+    private bool canGetNextTip = false;
 
     [Header("Tutorial Text Display")] 
     [SerializeField] private GameObject tutorialTextButtons;
+    [SerializeField] private TMP_Text tipCounterText;
+    [SerializeField] private GameObject visualInfoHolder;
     [SerializeField] private Image visualInfoImage;
     [SerializeField] private TMP_Text successText;
-    [SerializeField] private TMP_Text tutorialTip;
+    [SerializeField] private TMP_Text tutorialTipText;
    
 
 
@@ -33,6 +36,12 @@ public class TutorialManager : MonoBehaviour
         playersInputs.AddRange(GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None));
 
         tipCounter = 0;
+        
+        successText.enabled = false;
+        visualInfoHolder.SetActive(false);
+        tutorialTextButtons.SetActive(false);
+        
+        ShowTutorialTip();
         
     }
 
@@ -70,7 +79,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (context.performed)
         {
-            
+            tipCounter++;
+            ShowTutorialTip();
         }
     }
 
@@ -78,7 +88,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (context.performed)
         {
-            
+            tipCounter--;
+            ShowTutorialTip();
         }
     }
 
@@ -86,7 +97,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (context.performed)
         {
-            //Go to the gameplay scene
+            //Go to the gameplay scene with SceneManager
         }
     }
     
@@ -95,24 +106,45 @@ public class TutorialManager : MonoBehaviour
         if (context.performed)
         {
             //Pause Game
+            
         }
     }
 
-    public void ShowTutorialTip()
+    private void ShowTutorialTip()
     {
-        tipCounter++;
+        //tipCounter++;
         currentTip = tutorialTexts[tipCounter];
+        
+        //Deactivate Prev and Next Buttons
+        ToggleTutorialButtons();
+        
+        //Update Visuals
+        tutorialTipText.text = currentTip.TextLine;
 
         if (currentTip.HasVisualInfo)
         {
             //Do what needs to be shown
+            canGetNextTip = true;
+            visualInfoHolder.SetActive(true);
+            visualInfoImage.sprite = currentTip.VisualInfoImage.sprite;
+            
+            //Activate Prev and Next Buttons
+            ToggleTutorialButtons();    
         }
 
+        //Initialize a condition
         if (currentTip.IsToBePerformed)
         {
-            //Initialize a condition
-            
+            canGetNextTip = false;
         }
+        else
+        {
+            canGetNextTip = true;
+            
+            //Activate Prev and Next Buttons
+            ToggleTutorialButtons();
+        }
+        
     }
 
     public void CheckTutorialPerform(string actionName)
@@ -123,10 +155,37 @@ public class TutorialManager : MonoBehaviour
             if (currentTip.ActionToPerform == actionName)
             {
                 //Success has been met, and we can now progress 
+                canGetNextTip = true;
                 
+                //Activate Prev and Next Buttons
+                ToggleTutorialButtons();
             }
             
         }
     }
-    
+
+    private void ToggleTutorialButtons()
+    {
+        if (tutorialTextButtons.activeSelf)
+        {
+            SwitchToPlayerMap();
+            tutorialTextButtons.SetActive(false);
+        }
+        else
+        {
+            SwitchToTutorialMap();
+            
+            successText.enabled = currentTip.IsToBePerformed;
+            
+            tutorialTextButtons.SetActive(true);
+        }
+        
+    }
+
+    private void ToggleOffPrevious()
+    {
+        SwitchToPlayerMap();
+        tutorialTextButtons.SetActive(false);
+        visualInfoHolder.SetActive(false);
+    }    
 }
