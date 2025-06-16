@@ -36,7 +36,7 @@ public class ItemShoot : ItemObject
                 if (Vector3.Distance(gameObject.transform.position, nearestTarget.transform.position) <= radius)
                 {
                     // Visually Show something
-                    GameObject shotTrail = GameObject.Instantiate(trailRend,this.transform.position,Quaternion.identity);
+                    GameObject shotTrail = GameObject.Instantiate(trailRend,this.transform.position+ new Vector3(0,1,0),Quaternion.identity);
                     StartCoroutine(DrawTrail(shotTrail,nearestTarget.transform.position));
 
                     //Take Damage

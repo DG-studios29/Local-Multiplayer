@@ -413,6 +413,8 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

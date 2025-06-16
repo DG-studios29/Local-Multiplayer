@@ -251,8 +251,9 @@ MonoBehaviour:
   armyTypes:
   - {fileID: 2951857971312674443, guid: 4633e81a5f433d4499db7069c9c273e3, type: 3}
   - {fileID: 2951857971312674443, guid: 2850d011f71697140a0a507b2e9958be, type: 3}
-  - {fileID: 2951857971312674443, guid: 5cab7ae0f1bb330478e31830d79dc8ef, type: 3}
+  - {fileID: 2951857971312674443, guid: 9361b143a48405f46a03f929e0c6a9b0, type: 3}
   spawnPoint: {fileID: 110679916624571947}
+  spamSpawnInterval: 3
 --- !u!114 &6400584567564955390
 MonoBehaviour:
   m_ObjectHideFlags: 0

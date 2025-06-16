@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ArmyHealer
   m_EditorClassIdentifier: 
   maxHealth: 10
-  damage: 1
+  damage: 2
   moveSpeed: 6
   targetPlayerRange: 15
   openRange: 50
-  attackRange: 5
-  attackRate: 1
+  attackRange: 11
+  attackRate: 4
   manaCost: 20
