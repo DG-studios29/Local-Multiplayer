@@ -64,7 +64,7 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
 
     public void InstantiateRevolver(ItemData revolvingData)
     {
-        Debug.Log("CAlled on creation");
+        
         itemHolder.Add(revolvingData);
         Instantiate(revolvingData.objectInstance, this.transform.position, Quaternion.identity, this.transform);
     }

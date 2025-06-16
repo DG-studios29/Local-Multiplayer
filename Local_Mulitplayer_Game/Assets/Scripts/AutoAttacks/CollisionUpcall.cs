@@ -33,7 +33,7 @@ public class CollisionUpcall : MonoBehaviour
                     Debug.Log("Hit an Enemy Army");
 
                     var dmg = rotateParent.rotorParent.Damage;
-                    enemyCheck.TakeDamage(dmg);
+                    enemyCheck.TakeDamage(dmg,parentPlayer);
 
                     rotateParent.OnRotationCollision();
                 }

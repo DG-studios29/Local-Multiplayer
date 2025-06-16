@@ -53,10 +53,11 @@ public class Nightshade : HeroBase
             Collider[] enemies = Physics.OverlapSphere(clone.transform.position, 5f);
             foreach (var enemy in enemies)
             {
+                if (enemy == null || enemy.gameObject == null) continue;
                 if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
                 {
-                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
-                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
+                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage, gameObject);
+                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage, gameObject);
                     enemy.GetComponent<StatusEffects>()?.ApplySilence(2f);
                 }
             }
@@ -77,6 +78,7 @@ public class Nightshade : HeroBase
         Collider[] enemies = Physics.OverlapSphere(transform.position, 10f);
         foreach (var enemy in enemies)
         {
+            if (enemy == null || enemy.gameObject == null) continue;
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
                 var status = enemy.GetComponent<StatusEffects>();
@@ -90,10 +92,11 @@ public class Nightshade : HeroBase
 
         foreach (var enemy in enemies)
         {
+            if (enemy == null || enemy.gameObject == null) continue;
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
+                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage,gameObject);
+                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
             }
         }
     }

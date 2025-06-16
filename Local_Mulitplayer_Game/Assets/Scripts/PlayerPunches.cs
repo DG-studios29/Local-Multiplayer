@@ -147,7 +147,7 @@ public class PlayerPunches : MonoBehaviour
                     hit.rigidbody.AddForce(nVelocity, ForceMode.Impulse);
 
                     //normal punch
-                    targetHealth.TakeDamage((int)punchDamage);
+                    targetHealth.TakeDamage((int)punchDamage, gameObject);
 
                     //chargeVal = 0;
 
@@ -171,7 +171,7 @@ public class PlayerPunches : MonoBehaviour
                     //nice damage
                     if (chargeVal > 0.6) chargeVal = 0.5f;
                     float niceDMG = unscaledMAXDamage * chargeVal;
-                    targetHealth.TakeDamage((int)niceDMG);
+                    targetHealth.TakeDamage((int)niceDMG, gameObject);
                 }
                 else
                 {
@@ -194,7 +194,7 @@ public class PlayerPunches : MonoBehaviour
 
                     //critical hit
                     float crit = unscaledMAXDamage;
-                    targetHealth.TakeDamage((int)crit);
+                    targetHealth.TakeDamage((int)crit, gameObject);
 
                 }
 
@@ -215,11 +215,11 @@ public class PlayerPunches : MonoBehaviour
                     //punches on armies are ineffective, save for crits
                     if (chargeVal <= 0.8f)
                     {
-                        targetHealth.TakeDamage(1f);
+                        targetHealth.TakeDamage(1f, gameObject);
                     }
                     else
                     {
-                        targetHealth.TakeDamage(5f);
+                        targetHealth.TakeDamage(5f, gameObject);
                     }
                 }
             }

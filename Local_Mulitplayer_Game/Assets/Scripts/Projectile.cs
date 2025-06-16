@@ -31,8 +31,9 @@ public class Projectile : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage);
-            collision.gameObject.GetComponent<EnemyAI>()?.TakeDamage(damage);
+            collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage, shooter);
+            collision.gameObject.GetComponent<EnemyAI>()?.TakeDamage(damage, shooter);
+
 
             if (ChainReactionActive)
             {
@@ -40,8 +41,9 @@ public class Projectile : MonoBehaviour
                 foreach (var obj in hits)
                 {
                     if (obj.gameObject == collision.gameObject) continue;
-                    obj.GetComponent<PlayerHealth>()?.TakeDamage(damage / 2);
-                    obj.GetComponent<EnemyAI>()?.TakeDamage(damage / 2);
+                    obj.GetComponent<PlayerHealth>()?.TakeDamage(damage / 2, shooter);
+                    obj.GetComponent<EnemyAI>()?.TakeDamage(damage / 2, shooter);
+
                 }
 
                 // Optional: Add VFX or explosion sound here

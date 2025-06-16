@@ -101,5 +101,19 @@ public class MiniArmySpawner : MonoBehaviour
         {
             ai.enemyParent = gameObject;
         }
+
+        
+        Renderer[] playerRenderers = GetComponentsInChildren<Renderer>();
+        Renderer[] unitRenderers = unit.GetComponentsInChildren<Renderer>();
+
+        if (playerRenderers.Length > 0 && unitRenderers.Length > 0)
+        {
+            Material playerMat = playerRenderers[0].sharedMaterial;
+
+            foreach (Renderer rend in unitRenderers)
+            {
+                rend.sharedMaterial = playerMat;
+            }
+        }
     }
 }

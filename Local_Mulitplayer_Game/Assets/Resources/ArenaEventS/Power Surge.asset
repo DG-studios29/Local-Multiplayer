@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Power Surge
   description: Cooldowns for all abilities are reduced. Spam time!
   duration: 20
-  icon: {fileID: 0}
+  icon: {fileID: 1021268489, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
@@ -23,5 +23,6 @@ MonoBehaviour:
   triggerPowerSurge: 1
   triggerPortalSpawn: 0
   triggerSuddenDeath: 0
-  triggerBlindBlitz: 0
   triggerChainReaction: 0
+  triggerPlayerRespawner: 0
+  triggerSpamSpawner: 0

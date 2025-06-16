@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: 'Player Respawner '
   description: 'Player will respawner '
   duration: 120
-  icon: {fileID: 0}
+  icon: {fileID: -228261074, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
@@ -24,3 +24,5 @@ MonoBehaviour:
   triggerPortalSpawn: 0
   triggerSuddenDeath: 0
   triggerChainReaction: 0
+  triggerPlayerRespawner: 1
+  triggerSpamSpawner: 0

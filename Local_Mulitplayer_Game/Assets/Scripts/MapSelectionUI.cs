@@ -1,34 +1,50 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MapSelectionUI : MonoBehaviour
 {
-    public GameObject mapSelectionPanel;
-    public Button forestButton;
-    public Button cemeteryButton;
-    public Button winterButton;
-    public Button confirmButton;
-
-    private string selectedMap = "Forest"; // Default selection
-
-    private void Start()
+    [Header("UI References")]
+    public GameObject mapCanvas;
+    private List<string> availableMaps = new List<string> { "forest", "cemetery", "winter", "floating", "firehell" };
+    public void SelectMap(string mapName)
     {
-        forestButton.onClick.AddListener(() => SelectMap("Forest"));
-        cemeteryButton.onClick.AddListener(() => SelectMap("Cemetery"));
-        winterButton.onClick.AddListener(() => SelectMap("Winter"));
-        confirmButton.onClick.AddListener(ConfirmSelection);
+        GameManager.Instance.selectedMap = mapName.ToLower();
+        
+    }
+    public void SelectRandomMap()
+    {
+        int randomIndex = Random.Range(0, availableMaps.Count);
+        string randomMap = availableMaps[randomIndex];
+        GameManager.Instance.selectedMap = randomMap;
+        Debug.Log("Random map selected: " + randomMap);
     }
 
-    void SelectMap(string mapName)
+    public void OnConfirmMap()
     {
-        selectedMap = mapName;
-        Debug.Log($"Selected Map: {mapName}");
-    }
+        List<string> chosenHeroes = GameManager.Instance.selectedHeroes;
 
-    public void ConfirmSelection()
-    {
-        GameManager.Instance.SelectMap(selectedMap);
-        mapSelectionPanel.SetActive(false);
-        HeroSelectionUI.Instance.selectionPanel.SetActive(true);
+        if (string.IsNullOrEmpty(GameManager.Instance.selectedMap))
+        {
+            Debug.LogWarning("No map selected! Please select a map first.");
+            return;
+        }
+
+        if (chosenHeroes == null || chosenHeroes.Count == 0)
+        {
+            Debug.LogWarning("No heroes selected! Cannot start game.");
+            return;
+        }
+
+        foreach (var player in FindObjectsByType<PlayerInput>(FindObjectsSortMode.None))
+        {
+            player.SwitchCurrentActionMap("Player");
+        }
+
+        this.gameObject.SetActive(false);
+        mapCanvas.SetActive(false);
+        GameManager.Instance.StartGame(chosenHeroes);
+        ArenaEventManager.Instance.StartEventRoutine();
+
     }
 }
