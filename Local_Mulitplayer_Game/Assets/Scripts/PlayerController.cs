@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     //Player Input 
     private PlayerInput playerInput;
 
-
     private void OnEnable()
     {
         StartCoroutine(ValidatePlayer());
@@ -62,8 +61,7 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         rb = GetComponent<Rigidbody>();
         Debug.Log("[Player] Player prefab instantiated!");
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
-
-
+        
 
         animator = GetComponent<Animator>();
 
@@ -87,6 +85,16 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         playerInput.SwitchCurrentActionMap("Player");
     }
 
+    void TutorialActionLinq(InputAction.CallbackContext context)
+    {
+        //Checking if its null
+        if (!TutorialManager.instance) return;
+        if (TutorialManager.instance.isTutorialActive)
+        {
+            TutorialManager.instance.CheckTutorialPerform(context.action.name);
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
@@ -95,11 +103,11 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
             input *= -1f;
 
         movementInput = input;
+        
+       
     }
 
-
-
-
+    
 
     public void OnPunch(InputAction.CallbackContext context)
     {
@@ -114,6 +122,8 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
             playerPunches.PunchCall();
             //playerPunches.AnimatorChargeClear();
+
+            TutorialActionLinq(context);
 
         }
 
