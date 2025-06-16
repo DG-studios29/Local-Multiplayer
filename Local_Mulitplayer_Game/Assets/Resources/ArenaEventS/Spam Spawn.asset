@@ -15,8 +15,8 @@ MonoBehaviour:
   eventName: Spam Spawn
   description: Spam armies
   duration: 60
-  icon: {fileID: 558182511, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
-  triggerDoubleArmy: 1
+  icon: {fileID: 0}
+  triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
   triggerReverseControls: 0
@@ -24,5 +24,3 @@ MonoBehaviour:
   triggerPortalSpawn: 0
   triggerSuddenDeath: 0
   triggerChainReaction: 0
-  triggerPlayerRespawner: 0
-  triggerSpamSpawner: 1

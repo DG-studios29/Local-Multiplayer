@@ -18,17 +18,17 @@ MonoBehaviour:
     projectilePrefab: {fileID: 5112403345868107898, guid: 68ebf3fe465519a4eb5746736483159c, type: 3}
     cooldown: 5
     damage: 5
-    icon: {fileID: 979641167, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+    icon: {fileID: -1414619173, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
   ability2:
     abilityName: Frostspikes
     projectilePrefab: {fileID: 5112403345868107898, guid: 2318e41a4018dc2488248af7dff70b11, type: 3}
     cooldown: 10
     damage: 10
-    icon: {fileID: 1136700044, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+    icon: {fileID: 227975844, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
   ultimate:
     abilityName: Iceage
     projectilePrefab: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
     cooldown: 20
     damage: 20
-    icon: {fileID: -152469316, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+    icon: {fileID: 1889782905, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
   itemRevolve: {fileID: 11400000, guid: 5b53601012df259429250480b69d91c5, type: 2}

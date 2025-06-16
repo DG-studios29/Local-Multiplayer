@@ -191,8 +191,6 @@ GameObject:
   - component: {fileID: 2800242413094262655}
   - component: {fileID: -1367476590841090514}
   - component: {fileID: 3813123546783778120}
-  - component: {fileID: 1285649038293336524}
-  - component: {fileID: 4194474337726338037}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -254,7 +252,6 @@ MonoBehaviour:
   - {fileID: 2951857971312674443, guid: 2850d011f71697140a0a507b2e9958be, type: 3}
   - {fileID: 2951857971312674443, guid: 5cab7ae0f1bb330478e31830d79dc8ef, type: 3}
   spawnPoint: {fileID: 110679916624571947}
-  spamSpawnInterval: 3
 --- !u!114 &6400584567564955390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,57 +471,9 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1717bf5b-5311-44d3-b272-20938e5a643e
     m_ActionName: 'Player/PlayerJoin[/DualSenseGamepadHID1/start,/DualSenseGamepadHID/start,/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4194474337726338037}
-        m_TargetAssemblyTypeName: PlayerSelectorInput, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ebfd9073-b52d-4fcd-bae2-781569a0f29c
-    m_ActionName: 'UI/Move[/DualSenseGamepadHID/leftStick]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4194474337726338037}
-        m_TargetAssemblyTypeName: PlayerSelectorInput, Assembly-CSharp
-        m_MethodName: OnConfirm
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 14e14cef-ec8c-4477-9ff9-b6d925b49437
-    m_ActionName: 'UI/Submit[/DualSenseGamepadHID/buttonSouth]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4194474337726338037}
-        m_TargetAssemblyTypeName: PlayerSelectorInput, Assembly-CSharp
-        m_MethodName: OnCancel
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1fadaff8-7c98-49af-823b-4014837b5376
-    m_ActionName: 'UI/Cancel[/DualSenseGamepadHID/buttonEast,/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!54 &8778512651663580339
@@ -708,32 +657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b74a15cc5bf05c40b91dd071fb4fa2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1285649038293336524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3093234706080368204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f23bc331e8bb748b89e39b0a1694f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armyKills: 0
---- !u!114 &4194474337726338037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3093234706080368204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75bb3e0e8b28a74aa227212bc97b71b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputCooldown: 0.2
 --- !u!1 &3408003879747189824
 GameObject:
   m_ObjectHideFlags: 0

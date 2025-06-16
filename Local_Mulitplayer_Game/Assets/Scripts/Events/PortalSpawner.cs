@@ -39,7 +39,7 @@ public class PortalSpawner : MonoBehaviour
     {
         if (!evt.triggerPortalSpawn) return;
 
-        
+        // Find portals for current map
         MapPortalSet set = allMaps.Find(m => m.mapName == currentMapName);
         if (set == null)
         {

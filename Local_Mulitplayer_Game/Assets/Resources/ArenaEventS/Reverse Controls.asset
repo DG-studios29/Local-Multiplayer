@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: ' Reverse Controls'
   description: All movement and ability controls are reversed!
   duration: 10
-  icon: {fileID: 751517594, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+  icon: {fileID: 0}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
@@ -23,6 +23,5 @@ MonoBehaviour:
   triggerPowerSurge: 0
   triggerPortalSpawn: 0
   triggerSuddenDeath: 0
+  triggerBlindBlitz: 0
   triggerChainReaction: 0
-  triggerPlayerRespawner: 0
-  triggerSpamSpawner: 0

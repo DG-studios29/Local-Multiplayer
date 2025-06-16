@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Only Punches!
   description: Weapons and abilities disabled. Punch your way to victory!
   duration: 15
-  icon: {fileID: -857095335, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+  icon: {fileID: 0}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 1
   triggerNoHealing: 0
@@ -23,6 +23,5 @@ MonoBehaviour:
   triggerPowerSurge: 0
   triggerPortalSpawn: 0
   triggerSuddenDeath: 0
+  triggerBlindBlitz: 0
   triggerChainReaction: 0
-  triggerPlayerRespawner: 0
-  triggerSpamSpawner: 0

@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
+        Debug.Log("[Player] Player prefab instantiated!");
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
 
 

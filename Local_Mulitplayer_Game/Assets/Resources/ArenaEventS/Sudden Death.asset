@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Sudden Death
   description: Everyone drops to 1 HP. Make it count!
   duration: 10
-  icon: {fileID: 1844772678, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+  icon: {fileID: 0}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
@@ -23,6 +23,5 @@ MonoBehaviour:
   triggerPowerSurge: 0
   triggerPortalSpawn: 0
   triggerSuddenDeath: 1
+  triggerBlindBlitz: 0
   triggerChainReaction: 0
-  triggerPlayerRespawner: 0
-  triggerSpamSpawner: 0

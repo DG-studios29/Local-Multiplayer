@@ -19,9 +19,6 @@ public class ArenaEventManager : MonoBehaviour
     private float matchTimer = 0f;
     private float matchDuration = 300f;
 
-    [SerializeField] private float eventInterval = 60f; 
-    private bool isRunning = false;
-
     public ArenaEventSO CurrentEvent => currentEvent;
 
     public delegate void EventTrigger(ArenaEventSO triggeredEvent);
@@ -33,17 +30,9 @@ public class ArenaEventManager : MonoBehaviour
     private void Start()
     {
         SetupMapPacing();
-        
+        StartCoroutine(EventRoutine());
     }
 
-    public void StartEventRoutine()
-    {
-        if (!isRunning)
-        {
-            isRunning = true;
-            StartCoroutine(EventRoutine());
-        }
-    }
     private void Update()
     {
         matchTimer += Time.deltaTime;
@@ -51,7 +40,7 @@ public class ArenaEventManager : MonoBehaviour
 
     IEnumerator EventRoutine()
     {
-        yield return new WaitForSeconds(eventInterval); 
+        yield return new WaitForSeconds(10f); // Initial delay
 
         int triggered = 0;
 
@@ -62,11 +51,7 @@ public class ArenaEventManager : MonoBehaviour
                 TriggerRandomEvent();
                 triggered++;
 
-                // Wait until event ends
-                while (currentEvent != null)
-                    yield return null;
-
-                // After it ends, apply pacing-based cooldown
+                //pacing curve to scale delay
                 float progress = Mathf.Clamp01(matchTimer / matchDuration);
                 float curveMultiplier = pacingCurve != null ? pacingCurve.Evaluate(progress) : 1f;
 
@@ -74,15 +59,12 @@ public class ArenaEventManager : MonoBehaviour
                 float scaledMax = maxDelay * curveMultiplier;
 
                 float delay = UnityEngine.Random.Range(scaledMin, scaledMax);
-
-                Debug.Log($"Waiting {delay:F1}s before next event...");
                 yield return new WaitForSeconds(delay);
             }
 
             yield return null;
         }
     }
-
 
     void TriggerRandomEvent()
     {
@@ -117,23 +99,23 @@ public class ArenaEventManager : MonoBehaviour
         {
             case "Forest":
                 maxEvents = 4;
-                minDelay = 60f;
-                maxDelay = 80f;
+                minDelay = 30f;
+                maxDelay = 40f;
                 break;
             case "Cemetery":
                 maxEvents = 6;
-                minDelay = 60f;
-                maxDelay = 80f;
+                minDelay = 25f;
+                maxDelay = 35f;
                 break;
             case "Winter":
                 maxEvents = 3;
-                minDelay = 60f;
-                maxDelay = 80f;
+                minDelay = 45f;
+                maxDelay = 55f;
                 break;
             default:
                 maxEvents = 4;
-                minDelay = 60f;
-                maxDelay = 80f;
+                minDelay = 30f;
+                maxDelay = 40f;
                 break;
         }
     }

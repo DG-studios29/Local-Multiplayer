@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
@@ -121,7 +121,7 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject, 0.1f);
     }
 
-    public void TakeDamage(float hp, GameObject attacker)
+    public void TakeDamage(float hp)
     {
         health -= hp;
         Debug.Log($"Enemy {gameObject.name} took {hp} damage! Current HP: {health}");
@@ -133,44 +133,13 @@ public class EnemyAI : MonoBehaviour
 
         if(health <= 0)
         {
-            Debug.Log("💀 Enemy died! Calling Die()...");
-            OnDeath(attacker);
             onEnemyDeath?.Invoke(this.gameObject);
             EnemyDestroy();
         }
     }
 
-    public void OnDeath(GameObject killer)
-    {
-        Debug.Log("👀 Die() called");
 
-        if (killer == null)
-        {
-            Debug.LogWarning("⚠️ Killer is null.");
-            return;
-        }
-
-        if (killer.CompareTag("Player"))
-        {
-            var stats = killer.GetComponent<PlayerStats>();
-            if (stats != null)
-            {
-                stats.AddArmyKill();
-                Debug.Log($"🪖 {killer.name} now has {stats.armyKills} kills.");
-            }
-            else
-            {
-                Debug.LogWarning($"⚠️ Killer {killer.name} has NO PlayerStats.");
-            }
-        }
-
-
-        Destroy(gameObject);
-    }
-
-
-
-void GetEnemyData()
+    void GetEnemyData()
     {
         health = enemyData.MaxHealth;
         damage = enemyData.Damage;
@@ -303,7 +272,6 @@ void GetEnemyData()
 
     void NearestTargetTracking()
     {
-        playerTargetList.RemoveAll(t => t == null);
 
         if (targetList.Count == 0)
         {
@@ -359,8 +327,6 @@ void GetEnemyData()
         {
             foreach (GameObject target in playerTargetList)
             {
-                if (target == null) continue;
-
                 var distance = Vector3.Distance(transform.position, target.transform.position);
                 if (distance < nearestPlayerDistance)
                 {
@@ -368,7 +334,6 @@ void GetEnemyData()
                     nearestPlayerTarget = target;
                 }
             }
-
         }
     }
 
@@ -431,7 +396,7 @@ void GetEnemyData()
 
                 CascadeAnimation();
 
-                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage, gameObject); //deal damage when in attack range
+                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage); //deal damage when in attack range
                 time_sinceAttack = 0; //sets the cooldown for this function's condition
             }
             else if (nearestPlayerDistance < nearestDistance && nearestPlayerDistance < attackRange)
@@ -439,7 +404,7 @@ void GetEnemyData()
                 CascadeAnimation();
 
                 //player takes damage
-                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage, gameObject);
+                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage);
                 time_sinceAttack = 0;
             }
         }
@@ -451,7 +416,7 @@ void GetEnemyData()
                 CascadeAnimation();
 
                 //player to take damage
-                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage, gameObject);
+                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage);
                 time_sinceAttack = 0;
             }
         }
@@ -461,7 +426,7 @@ void GetEnemyData()
             {
                 CascadeAnimation();
 
-                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage, gameObject);
+                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage);
                 time_sinceAttack = 0;
             }
         }

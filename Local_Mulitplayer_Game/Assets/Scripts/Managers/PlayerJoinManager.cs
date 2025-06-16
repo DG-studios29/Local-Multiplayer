@@ -18,7 +18,6 @@ public class PlayerJoinManager : MonoBehaviour
     private InputAction joinAction;
     private int joinedPlayers = 0;
     public float showDuration = 4f;
-    private bool blockNextSubmit;
 
     private void Awake()
     {
@@ -37,15 +36,6 @@ public class PlayerJoinManager : MonoBehaviour
     {
         joinAction.Disable();
         joinAction.performed -= OnJoinGame;
-    }
-
-    void Update()
-    {
-        if (blockNextSubmit && joinAction.triggered)
-        {
-            blockNextSubmit = false;
-            return;
-        }
     }
 
     private void OnJoinGame(InputAction.CallbackContext context)
@@ -76,7 +66,7 @@ public class PlayerJoinManager : MonoBehaviour
             return;
         }
 
-        
+        Debug.Log("[JoinManager] Transitioning to Hero Selection...");
 
         joinPanel.SetActive(false);
         heroPanel.SetActive(true);

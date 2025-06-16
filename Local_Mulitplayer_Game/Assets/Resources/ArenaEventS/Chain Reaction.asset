@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Chain Reaction
   description: "Hits and kills cause small explosions\u2014stay spaced out!"
   duration: 30
-  icon: {fileID: 282143775, guid: 34658ae8911dc1a4597fa431203067eb, type: 3}
+  icon: {fileID: 0}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
@@ -23,6 +23,5 @@ MonoBehaviour:
   triggerPowerSurge: 0
   triggerPortalSpawn: 0
   triggerSuddenDeath: 0
+  triggerBlindBlitz: 0
   triggerChainReaction: 1
-  triggerPlayerRespawner: 0
-  triggerSpamSpawner: 0

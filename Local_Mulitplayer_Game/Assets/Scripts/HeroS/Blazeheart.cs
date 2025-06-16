@@ -59,12 +59,11 @@ public class Blazeheart : HeroBase
             Collider[] enemies = Physics.OverlapSphere(transform.position, 1.5f);
             foreach (var enemy in enemies)
             {
-                if (enemy == null || enemy.gameObject == null) continue;
                 if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
                 {
                     enemy.attachedRigidbody?.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage, gameObject);
-                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage, gameObject);
+                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
+                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
                 }
             }
             elapsed += trailInterval;
@@ -100,12 +99,11 @@ public class Blazeheart : HeroBase
                 Collider[] enemies = Physics.OverlapSphere(pillar.transform.position, 2f);
                 foreach (var enemy in enemies)
                 {
-                    if (enemy == null || enemy.gameObject == null) continue;
                     if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
                     {
                         enemy.attachedRigidbody?.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-                        enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
-                        enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
+                        enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
+                        enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
                         enemy.GetComponent<StatusEffects>()?.ApplyBurn(3f, 5);
                     }
                 }

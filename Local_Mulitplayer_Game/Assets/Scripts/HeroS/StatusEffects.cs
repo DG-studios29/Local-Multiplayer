@@ -56,8 +56,8 @@ public class StatusEffects : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            GetComponent<PlayerHealth>()?.TakeDamage(dps, gameObject);
-            GetComponent<EnemyAI>()?.TakeDamage(dps, gameObject);
+            GetComponent<PlayerHealth>()?.TakeDamage(dps);
+            GetComponent<EnemyAI>()?.TakeDamage(dps);
             yield return new WaitForSeconds(1f);
             elapsed += 1f;
         }
