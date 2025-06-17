@@ -12,8 +12,20 @@ public class PlayerPunches : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]private Transform groundCheck;
     
-    public float gravityScale = 1f;
+    private float gravityScale = 1f;
     private float globalGravity = -9.81f;
+    
+    //Projectile Motion 
+    private float launchAngle; //will say in inspector
+    private float tanAlpha, cosAlpha,sinAlpha;
+    private float rangeZ;  //will say in inspector
+    private float Uz, Uy, Uo;
+    private float gravity;
+    private float heightY;
+    private float heightMax;
+    private float timeTaken;
+    private Vector3 initialVelocity;
+    private Vector3 globalVelocity;
     
     
 
@@ -60,6 +72,8 @@ public class PlayerPunches : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         parentObject = playerController.gameObject;
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
+        
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -89,15 +103,20 @@ public class PlayerPunches : MonoBehaviour
     private void FixedUpdate()
     {
         //Apply Better force of gravity on self
+        /*
         if (!IsGrounded())
         {
+            Debug.Log("Is not grounded");
             //Fall faster
-            gravityScale = 3f; 
+            gravityScale = 1.96f; 
         }
         else
         {
+            Debug.Log("Is grounded");
             gravityScale = 1f;
         }
+        */
+        gravityScale = 2f;
         
         Vector3 gravity = Vector3.up * (globalGravity * gravityScale);
         rb.AddForce(gravity, ForceMode.Acceleration);
@@ -105,7 +124,7 @@ public class PlayerPunches : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, 0.3f,  groundMask);
+        return Physics.CheckSphere(groundCheck.position, 0.55f,  groundMask);
     }
     
     
@@ -337,6 +356,9 @@ public class PlayerPunches : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(gizmoPos + transform.forward * punchDistance, punchRadius);
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position,0.5f);
     }
 
 }
