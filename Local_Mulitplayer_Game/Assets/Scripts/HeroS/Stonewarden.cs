@@ -2,9 +2,15 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
-public class Stonewarden : HeroBase
+public class Stonewarden : HeroBase, IPlayerEffect
 {
+    #region power-ups vars
+    private int availableInstantCooldowns = 0;
+    private TMP_Text availableCooldownsTxt;
+    #endregion
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
@@ -14,6 +20,13 @@ public class Stonewarden : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+                StartCoroutine(OnCooldownUse());
+            }
+
             Debug.LogWarning("Stone Fist is still on cooldown!");
         }
     }
@@ -27,6 +40,13 @@ public class Stonewarden : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+                StartCoroutine(OnCooldownUse());
+            }
+
             Debug.LogWarning("Fortify is still on cooldown!");
         }
     }
@@ -40,6 +60,13 @@ public class Stonewarden : HeroBase
         }
         else
         {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+                StartCoroutine(OnCooldownUse());
+            }
+
             Debug.LogWarning("Seismic Rift is still on cooldown!");
         }
     }
@@ -104,4 +131,96 @@ public class Stonewarden : HeroBase
             Destroy(riftSegment, 3f); 
         }
     }
+
+    #region Interface
+
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RestoreOrbs()
+    {
+
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+        StartCoroutine(UITime());
+    }
+    #endregion
+
+    #region Custom Methods
+
+    IEnumerator UITime()
+    {
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 1;
+                availableCooldownsTxt = GameManager.Instance.playerOnePowerUps[4].transform.GetChild(0)
+                    .gameObject.GetComponent<TMP_Text>();
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 1;
+                availableCooldownsTxt = GameManager.Instance.playerTwoPowerUps[4].transform.GetChild(0)
+                .gameObject.GetComponent<TMP_Text>();
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 0.1f;
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 0.1f;
+                break;
+        }
+    }
+
+    IEnumerator OnCooldownUse()
+    {
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 1;
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 1;
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 0.1f;
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 0.1f;
+                break;
+        }
+    }
+    #endregion
 }

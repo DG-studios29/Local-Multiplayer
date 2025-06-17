@@ -4,15 +4,30 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
-public class Blazeheart : HeroBase
+public class Blazeheart : HeroBase, IPlayerEffect
 {
+    #region power-ups vars
+    private int availableInstantCooldowns = 0;
+    private TMP_Text availableCooldownsTxt;
+    #endregion
+
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
         {
             ShootProjectile(abilities.ability1);
             ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ability1CooldownTimer = 0f;
+                availableInstantCooldowns--;
+                StartCoroutine(OnCooldownUse());
+            }
         }
     }
 
@@ -23,6 +38,15 @@ public class Blazeheart : HeroBase
             StartCoroutine(HeatwaveDash());
             ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ability2CooldownTimer = 0f;
+                availableInstantCooldowns--;
+                StartCoroutine(OnCooldownUse());
+            }
+        }
     }
 
     protected override void UseUltimate()
@@ -31,6 +55,15 @@ public class Blazeheart : HeroBase
         {
             StartCoroutine(InfernalCage());
             ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
+        }
+        else
+        {
+            if (availableInstantCooldowns > 0)
+            {
+                ultimateCooldownTimer = 0f;
+                availableInstantCooldowns--;
+                StartCoroutine(OnCooldownUse());
+            }
         }
     }
 
@@ -112,4 +145,96 @@ public class Blazeheart : HeroBase
             }
         }
     }
+
+    #region Interface
+
+    public void ActivateShield(float duration, GameObject shield)
+    {
+
+    }
+
+    public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
+    {
+
+    }
+
+    public void GiveHealth(float health)
+    {
+
+    }
+
+    public void RestoreOrbs()
+    {
+
+    }
+
+    public void ResetAbilityCooldownTimer(int cooldown)
+    {
+        availableInstantCooldowns += cooldown;
+        StartCoroutine(UITime());
+    }
+    #endregion
+
+    #region Custom Methods
+
+    IEnumerator UITime()
+    {
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 1;
+                availableCooldownsTxt = GameManager.Instance.playerOnePowerUps[4].transform.GetChild(0)
+                    .gameObject.GetComponent<TMP_Text>();
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 1;
+                availableCooldownsTxt = GameManager.Instance.playerTwoPowerUps[4].transform.GetChild(0)
+                .gameObject.GetComponent<TMP_Text>();
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 0.1f;
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 0.1f;
+                break;
+        }
+    }
+
+    IEnumerator OnCooldownUse()
+    {
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 1;
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 1;
+                if (availableCooldownsTxt != null) availableCooldownsTxt.text = availableInstantCooldowns.ToString();
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[4].alpha = 0.1f;
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[4].alpha = 0.1f;
+                break;
+        }
+    }
+    #endregion
 }

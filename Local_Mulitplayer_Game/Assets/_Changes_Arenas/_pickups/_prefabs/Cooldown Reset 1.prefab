@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eece4e58a6bbe8c499c35d6e52b03cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vFx: {fileID: 0}
-  audioClip: {fileID: 0}
-  audioSource: {fileID: 8330447926744804652}
+  vFx: {fileID: 5394012555071795783, guid: 5e7338eee589acc43a04573c88435c19, type: 3}
+  sfx: {fileID: 6439418098337526739, guid: 2ddd325e1748b734fbf60c4bf91f68d9, type: 3}
+  sfxClip: {fileID: 8300000, guid: f88ae1ff2d948a045ae81612f83b0a63, type: 3}
 --- !u!135 &3781616893918717631
 SphereCollider:
   m_ObjectHideFlags: 0

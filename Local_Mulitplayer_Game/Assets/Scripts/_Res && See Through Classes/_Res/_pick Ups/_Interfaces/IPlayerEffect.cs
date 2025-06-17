@@ -12,6 +12,6 @@ public interface IPlayerEffect
 
     void ResetAbilityCooldownTimer(int cooldown);
 
-    void RefillAbilityBar();
+    void RestoreOrbs();
     #endregion
 }

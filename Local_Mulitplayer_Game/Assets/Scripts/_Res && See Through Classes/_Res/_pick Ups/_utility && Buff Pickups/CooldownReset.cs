@@ -9,8 +9,8 @@ public class CoolDownReset : PickUpsBase
 
     private int coolDown = 1;
     [SerializeField] private GameObject vFx;
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject sfx;
+    [SerializeField] private AudioClip sfxClip;
 
     #endregion
 
@@ -27,17 +27,22 @@ public class CoolDownReset : PickUpsBase
                 if (effect != null)
                 {
                     effect.ResetAbilityCooldownTimer(coolDown);
-                    if (audioSource != null && audioClip != null) audioSource.PlayOneShot(audioClip);
 
                     if (vFx != null)
                     {
                         Instantiate(vFx, transform.position, Quaternion.identity);
                     }
+
+                    if (sfx != null && sfxClip != null)
+                    {
+                        GameObject sfxObj = Instantiate(sfx, transform.position, Quaternion.identity);
+                        sfxObj.GetComponent<SFxSoundPlayer>().DoAwayWithMe(sfxClip);
+                    }
                 }
             }
         }
 
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     #endregion

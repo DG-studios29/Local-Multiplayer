@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -102,6 +103,8 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
         //transform.position = playerObjOrigin.position;
     }
 
+    #region Interface
+
     public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
     {
 
@@ -117,19 +120,46 @@ public class AutoAttack : MonoBehaviour, IPlayerEffect
 
     }
 
-    public void RefillAbilityBar(float energy)
+    public void RestoreOrbs()
     {
         TestClear();
-        print("Orb restored");
+        StartCoroutine(OrbTime());
     }
 
     public void ResetAbilityCooldownTimer(int cooldown)
     {
-       
+        //
     }
 
-    public void RefillAbilityBar()
+    #endregion
+
+    #region Wandile's Methods
+
+    IEnumerator OrbTime()
     {
-       
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[3].alpha = 1;
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[3].alpha = 1;
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        switch (transform.root.name)
+        {
+            case "Player 1":
+                GameManager.Instance.playerOnePowerUps[3].alpha = 0.1f;
+                break;
+
+            case "Player 2":
+                GameManager.Instance.playerTwoPowerUps[3].alpha = 0.1f;
+                break;
+        }
     }
+
+    #endregion
 }
