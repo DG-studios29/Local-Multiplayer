@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
 
         SelectMap(selectedMap);
+        
 
         StartCoroutine(SpawnPlayersDelayed());
     }
@@ -228,7 +229,9 @@ public class GameManager : MonoBehaviour
                 player.AddComponent<PlayerStats>();
         }
 
+        Debug.Log("SpawnPlayer");
         HeroSelectionUI.Instance.playerUICanvas.SetActive(true);
+       
     }
     public void SelectMap(string mapName)
     {
@@ -253,6 +256,8 @@ public class GameManager : MonoBehaviour
             portalSpawner.SetCurrentMap(mapName);
 
         CurrentMapName = mapName;
+
+        Debug.Log("Map:" + mapName);
     }
 
     public void AssignHeroScript(GameObject player, string heroName)

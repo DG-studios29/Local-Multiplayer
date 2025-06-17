@@ -173,7 +173,7 @@ public class HeroSelectionUI : MonoBehaviour
             GameManager.Instance.selectedHeroes.Add(kvp.Value);
         }
 
-        GameManager.Instance.StartGame(GameManager.Instance.selectedHeroes);
+        //GameManager.Instance.StartGame(GameManager.Instance.selectedHeroes);
         //if(TutorialManager.instance) TutorialManager.instance.TutorialStarted();
       
         
