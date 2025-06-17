@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: -1367476590841090514}
   - component: {fileID: 3813123546783778120}
   - component: {fileID: -1384688274643606976}
+  - component: {fileID: 9056776941507063941}
   m_Layer: 6
   m_Name: TestImports Player
   m_TagString: Player
@@ -473,6 +474,70 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1717bf5b-5311-44d3-b272-20938e5a643e
     m_ActionName: 'Player/PlayerJoin[/DualSenseGamepadHID1/start,/DualSenseGamepadHID/start,/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9056776941507063941}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: NextTutorial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 39f0dc78-b4db-4638-a749-703cd1054e86
+    m_ActionName: 'Tutorial/NextTip[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9056776941507063941}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d7ee8f83-c6e3-4b87-afc3-3de8e3063928
+    m_ActionName: 'Tutorial/StartGame[/XInputControllerWindows/select,/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9056776941507063941}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: PauseTutorial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: efa5788e-dc9b-47f9-bec9-8c9098d4064f
+    m_ActionName: 'Tutorial/PauseTutorial[/Keyboard/escape,/XInputControllerWindows/start]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9056776941507063941}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: PreviousTutorial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d7fc1346-c96b-4ac4-81af-fcbf94a17a7b
+    m_ActionName: 'Tutorial/PreviosTip[/XInputControllerWindows/buttonEast,/Keyboard/backspace]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -676,6 +741,18 @@ MonoBehaviour:
   playerXp: 0
   manaGainTime: 0.25
   manaGainAmount: 1
+--- !u!114 &9056776941507063941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093234706080368204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9222815da3a57e44885daaeb6ebec1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3408003879747189824
 GameObject:
   m_ObjectHideFlags: 0

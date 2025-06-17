@@ -14,7 +14,6 @@ public class ItemShoot : ItemObject
     protected override void Start()
     {
         base.Start();
-        Debug.Log("called");
 
         trailRend = itemData.trailRenderer;
         projectileObject = itemData.projectilePrefab;

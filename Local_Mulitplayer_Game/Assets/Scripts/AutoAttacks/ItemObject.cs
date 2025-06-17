@@ -55,7 +55,7 @@ public class ItemObject : MonoBehaviour
         parentPlayer = GetComponentInParent<PlayerController>().gameObject;
 
         findEnemies?.Invoke(this);  //find all enemies that currently exist in the scene
-        Debug.Log("Called from Item Object");
+        //Debug.Log("Called from Item Object");
 
     }
 

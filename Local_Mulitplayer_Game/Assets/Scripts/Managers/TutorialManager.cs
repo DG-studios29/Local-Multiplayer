@@ -10,7 +10,7 @@ public class TutorialManager : MonoBehaviour
     public bool isTutorialActive;
     
     [Header("Tutorial Input Tracking")]
-    //public List<GameObject> activePlayers = new List<GameObject>();
+    public List<GameObject> activePlayers = new List<GameObject>();
     [SerializeField]private List<PlayerController> playersInputs = new List<PlayerController>();
     
     [SerializeField]private List<TutorialText> tutorialTexts = new List<TutorialText>();
@@ -26,12 +26,33 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Image visualInfoImage;
     [SerializeField] private TMP_Text successText;
     [SerializeField] private TMP_Text tutorialTipText;
-   
 
+    [SerializeField] private GameObject tutorialTextPanel;
+
+    private void Awake()
+    {
+        if (instance && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        instance = this;
+    }
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+
+    // Update is called once per frame
+    /*void Update()
     {
+        
+    }*/
+    public void TutorialStarted()
+    {
+        Debug.Log("Tutorial Started");
+        
         //Access all our player inputs
         playersInputs.AddRange(GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None));
 
@@ -42,14 +63,8 @@ public class TutorialManager : MonoBehaviour
         tutorialTextButtons.SetActive(false);
         
         ShowTutorialTip();
-        
     }
-
-    // Update is called once per frame
-    /*void Update()
-    {
-        
-    }*/
+    
 
     void SwitchToTutorialMap()
     {
@@ -75,22 +90,39 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void NextTutorialTip(InputAction.CallbackContext context)
+
+  
+    
+    
+    public void NextTutorialTip()
     {
-        if (context.performed)
-        {
-            tipCounter++;
-            ShowTutorialTip();
-        }
+         if (tipCounter > tutorialTexts.Count - 1)
+         {
+             tipCounter = tutorialTexts.Count - 1;
+         }
+         else
+         {
+             tipCounter++;
+         }
+            
+         ShowTutorialTip();
+        
     }
 
-    public void PreviousTutorialTip(InputAction.CallbackContext context)
+    public void PreviousTutorialTip()
     {
-        if (context.performed)
+        
+        if (tipCounter <= 0)
+        {
+            tipCounter = 0;
+        }
+        else
         {
             tipCounter--;
-            ShowTutorialTip();
         }
+
+        ShowTutorialTip();
+        
     }
 
     public void StartGame(InputAction.CallbackContext context)
@@ -112,11 +144,16 @@ public class TutorialManager : MonoBehaviour
 
     private void ShowTutorialTip()
     {
-        //tipCounter++;
+        //Deactivate Prev and Next Buttons
+        ToggleOffPrevious();
+        
+        var properCount = tipCounter + 1;
+        tipCounterText.text = properCount.ToString() + "/" + tutorialTexts.Count;
+        
+        
         currentTip = tutorialTexts[tipCounter];
         
-        //Deactivate Prev and Next Buttons
-        ToggleTutorialButtons();
+        
         
         //Update Visuals
         tutorialTipText.text = currentTip.TextLine;
@@ -126,7 +163,7 @@ public class TutorialManager : MonoBehaviour
             //Do what needs to be shown
             canGetNextTip = true;
             visualInfoHolder.SetActive(true);
-            visualInfoImage.sprite = currentTip.VisualInfoImage.sprite;
+            visualInfoImage.sprite = currentTip.VisualInfoImage;
             
             //Activate Prev and Next Buttons
             ToggleTutorialButtons();    
@@ -135,6 +172,8 @@ public class TutorialManager : MonoBehaviour
         //Initialize a condition
         if (currentTip.IsToBePerformed)
         {
+            //needs to move around for a bit until
+            SwitchToPlayerMap();
             canGetNextTip = false;
         }
         else
@@ -149,6 +188,7 @@ public class TutorialManager : MonoBehaviour
 
     public void CheckTutorialPerform(string actionName)
     {
+        if(!currentTip) return;
         if (currentTip.IsToBePerformed)
         {
             //Check Match
@@ -166,12 +206,7 @@ public class TutorialManager : MonoBehaviour
 
     private void ToggleTutorialButtons()
     {
-        if (tutorialTextButtons.activeSelf)
-        {
-            SwitchToPlayerMap();
-            tutorialTextButtons.SetActive(false);
-        }
-        else
+        if (!tutorialTextButtons.activeSelf)
         {
             SwitchToTutorialMap();
             
@@ -184,7 +219,7 @@ public class TutorialManager : MonoBehaviour
 
     private void ToggleOffPrevious()
     {
-        SwitchToPlayerMap();
+        //SwitchToPlayerMap();
         tutorialTextButtons.SetActive(false);
         visualInfoHolder.SetActive(false);
     }    

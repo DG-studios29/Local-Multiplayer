@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
+  m_Name: Perform a punch
+  m_EditorClassIdentifier: 
+  textLine: Please perform a punch by pressing X on controller and Left Click on
+    a mouse
+  isToBePerformed: 1
+  hasVisualInfo: 0
+  actionToPerform: Punch
+  actionMade:
+    m_Name: Action Made
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c0c62a1e-a2a1-443b-9692-fcd9b9a59eb9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  visualInfoImage: {fileID: 0}

@@ -128,6 +128,9 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         }
 
     }
+    
+    
+    
 
     public void OnClear(InputAction.CallbackContext context)
     {
