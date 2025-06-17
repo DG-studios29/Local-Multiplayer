@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     public bool isWalking = true;
     [SerializeField] private LayerMask objectsToCheckAgainst; //for collision detection
     public static bool ReverseControlsActive = false;
-
+    public PlayerInput playerInput;
 
     #region Pickup Variables
     Coroutine speedCoroutine;
@@ -56,14 +56,11 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Debug.Log("[Player] Player prefab instantiated!");
-        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
-
-
-
+        playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
-
         playerPunches = GetComponent<PlayerPunches>();
+
+        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -90,8 +87,8 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
         if (context.canceled)
         {
-
             playerPunches.PunchCall();
+            TutorialActionLinq(context);
             //playerPunches.AnimatorChargeClear();
 
         }
@@ -106,6 +103,16 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
             auto.TestClear();
         }
     }
+    public void TutorialActionLinq(InputAction.CallbackContext context)
+    {
+        //Checking if its null
+        if (!TutorialManager.instance) return;
+        if (TutorialManager.instance.isTutorialActive)
+        {
+            TutorialManager.instance.CheckTutorialPerform(context.action.name);
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -156,7 +163,25 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     {
         if (evt.triggerReverseControls)
             ReverseControlsActive = false;
+
     }
+
+    public void SwitchInputTutorial()
+    {
+        playerInput.SwitchCurrentActionMap("Tutorial");
+    }
+
+    public void SwitchInputUI()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
+    }
+
+    public void SwitchInputPlayer()
+    {
+        playerInput.SwitchCurrentActionMap("Player");
+    }
+
+  
 
     private void Update()
     {
