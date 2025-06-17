@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 30
   damage: 10
   moveSpeed: 9
-  targetPlayerRange: 15
+  targetPlayerRange: 10
   openRange: 100
   attackRange: 3
   attackRate: 3

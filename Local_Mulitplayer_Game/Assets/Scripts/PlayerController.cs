@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IPlayerEffect
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 10f;
+    [Header("Movement Settings")] public float moveSpeed = 10f;
     public bool isWalking = true;
     [SerializeField] private LayerMask objectsToCheckAgainst; //for collision detection
     public static bool ReverseControlsActive = false;
@@ -17,7 +16,12 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
     bool hasTrail = false;
     Coroutine speedCoroutine;
 
-    public enum IsPlayer { PlayerOne, PlayerTwo }
+    public enum IsPlayer
+    {
+        PlayerOne,
+        PlayerTwo
+    }
+
     public IsPlayer isPlayer;
 
     #endregion
@@ -26,15 +30,17 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
     private Animator animator;
     public Animator Animator => animator;
-  
+
 
     private Rigidbody rb;
     private Vector2 movementInput;
 
 
-    //Gonna store all this stuff in a Player Punches script after merge
+    //Player Punch inputs
     private PlayerPunches playerPunches;
 
+    //Player Input 
+    private PlayerInput playerInput;
 
     private void OnEnable()
     {
@@ -55,12 +61,38 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         rb = GetComponent<Rigidbody>();
         Debug.Log("[Player] Player prefab instantiated!");
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
-
-
+        
 
         animator = GetComponent<Animator>();
 
         playerPunches = GetComponent<PlayerPunches>();
+
+        playerInput = GetComponent<PlayerInput>();
+    }
+
+    public void SwitchInputTutorial()
+    {
+        playerInput.SwitchCurrentActionMap("Tutorial");
+    }
+
+    public void SwitchInputUI()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
+    }
+
+    public void SwitchInputPlayer()
+    {
+        playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    void TutorialActionLinq(InputAction.CallbackContext context)
+    {
+        //Checking if its null
+        if (!TutorialManager.instance) return;
+        if (TutorialManager.instance.isTutorialActive)
+        {
+            TutorialManager.instance.CheckTutorialPerform(context.action.name);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -71,11 +103,11 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
             input *= -1f;
 
         movementInput = input;
+        
+       
     }
 
-
-
-
+    
 
     public void OnPunch(InputAction.CallbackContext context)
     {
@@ -91,9 +123,14 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
             playerPunches.PunchCall();
             //playerPunches.AnimatorChargeClear();
 
+            TutorialActionLinq(context);
+
         }
 
     }
+    
+    
+    
 
     public void OnClear(InputAction.CallbackContext context)
     {

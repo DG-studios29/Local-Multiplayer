@@ -167,5 +167,15 @@ public class HeroSelectionUI : MonoBehaviour
     {
         if (selectors[playerIndex] != null)
             selectors[playerIndex].position = heroSlots[indices[playerIndex]].position;
+        foreach (var kvp in chosenHeroes)
+        {
+            Debug.Log($"Player {kvp.Key} picked hero: {kvp.Value}");
+            GameManager.Instance.selectedHeroes.Add(kvp.Value);
+        }
+
+        GameManager.Instance.StartGame(GameManager.Instance.selectedHeroes);
+        if(TutorialManager.instance) TutorialManager.instance.TutorialStarted();
+      
+        
     }
 }

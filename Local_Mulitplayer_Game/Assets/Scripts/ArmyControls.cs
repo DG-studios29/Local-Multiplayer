@@ -25,7 +25,7 @@ public class ArmyControls : MonoBehaviour
         partyMeshRenderers = GetComponentsInChildren<MeshRenderer>();
         baseMaterial = partyMeshRenderers[0].material;
     }
-
+    
     private void Update()
     {
         //TakeDamage(damagePerSecond * Time.deltaTime);
@@ -35,6 +35,16 @@ public class ArmyControls : MonoBehaviour
     public void AnimateAttack()
     {
         animator.SetTrigger("Attack");
+    }
+
+    public void AnimateHealing()
+    {
+        animator.SetBool("isHealing",true);
+    }
+
+    public void AnimateStopHealing()
+    {
+        animator.SetBool("isHealing", false);
     }
 
     public void ShowDamage()

@@ -7,6 +7,26 @@ public class PlayerPunches : MonoBehaviour
     private GameObject parentObject;
     private Animator animator;
 
+    //Rigidbody and other things
+    private Rigidbody rb;
+    [SerializeField]private Transform groundCheck;
+    
+    private float gravityScale = 1f;
+    private float globalGravity = -9.81f;
+    
+    //Projectile Motion 
+    private float launchAngle; //will say in inspector
+    private float tanAlpha, cosAlpha,sinAlpha;
+    private float rangeZ;  //will say in inspector
+    private float Uz, Uy, Uo;
+    private float gravity;
+    private float heightY;
+    private float heightMax;
+    private float timeTaken;
+    private Vector3 initialVelocity;
+    private Vector3 globalVelocity;
+    
+    
 
     //Punching
     public bool isPunchR = false;
@@ -17,6 +37,7 @@ public class PlayerPunches : MonoBehaviour
     [SerializeField] private float punchRadius;
     [SerializeField] private float punchDistance;
     [SerializeField] private LayerMask playerMask;
+    [SerializeField] private LayerMask groundMask;
     Vector3 punchPosition;
     private RaycastHit hit;
 
@@ -43,9 +64,7 @@ public class PlayerPunches : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip punchSound;
     [SerializeField] private AudioClip hitSound;
-
-
-
+    public static bool OnlyPunchesActive { get; set; }
 
 
     private void Awake()
@@ -53,6 +72,8 @@ public class PlayerPunches : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         parentObject = playerController.gameObject;
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
+        
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -76,9 +97,37 @@ public class PlayerPunches : MonoBehaviour
         lastPunchTimer += Time.deltaTime;
 
         ChargeUpdate();
-
+        
     }
 
+    private void FixedUpdate()
+    {
+        //Apply Better force of gravity on self
+        /*
+        if (!IsGrounded())
+        {
+            Debug.Log("Is not grounded");
+            //Fall faster
+            gravityScale = 1.96f; 
+        }
+        else
+        {
+            Debug.Log("Is grounded");
+            gravityScale = 1f;
+        }
+        */
+        gravityScale = 2f;
+        
+        Vector3 gravity = Vector3.up * (globalGravity * gravityScale);
+        rb.AddForce(gravity, ForceMode.Acceleration);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, 0.55f,  groundMask);
+    }
+    
+    
     private void HandleArenaEvent(ArenaEventSO evt)
     {
         OnlyPunchesActive = evt.triggerOnlyPunches;

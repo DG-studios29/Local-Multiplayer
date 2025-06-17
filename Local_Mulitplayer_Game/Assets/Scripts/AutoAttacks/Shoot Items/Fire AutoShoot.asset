@@ -20,6 +20,6 @@ MonoBehaviour:
   behavior: 0
   description: Shoots basic bullets to the nearest enemy
   objectInstance: {fileID: 189975902129390228, guid: ea723505054a5f64f9a84772183ad657, type: 3}
-  trailRenderer: {fileID: 4222833773538097119, guid: efa221536ed2cc14294a7ac2d688ae24, type: 3}
+  trailRenderer: {fileID: 4222833773538097119, guid: 26bb4cb6e860ef1419b2dea7ba75a43b, type: 3}
   projectilePrefab: {fileID: 55373305946449101, guid: ecdc5b13153e92a4c8d40bb5b1c086ac, type: 3}
   particleFX: {fileID: 3379312893944246363, guid: 1ce004ad4197c9d4cbec4e6d49d86f8c, type: 3}

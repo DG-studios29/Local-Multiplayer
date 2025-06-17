@@ -476,6 +476,8 @@ void GetEnemyData()
         }
     }
 
+    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
