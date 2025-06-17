@@ -820,10 +820,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4986593271984312951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ab33037d8970245b3e9613c351c65f, type: 3}
+  m_Script: {fileID: 11500000, guid: b79b669bf10330b48a5400d04743e5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
+  skyboxMaterial: {fileID: 2100000, guid: d0d62fab8e968314cb819a4c381f034a, type: 2}
 --- !u!114 &6842466128606597704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,10 +837,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupPrefabs:
-  - {fileID: 5695752269617309096, guid: b4b7bf195a73c874393ecb6a25b25859, type: 3}
-  - {fileID: 5695752269617309096, guid: 0d68d67808e75dc4b9deb7433ae754f1, type: 3}
-  - {fileID: 5695752269617309096, guid: bf7dd55110efbbb45bf1d28e0462fbfe, type: 3}
-  - {fileID: 5695752269617309096, guid: ba291a4630864934caed1a911c502e21, type: 3}
+  - {fileID: 5756091824019315429, guid: a6fbb32ca4df87e44b4f6a7b9010202a, type: 3}
+  - {fileID: 2162843188015810947, guid: fa0bee07d4c3ef84eb0b2a9d9c511970, type: 3}
+  - {fileID: 9134048911861109230, guid: 2458d9b15f1f7ce4589f459b9e6a88f8, type: 3}
+  - {fileID: 3252017458778143794, guid: be52785048709aa498dad9b770900a19, type: 3}
+  - {fileID: 873306118128974139, guid: 8a3174052b97b3745980f158bf4a27bb, type: 3}
   isSpawning: 0
   currentlySpawnedPickUps: 0
   filter:

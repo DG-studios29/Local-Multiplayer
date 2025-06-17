@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: 9500000}
   - component: {fileID: 6500000}
+  - component: {fileID: 4444394183256252432}
   m_Layer: 0
   m_Name: Tomb03_c
   m_TagString: Untagged
@@ -164,6 +165,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.59988683, y: 0.599887, z: 3.8999877}
   m_Center: {x: 0.0000016391277, y: 0.00000022351747, z: 1.9499938}
+--- !u!114 &4444394183256252432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4233ee9d2b11cc04ea4cadec9f00e79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  initialAlpha: 1
+  materials: []
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +193,7 @@ GameObject:
   - component: {fileID: 2300002}
   - component: {fileID: 9500002}
   - component: {fileID: 6500002}
+  - component: {fileID: 3938809802753747918}
   m_Layer: 0
   m_Name: Tomb04_d
   m_TagString: Untagged
@@ -295,3 +312,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3029432, y: 0.17963988, z: 4.990458}
   m_Center: {x: 1.0704341, y: -0.011196147, z: 2.4952285}
+--- !u!114 &3938809802753747918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4233ee9d2b11cc04ea4cadec9f00e79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  initialAlpha: 1
+  materials: []

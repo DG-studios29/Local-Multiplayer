@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldDuration: 10
-  shieldGFX: {fileID: 2535177855952225345, guid: 77740d9e95b90f047bd7fef33322a98c, type: 3}
-  vFx: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: c388c9d39c7aa694fa96eef20d77bb39, type: 3}
-  audioSource: {fileID: 7895612909801275823}
+  shieldGFX: {fileID: 8901138131924632055, guid: 98c0991e7090c444daa10ed0405c37d4, type: 3}
+  vFx: {fileID: 3874635022589376825, guid: ffdfb7851a968494f8fe76ee88f3791a, type: 3}
+  sfx: {fileID: 6439418098337526739, guid: 2ddd325e1748b734fbf60c4bf91f68d9, type: 3}
+  sfxClip: {fileID: 8300000, guid: 33752cdf658f5424a9e39f89f41b71d2, type: 3}

@@ -13,7 +13,7 @@ public class PlayerPunches : MonoBehaviour
     [SerializeField]private bool isPunchR;
     [SerializeField] private float punchDamage;
     [FormerlySerializedAs("unscaledMAXDamage")] [SerializeField] private float unscaledMaxDamage;
-
+    public static bool OnlyPunchesActive;
     [SerializeField] private float punchRadius;
     [SerializeField] private float punchDistance;
     [SerializeField] private LayerMask playerMask;

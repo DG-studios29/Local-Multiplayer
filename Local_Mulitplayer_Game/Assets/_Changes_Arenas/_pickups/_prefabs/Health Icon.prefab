@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 50
-  vFx: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 287f2599823797f448c2b10c706f67a5, type: 3}
-  audioSource: {fileID: 8265102328031287405}
+  vFx: {fileID: 1399491476850481373, guid: 7e691a0229efacd4cba2922df3888456, type: 3}
+  sfx: {fileID: 6439418098337526739, guid: 2ddd325e1748b734fbf60c4bf91f68d9, type: 3}
+  sfxClip: {fileID: 8300000, guid: 1e1e0e4612de70d47ae50e46fd5aa59a, type: 3}
 --- !u!1 &4358733748926835801
 GameObject:
   m_ObjectHideFlags: 0

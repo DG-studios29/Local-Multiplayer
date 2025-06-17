@@ -123,10 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7eea46462fad44c86494544b7dd3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyFillAmount: 0
   vFx: {fileID: 0}
-  audioClip: {fileID: 0}
-  audioSource: {fileID: 0}
+  sfx: {fileID: 6439418098337526739, guid: 2ddd325e1748b734fbf60c4bf91f68d9, type: 3}
+  sfxClip: {fileID: 8300000, guid: 59314b1de65d8b94c97aa0676ffca56c, type: 3}
 --- !u!1 &8261621187570651618
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,8 @@ public class SpeedBoost : PickUpsBase
     [SerializeField] private float duration = 5f;
     [SerializeField] private float speedBoost = 10f;
     [SerializeField] private GameObject vFx;
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject sfx;
+    [SerializeField] private AudioClip sfxClip;
 
     [SerializeField] private GameObject trailEffect;
     #endregion
@@ -29,16 +29,21 @@ public class SpeedBoost : PickUpsBase
             foreach (var effect in playerEffect)
             {
                 effect.ActivateSpeedBoost(duration, speedBoost, trailEffect);
-                if (audioSource != null && audioClip != null) audioSource.PlayOneShot(audioClip);
 
                 if (vFx != null)
                 {
                     Instantiate(vFx, transform.position, Quaternion.identity);
                 }
+
+                if (sfx != null && sfxClip != null)
+                {
+                    GameObject sfxObj = Instantiate(sfx, transform.position, Quaternion.identity);
+                    sfxObj.GetComponent<SFxSoundPlayer>().DoAwayWithMe(sfxClip);
+                }
             }
         }
 
-        Destroy(gameObject, 0.01f);
+        Destroy(gameObject);
     }
 
     #endregion

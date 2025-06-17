@@ -6,11 +6,9 @@ using UnityEngine;
 public class EnergyCrystal : PickUpsBase
 {
     #region Custom Variables
-
-    [SerializeField] private float energyFillAmount;
     [SerializeField] private GameObject vFx;
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject sfx;
+    [SerializeField] private AudioClip sfxClip;
 
     #endregion
 
@@ -18,7 +16,7 @@ public class EnergyCrystal : PickUpsBase
 
     protected override void ApplyEffect(GameObject player)
     {
-        IPlayerEffect[] playerEffect = player.GetComponents<IPlayerEffect>();
+        IPlayerEffect[] playerEffect = player.GetComponentsInChildren<IPlayerEffect>();
 
         if (playerEffect.Length > 0)
         {
@@ -26,19 +24,23 @@ public class EnergyCrystal : PickUpsBase
             {
                 if (effect != null)
                 {
-                    effect.RefillAbilityBar();
-
-                    if (audioSource != null && audioClip != null) audioSource.PlayOneShot(audioClip);
+                    effect.RestoreOrbs();
 
                     if (vFx != null)
                     {
                         Instantiate(vFx, transform.position, Quaternion.identity);
                     }
+
+                    if (sfx != null && sfxClip != null)
+                    {
+                        GameObject sfxObj = Instantiate(sfx, transform.position, Quaternion.identity);
+                        sfxObj.GetComponent<SFxSoundPlayer>().DoAwayWithMe(sfxClip);
+                    }
                 }
             }
         }
 
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     #endregion

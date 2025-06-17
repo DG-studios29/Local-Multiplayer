@@ -318,12 +318,17 @@ public class GameManager : MonoBehaviour
             activePlayers.Add(player);
 
         AddPlayerToCamera(player);
+
+        if (RevealPlayerBase.instance.players.Count < 2)
+        {
+            RevealPlayerBase.instance.players.Add(player.transform);
+        }
     }
 
 
     public void AddPlayerToCamera(GameObject player)
     {
-        if (targetGroup != null && player != null)
+        if (targetGroup != null && player != null && targetGroup.Targets.Count < 2)
             targetGroup.AddMember(player.transform, 1f, 2f);
     }
 }

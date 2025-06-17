@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   speedBoost: 5
-  vFx: {fileID: 0}
-  audioClip: {fileID: 0}
-  audioSource: {fileID: 3263589943462599744}
-  trailEffect: {fileID: 6068192576198646257, guid: df0e133a80d1e1044be5067d381af379, type: 3}
+  vFx: {fileID: 3732551427800355369, guid: 3e2226b0718f88b40ad98d970390f416, type: 3}
+  sfx: {fileID: 6439418098337526739, guid: 2ddd325e1748b734fbf60c4bf91f68d9, type: 3}
+  sfxClip: {fileID: 8300000, guid: 5e58e3746ac903543a2725005dd1f2ab, type: 3}
+  trailEffect: {fileID: 7439644567177799626, guid: f7f8de335c919234290cd40ed34ce7de, type: 3}

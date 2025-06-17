@@ -37,9 +37,10 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
 
     #region Interface Vars
-
+    private GameObject activeShield;
+    private Image shieldImage;
+    private float currentShieldTimer = 0;
     private bool isShielded = false;
-    private bool hasShieldBubble;
     private Coroutine shieldCoroutine;
     private Coroutine healthCoroutine;
 
@@ -220,36 +221,82 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     public void ActivateSpeedBoost(float duration, float speedMultiplier, GameObject trailEffect)
     {
-        //throw new System.NotImplementedException();
+
     }
 
     public void ActivateShield(float duration, GameObject shield)
     {
-        isShielded = true;
-
-        if (!hasShieldBubble)
+        if (shieldCoroutine != null)
         {
-            shield = Instantiate(shield);
-            hasShieldBubble = true;
+            StopCoroutine(shieldCoroutine);
+            shieldCoroutine = null;
         }
 
-        shield.transform.SetParent(transform);
-        shield.transform.localPosition = new Vector3(0, 0.5f, 0);
-        shield.transform.localRotation = Quaternion.identity;
-        shield.transform.localScale = new Vector3(.77f, .7f, .7f);
+        if (activeShield != null)
+        {
+            Destroy(activeShield);
+        }
 
-        if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
-        shieldCoroutine = StartCoroutine(ShieldTime(duration, shield));
+        activeShield = Instantiate(shield, transform);
+        activeShield.transform.localPosition = new Vector3(0, 0.5f, 0);
+        activeShield.transform.localRotation = Quaternion.identity;
+        activeShield.transform.localScale = new Vector3(.7f, .7f, .7f);
+
+        isShielded = true;
+
+        shieldCoroutine = StartCoroutine(ShieldTime(duration));
+
 
         switch (isPlayer)
         {
             case IsPlayer.PlayerOne:
                 GameManager.Instance.playerOnePowerUps[1].alpha = 1f;
+                shieldImage = GameManager.Instance.playerOnePowerUps[1].gameObject.GetComponent<Image>();
                 break;
 
             case IsPlayer.PlayerTwo:
                 GameManager.Instance.playerTwoPowerUps[1].alpha = 1f;
+                shieldImage = GameManager.Instance.playerTwoPowerUps[1].gameObject.GetComponent<Image>();
                 break;
+        }
+    }
+
+    private IEnumerator ShieldTime(float duration)
+    {
+        yield return StartCoroutine(CountHelper(duration));
+
+        isShielded = false;
+        currentShieldTimer = 0;
+        if (activeShield != null)
+        {
+            Destroy(activeShield);
+        }
+
+        switch (isPlayer)
+        {
+            case IsPlayer.PlayerOne:
+                GameManager.Instance.playerOnePowerUps[1].alpha = 0.1f;
+                break;
+
+            case IsPlayer.PlayerTwo:
+                GameManager.Instance.playerTwoPowerUps[1].alpha = 0.1f;
+                break;
+        }
+    }
+
+    private IEnumerator CountHelper(float dur)
+    {
+        currentShieldTimer = dur;
+        while (currentShieldTimer > 0)
+        {
+            currentShieldTimer -= Time.deltaTime;
+
+            if (shieldImage != null)
+            {
+                shieldImage.fillAmount = currentShieldTimer / dur;
+            }
+
+            yield return null;
         }
     }
 
@@ -276,57 +323,28 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     IEnumerator healthtime()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         switch (isPlayer)
         {
             case IsPlayer.PlayerOne:
-                GameManager.Instance.playerOnePowerUps[0].alpha = 0.4f;
+                GameManager.Instance.playerOnePowerUps[0].alpha = 0.1f;
                 break;
 
             case IsPlayer.PlayerTwo:
-                GameManager.Instance.playerTwoPowerUps[0].alpha = 0.4f;
+                GameManager.Instance.playerTwoPowerUps[0].alpha = 0.1f;
                 break;
         }
     }
 
-    public void RefillAbilityBar(float energy)
+    public void RestoreOrbs()
     {
-        //throw new System.NotImplementedException();
+        //
     }
 
-    private IEnumerator ShieldTime(float duration, GameObject shieldBubble)
-    {
-        yield return new WaitForSeconds(duration);
-
-        isShielded = false;
-
-        if (shieldBubble != null)
-        {
-            Destroy(shieldBubble);
-        }
-
-        hasShieldBubble = false;
-
-        switch (isPlayer)
-        {
-            case IsPlayer.PlayerOne:
-                GameManager.Instance.playerOnePowerUps[1].alpha = 0.4f;
-                break;
-
-            case IsPlayer.PlayerTwo:
-                GameManager.Instance.playerTwoPowerUps[1].alpha = 0.4f;
-                break;
-        }
-    }
 
     public void ResetAbilityCooldownTimer(int cooldown)
     {
-        
-    }
-
-    public void RefillAbilityBar()
-    {
-        
+        //
     }
     #endregion
 }
