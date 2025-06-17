@@ -8,6 +8,14 @@ public class PlayerPunches : MonoBehaviour
     private GameObject parentObject;
     private Animator animator;
 
+    //Rigidbody and other things
+    private Rigidbody rb;
+    [SerializeField]private Transform groundCheck;
+    
+    public float gravityScale = 1f;
+    private float globalGravity = -9.81f;
+    
+    
 
     //Punching
     [SerializeField]private bool isPunchR;
@@ -17,6 +25,7 @@ public class PlayerPunches : MonoBehaviour
     [SerializeField] private float punchRadius;
     [SerializeField] private float punchDistance;
     [SerializeField] private LayerMask playerMask;
+    [SerializeField] private LayerMask groundMask;
     Vector3 punchPosition;
     private RaycastHit hit;
 
@@ -74,9 +83,32 @@ public class PlayerPunches : MonoBehaviour
         lastPunchTimer += Time.deltaTime;
 
         ChargeUpdate();
-
+        
     }
 
+    private void FixedUpdate()
+    {
+        //Apply Better force of gravity on self
+        if (!IsGrounded())
+        {
+            //Fall faster
+            gravityScale = 3f; 
+        }
+        else
+        {
+            gravityScale = 1f;
+        }
+        
+        Vector3 gravity = Vector3.up * (globalGravity * gravityScale);
+        rb.AddForce(gravity, ForceMode.Acceleration);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, 0.3f,  groundMask);
+    }
+    
+    
     private void HandleArenaEvent(ArenaEventSO evt)
     {
         OnlyPunchesActive = evt.triggerOnlyPunches;
