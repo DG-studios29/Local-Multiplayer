@@ -78,7 +78,7 @@ public class TutorialManager : MonoBehaviour
     {
         foreach (PlayerController player in playersInputs)
         {
-            player.SwitchInputTutorial();
+            player.SwitchInputPlayer();
         }
     }
 
@@ -89,23 +89,22 @@ public class TutorialManager : MonoBehaviour
             player.SwitchInputUI();
         }
     }
-
-
-  
+    
     
     
     public void NextTutorialTip()
     {
-         if (tipCounter > tutorialTexts.Count - 1)
+         if (tipCounter >= tutorialTexts.Count - 1)
          {
              tipCounter = tutorialTexts.Count - 1;
          }
          else
          {
              tipCounter++;
+             ShowTutorialTip();
          }
-            
-         ShowTutorialTip();
+         
+         
         
     }
 
@@ -119,28 +118,12 @@ public class TutorialManager : MonoBehaviour
         else
         {
             tipCounter--;
+            ShowTutorialTip();
         }
-
-        ShowTutorialTip();
         
     }
-
-    public void StartGame(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            //Go to the gameplay scene with SceneManager
-        }
-    }
     
-    public void PauseTutorial(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            //Pause Game
-            
-        }
-    }
+   
 
     private void ShowTutorialTip()
     {
@@ -150,12 +133,9 @@ public class TutorialManager : MonoBehaviour
         var properCount = tipCounter + 1;
         tipCounterText.text = properCount.ToString() + "/" + tutorialTexts.Count;
         
-        
         currentTip = tutorialTexts[tipCounter];
         
-        
-        
-        //Update Visuals
+        //Update Text
         tutorialTipText.text = currentTip.TextLine;
 
         if (currentTip.HasVisualInfo)

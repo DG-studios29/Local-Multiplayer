@@ -10,7 +10,7 @@ public class TutorialText : ScriptableObject
     [SerializeField]private bool isToBePerformed;
     [SerializeField]private bool hasVisualInfo;
     [SerializeField]private string actionToPerform;
-    [SerializeField]private InputAction actionMade;
+    //[SerializeField]private InputAction actionMade;
     [SerializeField]private Sprite visualInfoImage;
     
     public string TextLine => textLine;
@@ -19,6 +19,6 @@ public class TutorialText : ScriptableObject
     public string ActionToPerform => actionToPerform;
     public Sprite VisualInfoImage => visualInfoImage;
     
-    public InputAction ActionMade => actionMade;
+    //public InputAction ActionMade => actionMade;
 
 }

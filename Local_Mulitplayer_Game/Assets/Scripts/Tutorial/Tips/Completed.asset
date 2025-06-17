@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
+  m_Name: Completed
+  m_EditorClassIdentifier: 
+  textLine: 'Thanks for playing the tutorial
+
+    You are now ready to raze hell
+
+    and
+    harness the power
+
+    of 50 000 summons'
+  isToBePerformed: 0
+  hasVisualInfo: 0
+  actionToPerform: 
+  actionMade:
+    m_Name: Action Made
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 31ef6903-ad39-4da9-9c34-71e5233158df
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  visualInfoImage: {fileID: 0}
