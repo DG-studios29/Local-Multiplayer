@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnPlayersDelayed()
     {
-        yield return null; // wait 1 frame to ensure map and colliders are active
+        yield return new WaitForFixedUpdate();
 
         var players = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None);
         for (int i = 0; i < players.Length; i++)
@@ -163,10 +163,21 @@ public class GameManager : MonoBehaviour
                 ? currentSpawnPoints[index].position
                 : new Vector3(0, 1, 0);
 
-            // Optional: raycast check
+            bool ground = false;
             if (!Physics.Raycast(spawnPos + Vector3.up * 2f, Vector3.down, out RaycastHit hit, 5f))
             {
-                Debug.LogWarning($"⚠️ No ground under spawn point {index}, using default.");
+                if (hit.collider.CompareTag("Platform"))
+                {
+                    spawnPos = hit.point + Vector3.up * 0.3f;
+                    ground = true;
+                    Debug.Log("Gound");
+                }
+
+                if (!ground)
+                {
+                    Debug.LogWarning($"⚠️ No valid platform for Player {index}, using fallback spawn.");
+                    spawnPos = new Vector3(0, 5f + index * 2f, 0); // prevent stacking
+                }
             }
             MiniArmySpawner spawner = player.GetComponent<MiniArmySpawner>();
             if (spawner != null)
@@ -181,7 +192,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError($"❌ Could not assign Army UI to {player.name}! Missing reference in GameManager.");
+                    Debug.LogError($"Could not assign Army UI to {player.name}! Missing reference in GameManager.");
                 }
             }
 
@@ -196,6 +207,15 @@ public class GameManager : MonoBehaviour
             }
             player.transform.position = spawnPos + Vector3.up * 1f;
             player.transform.rotation = currentSpawnPoints[index].rotation;
+
+            var rb = player.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.Sleep();
+            }
+
             player.name = $"Player {index + 1}";
 
             RegisterPlayer(input);
