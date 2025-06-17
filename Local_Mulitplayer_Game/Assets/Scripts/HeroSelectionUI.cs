@@ -174,7 +174,7 @@ public class HeroSelectionUI : MonoBehaviour
         }
 
         GameManager.Instance.StartGame(GameManager.Instance.selectedHeroes);
-        if(TutorialManager.instance) TutorialManager.instance.TutorialStarted();
+        //if(TutorialManager.instance) TutorialManager.instance.TutorialStarted();
       
         
     }
