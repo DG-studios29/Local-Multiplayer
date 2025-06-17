@@ -1,33 +1,59 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class HeroSelectionUI : MonoBehaviour
 {
     public static HeroSelectionUI Instance;
 
+    [Header("UI References")]
     public GameObject selectionPanel;
     public GameObject playerUICanvas;
+    public GameObject mapCanvas;
     public Button startGameButton;
-    public List<HeroManager> heroButtons;
 
+    [Header("Hero Setup")]
+    public List<HeroManager> heroButtons;
     public List<Image> playerHeroImages;
     public List<TextMeshProUGUI> playerHeroNames;
 
+    [Header("Hero Slots (Left to Right)")]
+    public RectTransform[] heroSlots;
+
+    [Header("Player UI")]
+    public RectTransform[] selectors; // P1 = 0, P2 = 1
+    public TextMeshProUGUI[] playerTexts;
+    public GameObject confirmButton;
+
+    private int[] indices = new int[2];
+    private bool[] locked = new bool[2];
     private Dictionary<int, string> chosenHeroes = new Dictionary<int, string>();
     private int currentSelectingPlayer = 0;
+
+    private bool p1Selected = false;
+    private bool p2Selected = false;
 
     private void Awake()
     {
         Instance = this;
+
+        for (int i = 0; i < 2; i++)
+        {
+            indices[i] = 0;
+            UpdateSelector(i);
+        }
+
+        confirmButton.SetActive(false);
+        startGameButton.interactable = false;
         playerUICanvas.SetActive(false);
+        mapCanvas.SetActive(false);
     }
 
     public void Setup(int numberOfPlayers)
     {
-        selectionPanel.SetActive(true);
-        chosenHeroes.Clear(); 
+        chosenHeroes.Clear();
         currentSelectingPlayer = 0;
 
         for (int i = 0; i < numberOfPlayers; i++)
@@ -47,76 +73,99 @@ public class HeroSelectionUI : MonoBehaviour
 
     public void OnHeroSelected(string heroName)
     {
-        // Prevent duplicate hero assignment
         if (chosenHeroes.ContainsValue(heroName))
-        {
-            
             return;
-        }
 
-        // Assign hero to the current player
         if (chosenHeroes.ContainsKey(currentSelectingPlayer))
         {
             chosenHeroes[currentSelectingPlayer] = heroName;
-            Debug.Log($"Player {currentSelectingPlayer + 1} chosen hero: {heroName}");
-
-            UpdatePlayerHeroUI(currentSelectingPlayer, heroName);
-
-            // Only advance if the player hasn't already picked
+            playerHeroNames[currentSelectingPlayer].text = heroName;
             currentSelectingPlayer++;
+
             if (currentSelectingPlayer >= chosenHeroes.Count)
-                currentSelectingPlayer = chosenHeroes.Count - 1; // Clamp
+            {
+                startGameButton.interactable = true;
+                GameManager.Instance.selectedHeroes = new List<string>(chosenHeroes.Values);
+            }
         }
-
-        // Confirm button active only when all slots are filled
-        startGameButton.interactable = AreAllHeroesSelected();
     }
 
 
-
-    private void UpdatePlayerHeroUI(int playerIndex, string heroName)
+    public void MoveSelector(int playerIndex, int direction)
     {
-        Sprite heroSprite = GetHeroSprite(heroName);
-        playerHeroImages[playerIndex].sprite = heroSprite;
-        playerHeroNames[playerIndex].text = heroName;
+        if (locked[playerIndex]) return;
+
+        indices[playerIndex] += direction;
+        indices[playerIndex] = Mathf.Clamp(indices[playerIndex], 0, heroSlots.Length - 1);
+        UpdateSelector(playerIndex);
     }
 
-    private Sprite GetHeroSprite(string heroName)
+    public void ConfirmSelection(int playerIndex)
     {
-        return Resources.Load<Sprite>($"Heroes/{heroName}");
-    }
+        if (locked[playerIndex]) return;
 
-    public void OnHeroChange()
-    {
-        if (chosenHeroes.ContainsKey(currentSelectingPlayer))
+        HeroTileUI tile = heroSlots[indices[playerIndex]].GetComponent<HeroTileUI>();
+        if (tile != null)
         {
-            chosenHeroes[currentSelectingPlayer] = "";
-            Debug.Log($"Player {currentSelectingPlayer + 1} changed their selection.");
-        }
-    }
+            locked[playerIndex] = true;
+            playerTexts[playerIndex].text = tile.heroName;
 
-    private bool AreAllHeroesSelected()
-    {
-        foreach (var hero in chosenHeroes.Values)
+            playerHeroNames[playerIndex].text = tile.heroName;
+            if (tile.heroIcon != null)
+                playerHeroImages[playerIndex].sprite = tile.heroIcon;
+
+            chosenHeroes[playerIndex] = tile.heroName;
+            PlayerSelected(playerIndex);
+        }
+
+        if (locked[0] && locked[1])
         {
-            if (string.IsNullOrEmpty(hero)) return false;
+            confirmButton.SetActive(true);
+            startGameButton.interactable = true;
+            GameManager.Instance.selectedHeroes = new List<string>(chosenHeroes.Values);
         }
-        return true;
     }
 
-    public void OnStartGame()
+    public void CancelSelection(int playerIndex)
+    {
+        if (!locked[playerIndex]) return;
+
+        locked[playerIndex] = false;
+        playerTexts[playerIndex].text = "Selecting...";
+        playerHeroNames[playerIndex].text = "Select Hero";
+        playerHeroImages[playerIndex].sprite = null;
+
+        if (chosenHeroes.ContainsKey(playerIndex))
+            chosenHeroes[playerIndex] = "";
+
+        if (playerIndex == 0) p1Selected = false;
+        if (playerIndex == 1) p2Selected = false;
+
+        confirmButton.SetActive(false);
+        startGameButton.interactable = false;
+
+        indices[playerIndex] = 0;
+        UpdateSelector(playerIndex);
+    }
+
+    public void PlayerSelected(int playerIndex)
+    {
+        if (playerIndex == 0) p1Selected = true;
+        if (playerIndex == 1) p2Selected = true;
+
+        startGameButton.interactable = (p1Selected && p2Selected);
+    }
+
+    public void OnStartGamePressed()
     {
         selectionPanel.SetActive(false);
-        playerUICanvas.SetActive(true);
+        mapCanvas.SetActive(true);
 
-        GameManager.Instance.selectedHeroes = new List<string>();
+    }
 
-        foreach (var kvp in chosenHeroes)
-        {
-            Debug.Log($"Player {kvp.Key} picked hero: {kvp.Value}");
-            GameManager.Instance.selectedHeroes.Add(kvp.Value);
-        }
-
-        GameManager.Instance.StartGame(GameManager.Instance.selectedHeroes);
+    private void UpdateSelector(int playerIndex)
+    {
+        if (selectors[playerIndex] != null)
+            selectors[playerIndex].position = heroSlots[indices[playerIndex]].position;
     }
 }

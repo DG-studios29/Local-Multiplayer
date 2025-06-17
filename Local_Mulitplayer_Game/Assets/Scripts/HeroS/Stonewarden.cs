@@ -91,10 +91,11 @@ public class Stonewarden : HeroBase
             Collider[] enemies = Physics.OverlapBox(segmentPosition, new Vector3(2f, 2f, 2f));
             foreach (var enemy in enemies)
             {
+                if (enemy == null || enemy.gameObject == null) continue;
                 if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
                 {
-                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
-                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
+                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
+                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
                     enemy.GetComponent<StatusEffects>()?.ApplyStun(1f);
                 }
             }

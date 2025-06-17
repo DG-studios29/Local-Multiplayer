@@ -1,5 +1,4 @@
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class PlayerPunches : MonoBehaviour
 {
@@ -10,9 +9,10 @@ public class PlayerPunches : MonoBehaviour
 
 
     //Punching
-    [SerializeField]private bool isPunchR;
+    public bool isPunchR = false;
     [SerializeField] private float punchDamage;
-    [FormerlySerializedAs("unscaledMAXDamage")] [SerializeField] private float unscaledMaxDamage;
+    [SerializeField] private float unscaledMAXDamage;
+    public static bool OnlyPunchesActive = false;
 
     [SerializeField] private float punchRadius;
     [SerializeField] private float punchDistance;
@@ -27,15 +27,15 @@ public class PlayerPunches : MonoBehaviour
 
     //Punch Control - Anti-Spam cooldown
     private float punchCooldown = 0.25f; //animation time
-    private float lastPunchTimer = 0;
+    private float lastPunchTimer = 0.25f;
 
     //Punch Control - Critical-Hit Holding
     private bool chargeHolding = false;
     private float chargeHoldTimer = 0f;
-    [SerializeField] private float maxChargeTime;
+    [SerializeField] private float maxChargeTime = 2.75f;
     private float chargeVal;
     //bool resetAnimation = false;
-    //private float dmgCalc;
+    private float dmgCalc;
 
     [SerializeField] private GameObject upperCutFX;
 
@@ -88,7 +88,7 @@ public class PlayerPunches : MonoBehaviour
     {
         if (lastPunchTimer < punchCooldown)
         {
-            //we won't punch if cooldown has not passed
+            //we wont punch if cooldown has not passed
 
             return;
         }
@@ -147,7 +147,7 @@ public class PlayerPunches : MonoBehaviour
                     hit.rigidbody.AddForce(nVelocity, ForceMode.Impulse);
 
                     //normal punch
-                    targetHealth.TakeDamage((int)punchDamage);
+                    targetHealth.TakeDamage((int)punchDamage, gameObject);
 
                     //chargeVal = 0;
 
@@ -170,8 +170,8 @@ public class PlayerPunches : MonoBehaviour
 
                     //nice damage
                     if (chargeVal > 0.6) chargeVal = 0.5f;
-                    float niceDmg = unscaledMaxDamage * chargeVal;
-                    targetHealth.TakeDamage((int)niceDmg);
+                    float niceDMG = unscaledMAXDamage * chargeVal;
+                    targetHealth.TakeDamage((int)niceDMG, gameObject);
                 }
                 else
                 {
@@ -193,8 +193,8 @@ public class PlayerPunches : MonoBehaviour
                     Destroy(hypeFX, 3f);
 
                     //critical hit
-                    float crit = unscaledMaxDamage;
-                    targetHealth.TakeDamage((int)crit);
+                    float crit = unscaledMAXDamage;
+                    targetHealth.TakeDamage((int)crit, gameObject);
 
                 }
 
@@ -215,11 +215,11 @@ public class PlayerPunches : MonoBehaviour
                     //punches on armies are ineffective, save for crits
                     if (chargeVal <= 0.8f)
                     {
-                        targetHealth.TakeDamage(1f);
+                        targetHealth.TakeDamage(1f, gameObject);
                     }
                     else
                     {
-                        targetHealth.TakeDamage(5f);
+                        targetHealth.TakeDamage(5f, gameObject);
                     }
                 }
             }
@@ -282,16 +282,18 @@ public class PlayerPunches : MonoBehaviour
     {
         //Debug.Log("ChargingUp");
         chargeVal = chargeHoldTimer / maxChargeTime;
-        if (chargeVal >= 1) chargeVal = 1;
-        //dmgCalc = chargeVal;
+        if (chargeVal > 1) chargeVal = 1;
+        dmgCalc = chargeVal;
 
         animator.SetFloat("Charge", chargeVal, 0.05f, Time.deltaTime);
+
+
     }
 
     public void AnimatorChargeClear()
     {
         //Debug.Log("Clear");
-        //dmgCalc = chargeVal;
+        dmgCalc = chargeVal;
         chargeVal = 0;
         animator.SetFloat("Charge", chargeVal, 0.05f, Time.deltaTime);
     }
@@ -303,10 +305,10 @@ public class PlayerPunches : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector3 gizmoPos = transform.position + new Vector3(0, 1, 0);
+        Vector3 GizmoPos = transform.position + new Vector3(0, 1, 0);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(gizmoPos + transform.forward * punchDistance, punchRadius);
+        Gizmos.DrawWireSphere(GizmoPos + transform.forward * punchDistance, punchRadius);
     }
 
 }

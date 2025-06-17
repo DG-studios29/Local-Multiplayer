@@ -18,7 +18,7 @@ public class HealerAI : EnemyAI
     {
         time_sinceAttack += Time.deltaTime; //time since healed
         
-        DoTargetChase();
+        //DoTargetChase();
 
         if (time_sinceAttack > attackCooldown)
         {
@@ -32,11 +32,11 @@ public class HealerAI : EnemyAI
         return;
     }
 
-    protected override void DoTargetChase()
-    {
-        distanceToHealer = Vector3.Distance(transform.position,enemyParent.transform.position);
-        navAgent.SetDestination(enemyParent.transform.position);
-    }
+    //protected override void DoTargetChase()
+    //{
+    //    distanceToHealer = Vector3.Distance(transform.position,enemyParent.transform.position);
+    //    navAgent.SetDestination(enemyParent.transform.position);
+    //}
 
     private void DoHeal()
     {

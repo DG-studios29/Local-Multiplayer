@@ -1,49 +1,31 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
-    private UINavigation navigation;
-    public GameObject playerWinner1; 
-    public GameObject playerWinner2; 
-    public GameObject draw; 
+    public static GameOverManager Instance;
 
-    void Start()
+    public TMP_Text resultText;
+    public GameObject gameOverPanel;
+
+    void Awake()
     {
-        // Try to find the UINavigation component
-        navigation = Object.FindFirstObjectByType<UINavigation>();
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
-        if (navigation == null)
-        {
-            Debug.LogError("UINavigation not found! Make sure it is in the scene.");
-            return;
-        }
-        
-        string winnerName = PlayerPrefs.GetString("Winner", "No winner");
+    public static void ShowResult(string result)
+    {
+        // Show result in UI (mock version)
+        Debug.Log($"[GAME OVER UI] {result}");
 
-        
-        if (winnerName == "Player 1 wins!") // Change this condition based on how you set player names
+        // Add your UI screen logic here
+        if (Instance != null && Instance.resultText != null && Instance.gameOverPanel != null)
         {
-            navigation.ShowPanel1();
-            playerWinner1.SetActive(true);
-            playerWinner2.SetActive(false); 
-
+            Instance.resultText.text = result;
+            Instance.gameOverPanel.SetActive(true);
         }
-        else if (winnerName == "Player 2 wins!")
-        {
-            navigation.ShowPanel2();
-            playerWinner1.SetActive(false); 
-            playerWinner2.SetActive(true);
-        }
-        else if (winnerName == "It's a draw!")
-        {
-            draw.SetActive(true);
-            playerWinner1.SetActive(false);
-            playerWinner2.SetActive(false);
-        }
-
-        
-        PlayerPrefs.DeleteKey("Winner");
     }
 }

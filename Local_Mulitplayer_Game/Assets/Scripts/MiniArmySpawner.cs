@@ -13,8 +13,6 @@ public class MiniArmySpawner : MonoBehaviour
     private MiniArmySpawnerUI ui;
     private Coroutine spamRoutine;
 
-    private PlayerCurrency currency;
-
     private void OnEnable()
     {
         ArenaEventManager.OnArenaEventStart += OnEventStart;
@@ -53,12 +51,6 @@ public class MiniArmySpawner : MonoBehaviour
             yield return new WaitForSeconds(spamSpawnInterval);
         }
     }
-    
-
-    private void Start()
-    {
-        currency = GetComponent<PlayerCurrency>();
-    }
 
     public void InitializeUI(MiniArmySpawnerUI assignedUI)
     {
@@ -85,20 +77,6 @@ public class MiniArmySpawner : MonoBehaviour
     {
         if (ui != null && ui.CanSpawn(index))
         {
-             //will need to check Mana amount required, then use up Mana to spawn
-            var spawnInfo = armyTypes[index].GetComponent<EnemyAI>().enemyData;
-           
-            if (currency.CheckManaCost(spawnInfo.ManaCost))
-            {
-                currency.ManaLoss(spawnInfo.ManaCost);
-            }
-            else
-            {
-                Debug.Log("Not enough mana to spend");
-                return;
-            }
-            
-
             int spawnCount = 1;
             if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerDoubleArmy"))
             {
@@ -107,11 +85,9 @@ public class MiniArmySpawner : MonoBehaviour
 
             for (int i = 0; i < spawnCount; i++)
             {
-                
                 SpawnMiniUnit(index);
             }
 
-           
             ui.OnUnitSpawned(index);
         }
     }
@@ -124,6 +100,20 @@ public class MiniArmySpawner : MonoBehaviour
         if (ai != null)
         {
             ai.enemyParent = gameObject;
+        }
+
+        // Assign material from player to spawned unit
+        Renderer[] playerRenderers = GetComponentsInChildren<Renderer>();
+        Renderer[] unitRenderers = unit.GetComponentsInChildren<Renderer>();
+
+        if (playerRenderers.Length > 0 && unitRenderers.Length > 0)
+        {
+            Material playerMat = playerRenderers[0].sharedMaterial;
+
+            foreach (Renderer rend in unitRenderers)
+            {
+                rend.sharedMaterial = playerMat;
+            }
         }
     }
 }

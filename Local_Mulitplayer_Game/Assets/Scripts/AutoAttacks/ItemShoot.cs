@@ -40,7 +40,7 @@ public class ItemShoot : ItemObject
                     StartCoroutine(DrawTrail(shotTrail,nearestTarget.transform.position));
 
                     //Take Damage
-                    nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage);
+                    nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage,gameObject);
                     Debug.Log("Dealing damage to: \t" + nearestTarget.name);
 
                     s_timerSinceAttack = 0; //reset the timer

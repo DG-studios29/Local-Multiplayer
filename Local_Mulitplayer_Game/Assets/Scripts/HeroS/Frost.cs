@@ -49,16 +49,21 @@ public class Frost : HeroBase
 
         yield return new WaitForSeconds(3f);
 
-        Collider[] enemies = Physics.OverlapSphere(wall.transform.position, 3f);
-        foreach (var enemy in enemies)
+        if (wall != null)
         {
-            if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+            Collider[] enemies = Physics.OverlapSphere(wall.transform.position, 3f);
+            foreach (var enemy in enemies)
             {
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage);
-                enemy.GetComponent<StatusEffects>()?.ApplyStun(2f);
+                if (enemy == null || enemy.gameObject == null) continue;
+                if ((enemy.CompareTag("Enemy")|| enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
+                {
+                    enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ability2.damage, gameObject);
+                    enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ability2.damage, gameObject);
+                    enemy.GetComponent<StatusEffects>()?.ApplyStun(2f);
+                }
             }
         }
+
 
         Destroy(wall);
     }
@@ -70,6 +75,7 @@ public class Frost : HeroBase
         Collider[] enemies = Physics.OverlapSphere(transform.position, 4f);
         foreach (var enemy in enemies)
         {
+            if (enemy == null || enemy.gameObject == null) continue;
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
                 var status = enemy.GetComponent<StatusEffects>();
@@ -81,10 +87,11 @@ public class Frost : HeroBase
 
         foreach (var enemy in enemies)
         {
+            if (enemy == null || enemy.gameObject == null) continue;
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
-                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage);
-                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage);
+                enemy.GetComponent<PlayerHealth>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
+                enemy.GetComponent<EnemyAI>()?.TakeDamage((int)abilities.ultimate.damage, gameObject);
             }
         }
 

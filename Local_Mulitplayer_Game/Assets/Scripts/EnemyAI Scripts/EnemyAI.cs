@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
@@ -121,7 +121,7 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject, 0.1f);
     }
 
-    public void TakeDamage(float hp)
+    public void TakeDamage(float hp, GameObject attacker)
     {
         health -= hp;
         Debug.Log($"Enemy {gameObject.name} took {hp} damage! Current HP: {health}");
@@ -133,13 +133,44 @@ public class EnemyAI : MonoBehaviour
 
         if(health <= 0)
         {
+            Debug.Log("Enemy died! Calling Die()...");
+            OnDeath(attacker);
             onEnemyDeath?.Invoke(this.gameObject);
             EnemyDestroy();
         }
     }
 
+    public void OnDeath(GameObject killer)
+    {
+        Debug.Log("👀 Die() called");
 
-    void GetEnemyData()
+        if (killer == null)
+        {
+            Debug.LogWarning("⚠️ Killer is null.");
+            return;
+        }
+
+        if (killer.CompareTag("Player"))
+        {
+            var stats = killer.GetComponent<PlayerStats>();
+            if (stats != null)
+            {
+                stats.AddArmyKill();
+                Debug.Log($"🪖 {killer.name} now has {stats.armyKills} kills.");
+            }
+            else
+            {
+                Debug.LogWarning($"⚠️ Killer {killer.name} has NO PlayerStats.");
+            }
+        }
+
+
+        Destroy(gameObject);
+    }
+
+
+
+void GetEnemyData()
     {
         health = enemyData.MaxHealth;
         damage = enemyData.Damage;
@@ -164,6 +195,34 @@ public class EnemyAI : MonoBehaviour
     }
 
 
+    //void RandomizeParent()
+    //{
+    //    List<GameObject> adopters = new List<GameObject>();
+
+    //    GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(playerTag);
+
+    //    foreach (GameObject parent in gameObjects)
+    //    {
+    //        adopters.Add(parent);
+    //    }
+
+
+    //    if (adopters.Count > 1)
+    //    {
+    //        int randNo;
+    //        randNo = UnityEngine.Random.Range(0, adopters.Count - 1);
+    //        enemyParent = adopters[randNo];
+    //    }
+    //    else if (adopters.Count == 1)
+    //    {
+    //        enemyParent = adopters[0];
+    //    }
+    //    else
+    //    {
+    //        enemyParent = null;
+    //    }
+
+    //}
 
     //finds all existing enemies, and stores them in the item object's list on its awake
     public void AddToEnemyList(ItemObject itemObject)
@@ -244,6 +303,7 @@ public class EnemyAI : MonoBehaviour
 
     void NearestTargetTracking()
     {
+        playerTargetList.RemoveAll(t => t == null);
 
         if (targetList.Count == 0)
         {
@@ -299,6 +359,8 @@ public class EnemyAI : MonoBehaviour
         {
             foreach (GameObject target in playerTargetList)
             {
+                if (target == null) continue;
+
                 var distance = Vector3.Distance(transform.position, target.transform.position);
                 if (distance < nearestPlayerDistance)
                 {
@@ -306,11 +368,12 @@ public class EnemyAI : MonoBehaviour
                     nearestPlayerTarget = target;
                 }
             }
+
         }
     }
 
     //needs to make logical decisions in all posible cases of what to target
-    protected virtual void DoTargetChase()
+    void DoTargetChase()
     {
         if (nearestTarget == null && nearestPlayerTarget != null)
         {
@@ -368,7 +431,7 @@ public class EnemyAI : MonoBehaviour
 
                 CascadeAnimation();
 
-                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage); //deal damage when in attack range
+                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage, gameObject); //deal damage when in attack range
                 time_sinceAttack = 0; //sets the cooldown for this function's condition
             }
             else if (nearestPlayerDistance < nearestDistance && nearestPlayerDistance < attackRange)
@@ -376,7 +439,7 @@ public class EnemyAI : MonoBehaviour
                 CascadeAnimation();
 
                 //player takes damage
-                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage);
+                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage, gameObject);
                 time_sinceAttack = 0;
             }
         }
@@ -388,7 +451,7 @@ public class EnemyAI : MonoBehaviour
                 CascadeAnimation();
 
                 //player to take damage
-                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage);
+                nearestPlayerTarget.GetComponent<PlayerHealth>().TakeDamage((int)damage, gameObject);
                 time_sinceAttack = 0;
             }
         }
@@ -398,7 +461,7 @@ public class EnemyAI : MonoBehaviour
             {
                 CascadeAnimation();
 
-                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage);
+                nearestTarget.GetComponent<EnemyAI>().TakeDamage(damage, gameObject);
                 time_sinceAttack = 0;
             }
         }

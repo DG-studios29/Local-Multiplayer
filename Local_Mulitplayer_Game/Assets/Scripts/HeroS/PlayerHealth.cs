@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     private MeshRenderer[] playerMeshRenderers;
     private int preSuddenDeathHealth = -1;
 
-
+    public bool IsAlive => currentHealth > 0;
 
 
     #region Interface Vars
@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         if (gameObject.name == "Player 2") isPlayer = IsPlayer.PlayerTwo;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject attacker)
     {
         if (isShielded) return;
 
@@ -87,7 +87,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
         if (currentHealth <= 0)
         {
-            Die();
+            Die(attacker);
         }
 
     }
@@ -114,7 +114,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
             healthText.text = $"{currentHealth} / {maxHealth}"; // 🔹 Ensure text updates
     }
 
-    void Die()
+    void Die(GameObject killer)
     {
         Debug.Log(gameObject.name + " has died!");
 
@@ -123,6 +123,22 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
             StartCoroutine(RespawnAfterDelay(2f));
         }
 
+        if (!ArenaEventManager.Instance.IsActive("triggerPlayerRespawner"))
+        {
+            GameManager.Instance?.OnPlayerDeath(this.gameObject);
+
+        }
+
+        var stats = killer?.GetComponent<PlayerStats>();
+        if (stats != null)stats.AddArmyKill();
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance?.OnPlayerDeath(this.gameObject);
+
+        }
+
+        Destroy(gameObject);
         Debug.Log(gameObject.name + " has died!");
 
     }
@@ -138,8 +154,6 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     private IEnumerator FreezeDuration()
     {
-        baseMaterial = playerMeshRenderers[0].material;
-        
         ChangeMat(frozenMaterial);
         yield return new WaitForSeconds(freezeDuration);
         isFrozen = false;
@@ -149,8 +163,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
 
     private IEnumerator ShowHurt()
     {
-        baseMaterial = playerMeshRenderers[0].material;
-        
+
         alreadyHurting = true;
         yield return new WaitForSeconds(0.1f);
 
