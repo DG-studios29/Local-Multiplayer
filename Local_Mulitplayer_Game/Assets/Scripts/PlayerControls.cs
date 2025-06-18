@@ -128,18 +128,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SpawnSelectedArmy"",
+                    ""name"": ""SpawnArmyByKey4"",
                     ""type"": ""Button"",
-                    ""id"": ""623ccb4b-7384-44af-9be5-d999d6aba50c"",
+                    ""id"": ""722248de-8e56-45ea-a566-022e34411c78"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwitchArmy"",
+                    ""name"": ""SpawnSelectedArmy"",
                     ""type"": ""Button"",
-                    ""id"": ""08271fdb-9f6a-46c8-843a-80afc961e3de"",
+                    ""id"": ""623ccb4b-7384-44af-9be5-d999d6aba50c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -355,6 +355,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fe4272a5-9173-4d0f-95aa-698a7f6842f1"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SpawnArmyByKey4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd719511-2440-4a0d-bbf5-d4938333248f"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""SpawnArmyByKey4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8fc3706a-43a5-4515-925a-ddb9250158d3"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -504,72 +526,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Joystick"",
                     ""action"": ""Ultimate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f81e32f4-3efa-4f14-af96-6a19087077ae"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""SwitchArmy"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee5351ff-927e-4fc4-9380-2d11af5f68d5"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""SwitchArmy"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""74b6ab4b-5925-4391-922d-b5d140e31463"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""SwitchArmy"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bef22b2c-51bd-41a6-8e41-c57fa185ab27"",
-                    ""path"": ""<HID::SZ-MYPOWER DS4 Wired Controller>/hat/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Joystick"",
-                    ""action"": ""SwitchArmy"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e238b483-22f1-4c53-bb8e-d71606e82b27"",
-                    ""path"": ""<HID::SZ-MYPOWER DS4 Wired Controller>/hat/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Joystick"",
-                    ""action"": ""SwitchArmy"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e9946021-2d39-4766-9009-1e684ab4b546"",
-                    ""path"": ""<HID::SZ-MYPOWER DS4 Wired Controller>/hat/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Joystick"",
-                    ""action"": ""SwitchArmy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1348,8 +1304,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_SpawnArmyByKey1 = m_Player.FindAction("SpawnArmyByKey1", throwIfNotFound: true);
         m_Player_SpawnArmyByKey2 = m_Player.FindAction("SpawnArmyByKey2", throwIfNotFound: true);
         m_Player_SpawnArmyByKey3 = m_Player.FindAction("SpawnArmyByKey3", throwIfNotFound: true);
+        m_Player_SpawnArmyByKey4 = m_Player.FindAction("SpawnArmyByKey4", throwIfNotFound: true);
         m_Player_SpawnSelectedArmy = m_Player.FindAction("SpawnSelectedArmy", throwIfNotFound: true);
-        m_Player_SwitchArmy = m_Player.FindAction("SwitchArmy", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
@@ -1461,8 +1417,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SpawnArmyByKey1;
     private readonly InputAction m_Player_SpawnArmyByKey2;
     private readonly InputAction m_Player_SpawnArmyByKey3;
+    private readonly InputAction m_Player_SpawnArmyByKey4;
     private readonly InputAction m_Player_SpawnSelectedArmy;
-    private readonly InputAction m_Player_SwitchArmy;
     private readonly InputAction m_Player_Punch;
     private readonly InputAction m_Player_Ability1;
     private readonly InputAction m_Player_Ability2;
@@ -1498,13 +1454,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @SpawnArmyByKey3 => m_Wrapper.m_Player_SpawnArmyByKey3;
         /// <summary>
+        /// Provides access to the underlying input action "Player/SpawnArmyByKey4".
+        /// </summary>
+        public InputAction @SpawnArmyByKey4 => m_Wrapper.m_Player_SpawnArmyByKey4;
+        /// <summary>
         /// Provides access to the underlying input action "Player/SpawnSelectedArmy".
         /// </summary>
         public InputAction @SpawnSelectedArmy => m_Wrapper.m_Player_SpawnSelectedArmy;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/SwitchArmy".
-        /// </summary>
-        public InputAction @SwitchArmy => m_Wrapper.m_Player_SwitchArmy;
         /// <summary>
         /// Provides access to the underlying input action "Player/Punch".
         /// </summary>
@@ -1571,12 +1527,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SpawnArmyByKey3.started += instance.OnSpawnArmyByKey3;
             @SpawnArmyByKey3.performed += instance.OnSpawnArmyByKey3;
             @SpawnArmyByKey3.canceled += instance.OnSpawnArmyByKey3;
+            @SpawnArmyByKey4.started += instance.OnSpawnArmyByKey4;
+            @SpawnArmyByKey4.performed += instance.OnSpawnArmyByKey4;
+            @SpawnArmyByKey4.canceled += instance.OnSpawnArmyByKey4;
             @SpawnSelectedArmy.started += instance.OnSpawnSelectedArmy;
             @SpawnSelectedArmy.performed += instance.OnSpawnSelectedArmy;
             @SpawnSelectedArmy.canceled += instance.OnSpawnSelectedArmy;
-            @SwitchArmy.started += instance.OnSwitchArmy;
-            @SwitchArmy.performed += instance.OnSwitchArmy;
-            @SwitchArmy.canceled += instance.OnSwitchArmy;
             @Punch.started += instance.OnPunch;
             @Punch.performed += instance.OnPunch;
             @Punch.canceled += instance.OnPunch;
@@ -1621,12 +1577,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SpawnArmyByKey3.started -= instance.OnSpawnArmyByKey3;
             @SpawnArmyByKey3.performed -= instance.OnSpawnArmyByKey3;
             @SpawnArmyByKey3.canceled -= instance.OnSpawnArmyByKey3;
+            @SpawnArmyByKey4.started -= instance.OnSpawnArmyByKey4;
+            @SpawnArmyByKey4.performed -= instance.OnSpawnArmyByKey4;
+            @SpawnArmyByKey4.canceled -= instance.OnSpawnArmyByKey4;
             @SpawnSelectedArmy.started -= instance.OnSpawnSelectedArmy;
             @SpawnSelectedArmy.performed -= instance.OnSpawnSelectedArmy;
             @SpawnSelectedArmy.canceled -= instance.OnSpawnSelectedArmy;
-            @SwitchArmy.started -= instance.OnSwitchArmy;
-            @SwitchArmy.performed -= instance.OnSwitchArmy;
-            @SwitchArmy.canceled -= instance.OnSwitchArmy;
             @Punch.started -= instance.OnPunch;
             @Punch.performed -= instance.OnPunch;
             @Punch.canceled -= instance.OnPunch;
@@ -2119,19 +2075,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpawnArmyByKey3(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "SpawnArmyByKey4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpawnArmyByKey4(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "SpawnSelectedArmy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpawnSelectedArmy(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "SwitchArmy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSwitchArmy(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Punch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

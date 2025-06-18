@@ -11,18 +11,18 @@ public class MiniArmySpawnerUI : MonoBehaviour
         public TMP_Text cooldownText;
     }
 
-    public UnitUI[] unitUIs = new UnitUI[3]; // 0 = Melee, 1 = Ranged, 2 = Defense
+    public UnitUI[] unitUIs = new UnitUI[4]; // 0 = Melee, 1 = Ranged, 2 = Defense
 
     // Separate cooldowns for each unit type
-    public float[] spawnCooldowns = new float[3] { 2f, 3f, 5f }; // You can tweak these
-    private float[] cooldownTimers = new float[3];
+    public float[] spawnCooldowns = new float[4] { 2f, 3f, 5f, 1f }; // You can tweak these
+    private float[] cooldownTimers = new float[4];
 
     private Color readyColor = Color.white;
     private Color cooldownColor = Color.gray;
 
     void Update()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (cooldownTimers[i] > 0)
             {
@@ -56,7 +56,7 @@ public class MiniArmySpawnerUI : MonoBehaviour
 
     public void SetupInitialUI()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             unitUIs[i].cooldownFill.fillAmount = 0f;
             unitUIs[i].cooldownFill.color = readyColor;
