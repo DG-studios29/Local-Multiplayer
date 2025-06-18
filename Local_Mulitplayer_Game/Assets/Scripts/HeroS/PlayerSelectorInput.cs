@@ -9,6 +9,8 @@ public class PlayerSelectorInput : MonoBehaviour
 
     private float lastInputTime;
     public float inputCooldown = 0.2f;
+    private float scrollCooldown = 0.2f;
+    private float lastScrollTime = -1f;
 
     void Awake()
     {
@@ -22,16 +24,18 @@ public class PlayerSelectorInput : MonoBehaviour
             Debug.Log($"✅ Player {playerIndex} initialized input for selection.");
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnNavigate(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        Vector2 nav = context.ReadValue<Vector2>();
 
-        Vector2 move = context.ReadValue<Vector2>();
-        if (Mathf.Abs(move.x) > 0.5f && Time.time - lastInputTime > inputCooldown)
+        if (context.performed && Time.time - lastScrollTime > scrollCooldown)
         {
-            int direction = move.x > 0 ? 1 : -1;
-            selectionUI?.MoveSelector(playerIndex, direction);
-            lastInputTime = Time.time;
+            if (Mathf.Abs(nav.x) > 0.5f)
+            {
+                int direction = nav.x > 0 ? 1 : -1;
+                HeroSelectionUI.Instance.MoveSelector(playerIndex, direction);
+                lastScrollTime = Time.time;
+            }
         }
     }
 
@@ -47,7 +51,7 @@ public class PlayerSelectorInput : MonoBehaviour
     {
         if (context.performed)
         {
-            selectionUI?.CancelSelection(playerIndex);
+            HeroSelectionUI.Instance.CancelPlayerSelection(playerIndex);
         }
     }
 }

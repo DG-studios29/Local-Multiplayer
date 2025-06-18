@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heroselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heroselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\managers\\heromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\heromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\mapselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mapselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_base\\arenasampler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_res\\_base\\arenasampler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\playerselectorinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\playerselectorinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\managers\\playerjoinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\playerjoinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ArenaSampler.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_base\\ArenaSampler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_base\\ArenaSampler.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_base\\ArenaSampler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_Res\\_base\\ArenaSampler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "PlayerSelectorInput.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAQwC8AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T21:07:59.88Z",
+              "WhenOpened": "2025-06-17T23:22:38.046Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "HeroManager.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\HeroManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\HeroManager.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\HeroManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\HeroManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T23:14:49.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MapSelectionUI.cs",
               "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\MapSelectionUI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MapSelectionUI.cs",
               "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\MapSelectionUI.cs",
               "RelativeToolTip": "Assets\\Scripts\\MapSelectionUI.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwA4AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAQwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T20:47:20.524Z",
+              "WhenOpened": "2025-06-17T23:11:26.816Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "HeroSelectionUI.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroSelectionUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroSelectionUI.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroSelectionUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroSelectionUI.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T23:11:22.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerJoinManager.cs",
+              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
+              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T23:11:18.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
               "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAqwJEAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAPUAAAAAAAAAAAAEwAEBAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T20:38:07.108Z",
               "EditorCaption": ""
