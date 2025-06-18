@@ -56,8 +56,7 @@ public class UINavigationManager : MonoBehaviour
 
     private void EnableGamepadMode()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+      
         SelectLastOrDefault();
     }
 

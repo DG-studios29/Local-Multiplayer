@@ -235,6 +235,7 @@ MonoBehaviour:
   objectsToCheckAgainst:
     serializedVersion: 2
     m_Bits: 1
+  playerInput: {fileID: 0}
   isPlayer: 0
 --- !u!114 &4990804375180201557
 MonoBehaviour:
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd145f57d7f97947b255c4d4fac15b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheck: {fileID: 0}
   isPunchR: 0
   punchDamage: 1
   unscaledMAXDamage: 10
@@ -293,6 +295,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 192
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   timePushed: 0.2
   distancePushed: 1
   maxChargeTime: 1.25
@@ -477,7 +482,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1999980281684454691}
         m_TargetAssemblyTypeName: PlayerSelectorInput, Assembly-CSharp
-        m_MethodName: OnMove
+        m_MethodName: OnNavigate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -549,6 +554,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d5588f4a-72ea-4d92-9a0a-84cf62bbe6d1
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: de1f65ab-5284-4e85-9b69-65824367b5e6
+    m_ActionName: 'Tutorial/Next[/Keyboard/space,/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7dc893c1-2f5a-4073-87b8-279251cd2888
+    m_ActionName: 'Tutorial/Previous[/Keyboard/backspace,/DualSenseGamepadHID/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: abd46041-ef28-4b6c-9736-73ee42809f31
+    m_ActionName: 'Tutorial/Start Game[/Keyboard/enter,/DualSenseGamepadHID/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9a4d61cb-93b4-42ac-b1c8-c684f090b83f
+    m_ActionName: 'Tutorial/Pause Game[/Keyboard/escape,/DualSenseGamepadHID/select]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI

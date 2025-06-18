@@ -23,7 +23,7 @@ public class ArenaSampler : MonoBehaviour
     #endregion
 
     #region Built-In Methods
-    private void OnEnable()
+    private void Start()
     {
         if (boundingBox!= null)
         {

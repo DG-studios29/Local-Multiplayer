@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     [Header("Camera")]
     public CinemachineTargetGroup targetGroup;
 
+    [Header("UI Panels")]
+    public GameObject loadingPanel;
+
     [Header("Player UI")]
     public Slider player1HealthSlider;
     public TMP_Text player1HealthText;
@@ -81,6 +84,10 @@ public class GameManager : MonoBehaviour
     private float timer;
     private bool gameStarted = false;
     public TextMeshProUGUI timerText;
+
+    private bool playersJoined = false;
+    private bool heroesSelected = false;
+    private bool mapSelected = false;
 
     private void Awake()
     {
@@ -130,24 +137,59 @@ public class GameManager : MonoBehaviour
         timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
-    public void StartGame(List<string> chosenHeroes)
+    public void NotifyPlayersJoined()
+    {
+        playersJoined = true;
+        TryStartGame();
+    }
+
+    public void NotifyHeroSelectionComplete(List<string> chosenHeroes)
     {
         selectedHeroes = chosenHeroes;
+        heroesSelected = true;
+        TryStartGame();
+    }
 
-        for (int i = 0; i < selectedHeroes.Count; i++)
+    public void NotifyMapSelected(string mapName)
+    {
+        selectedMap = mapName;
+        mapSelected = true;
+        TryStartGame();
+    }
+
+    private void TryStartGame()
+    {
+        if (playersJoined && heroesSelected && mapSelected)
         {
-            if (string.IsNullOrEmpty(selectedHeroes[i]))
-                selectedHeroes[i] = "Blazeheart";
+            Debug.Log("✅ All conditions met. Starting game...");
+            StartGame();
         }
+    }
+
+    public void StartGame()
+    {
+        loadingPanel?.SetActive(true);
+        StartCoroutine(StartGameRoutine());
+    }
+
+    private IEnumerator StartGameRoutine()
+    {
+        yield return new WaitForSeconds(0.5f); // Optional buffer
 
         timer = gameDuration;
         gameStarted = true;
 
         SelectMap(selectedMap);
-        
+
+        yield return new WaitForSeconds(1f); // Simulate load delay or let map init
 
         StartCoroutine(SpawnPlayersDelayed());
+
+        yield return new WaitForSeconds(0.5f); // Let things settle
+
+        loadingPanel?.SetActive(false); // ✅ Hide after everything's ready
     }
+
 
     private IEnumerator SpawnPlayersDelayed()
     {
@@ -197,15 +239,16 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            var playerCurrency = player.GetComponent<PlayerCurrency>();
-            if (player.name == "Player 1" && p1CurrencyUI != null)
-            {
-                playerCurrency.SetupManaUI(p1CurrencyUI);
-            }
-            else if (player.name == "Player 2" && p2CurrencyUI != null)
-            {
-                playerCurrency.SetupManaUI(p2CurrencyUI);
-            }
+            //var playerCurrency = player.GetComponent<PlayerCurrency>();
+            //if (player.name == "Player 1" && p1CurrencyUI != null)
+            //{
+            //    playerCurrency.SetupManaUI(p1CurrencyUI);
+            //}
+            //else if (player.name == "Player 2" && p2CurrencyUI != null)
+            //{
+            //    playerCurrency.SetupManaUI(p2CurrencyUI);
+            //}
+
             player.transform.position = spawnPos + Vector3.up * 1f;
             player.transform.rotation = currentSpawnPoints[index].rotation;
 
@@ -229,7 +272,7 @@ public class GameManager : MonoBehaviour
                 player.AddComponent<PlayerStats>();
         }
 
-        Debug.Log("SpawnPlayer");
+      
         HeroSelectionUI.Instance.playerUICanvas.SetActive(true);
        
     }
@@ -262,23 +305,43 @@ public class GameManager : MonoBehaviour
 
     public void AssignHeroScript(GameObject player, string heroName)
     {
-        var existing = player.GetComponent<HeroBase>();
-        if (existing != null) Destroy(existing);
-
-        HeroBase hero = null;
-        HeroAbility data = Resources.Load<HeroAbility>($"Abilities/{heroName}");
-
-        switch (heroName)
+        // 1. Remove any existing hero behaviour
+        foreach (var existingHero in player.GetComponents<HeroBase>())
         {
-            case "Blazeheart": hero = player.AddComponent<Blazeheart>(); break;
-            case "Frost": hero = player.AddComponent<Frost>(); break;
-            case "Nightshade": hero = player.AddComponent<Nightshade>(); break;
-            case "Stonewarden": hero = player.AddComponent<Stonewarden>(); break;
+            Destroy(existingHero);
         }
 
-        if (hero != null && data != null)
-            hero.abilities = data;
+        // 2. Load ability data
+        HeroAbility data = Resources.Load<HeroAbility>($"Abilities/{heroName}");
+        if (data == null)
+        {
+            Debug.LogWarning($"⚠️ Could not load HeroAbility for '{heroName}'. Check Resources/Abilities path.");
+        }
+
+        // 3. Attach the correct hero script
+        HeroBase newHero = null;
+        switch (heroName)
+        {
+            case "Blazeheart": newHero = player.AddComponent<Blazeheart>(); break;
+            case "Frost": newHero = player.AddComponent<Frost>(); break;
+            case "Nightshade": newHero = player.AddComponent<Nightshade>(); break;
+            case "Stonewarden": newHero = player.AddComponent<Stonewarden>(); break;
+
+            default:
+                Debug.LogWarning($"⚠️ Unknown hero '{heroName}'. Falling back to Blazeheart.");
+                newHero = player.AddComponent<Blazeheart>();
+                data = Resources.Load<HeroAbility>("Abilities/Blazeheart");
+                break;
+        }
+
+        // 4. Inject abilities
+        if (newHero != null && data != null)
+        {
+            newHero.abilities = data;
+        }
     }
+
+
 
     public void AssignPlayerMaterials(GameObject player, int index)
     {

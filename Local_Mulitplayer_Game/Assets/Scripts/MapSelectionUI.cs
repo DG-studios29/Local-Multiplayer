@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,17 +27,9 @@ public class MapSelectionUI : MonoBehaviour
 
     public void OnConfirmMap()
     {
-        List<string> chosenHeroes = GameManager.Instance.selectedHeroes;
-
         if (string.IsNullOrEmpty(GameManager.Instance.selectedMap))
         {
             Debug.LogWarning("No map selected! Please select a map first.");
-            return;
-        }
-
-        if (chosenHeroes == null || chosenHeroes.Count == 0)
-        {
-            Debug.LogWarning("No heroes selected! Cannot start game.");
             return;
         }
 
@@ -46,9 +38,13 @@ public class MapSelectionUI : MonoBehaviour
             player.SwitchCurrentActionMap("Player");
         }
 
-        this.gameObject.SetActive(false);
+
         mapCanvas.SetActive(false);
-        GameManager.Instance.StartGame(chosenHeroes);
+
+  
+        GameManager.Instance.NotifyMapSelected(GameManager.Instance.selectedMap);
+
         ArenaEventManager.Instance.StartEventRoutine();
     }
+
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.InputSystem.UI;
@@ -70,7 +70,10 @@ public class PlayerJoinManager : MonoBehaviour
 
         joinPanel.SetActive(false);
         heroPanel.SetActive(true);
+
+        GameManager.Instance.NotifyPlayersJoined();
     }
+
 
     private IEnumerator HideAfterDelay()
     {
