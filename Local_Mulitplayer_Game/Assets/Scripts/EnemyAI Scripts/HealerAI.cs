@@ -24,7 +24,7 @@ public class HealerAI : EnemyAI
     {
         time_sinceAttack += Time.deltaTime; //time since healed
         
-        //DoTargetChase();
+        DoTargetChase();
 
         DoLookAt();
     }
