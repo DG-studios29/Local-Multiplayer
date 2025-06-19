@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("✅ All conditions met. Starting game...");
             StartGame();
-            TutorialManager.instance.TutorialStarted();
+            if (TutorialManager.instance) TutorialManager.instance.TutorialStarted();
         }
     }
 

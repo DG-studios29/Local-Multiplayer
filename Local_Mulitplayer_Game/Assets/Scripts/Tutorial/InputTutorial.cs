@@ -8,7 +8,9 @@ public class InputTutorial : MonoBehaviour
     {
         if (context.performed)
         {
-            TutorialManager.instance.NextTutorialTip();
+            if (TutorialManager.instance)TutorialManager.instance.NextTutorialTip();
+            
+            
         }
     }
 
@@ -16,7 +18,7 @@ public class InputTutorial : MonoBehaviour
     {
         if (context.performed)
         {
-            TutorialManager.instance.PreviousTutorialTip();
+            if (TutorialManager.instance) TutorialManager.instance.PreviousTutorialTip();
         }
     }
 
