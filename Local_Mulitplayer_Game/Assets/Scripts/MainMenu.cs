@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
     public GameObject controlsPanel;
     public GameObject mainMenuPanel;
 
+    public GameObject storyMenuPanel;
+
     void Awake()
     {
         controlsPanel.SetActive(false);
@@ -18,6 +20,7 @@ public class MainMenu : MonoBehaviour
     {
         controlsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
+        storyMenuPanel.SetActive(false);
 
     }
 
@@ -28,5 +31,21 @@ public class MainMenu : MonoBehaviour
 
         controlsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    public void StoryMenuActivate()
+
+    {
+        storyMenuPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+        controlsPanel.SetActive(false);
+    }
+
+    public void StoryMenuDeactivate()
+
+    {
+        storyMenuPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+        controlsPanel.SetActive(false);
     }
 }

@@ -23,6 +23,13 @@ public class MenuManager : MonoBehaviour
 
     }
 
+    public void TutorialScene()
+    {
+
+        SceneManager.LoadScene("TutorialTEST");
+
+    }
+
 
     public void ExitGame()
     {
