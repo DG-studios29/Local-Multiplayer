@@ -149,6 +149,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         }
         
         onPlayerDeath?.Invoke(); // Can use PlayerHealth.onPlayerDeath += subscriptions
+                                 //         PlayerHealth.onPlayerDeath -= subscriptions
         Destroy(gameObject);
         Debug.Log(gameObject.name + " has died!");
 
