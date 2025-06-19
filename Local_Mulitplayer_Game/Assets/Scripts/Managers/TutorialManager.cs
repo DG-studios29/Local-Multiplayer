@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
@@ -176,16 +177,26 @@ public class TutorialManager : MonoBehaviour
             //Check Match
             if (currentTip.ActionToPerform == actionName)
             {
-                //Success has been met, and we can now progress 
-                canGetNextTip = true;
-                
-                //Activate Prev and Next Buttons
-                ToggleTutorialButtons();
+
+                StartCoroutine(DelayNextTip(2f));
+             
             }
             
         }
     }
 
+    IEnumerator DelayNextTip(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        //Success has been met, and we can now progress 
+        canGetNextTip = true;
+                
+        //Activate Prev and Next Buttons
+        ToggleTutorialButtons();
+    }
+    
+    
     private void ToggleTutorialButtons()
     {
         if (!tutorialTextButtons.activeSelf)
