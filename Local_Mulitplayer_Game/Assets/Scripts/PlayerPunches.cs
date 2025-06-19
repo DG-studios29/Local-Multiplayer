@@ -11,16 +11,16 @@ public class PlayerPunches : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]private Transform groundCheck;
     
-    private float gravityScale = 1f;
+    [SerializeField]private float gravityScale = 1f;
     private float globalGravity = -9.81f;
     
     //Projectile Motion 
-    private float launchAngle; //will say in inspector
+    [SerializeField]private float launchAngle; //will say in inspector
     private float tanAlpha, cosAlpha,sinAlpha;
-    private float rangeZ;  //will say in inspector
+    [SerializeField]private float rangeZ;  //will say in inspector
     private float Uz, Uy, Uo;
     private float gravity;
-    private float heightY;
+    [SerializeField]private float heightY;
     private float heightMax;
     private float timeTaken;
     private Vector3 initialVelocity;
@@ -89,6 +89,8 @@ public class PlayerPunches : MonoBehaviour
                 Debug.LogError("AudioSource is missing on " + gameObject.name);
             }
         }
+        
+        InitializeVariables();
     }
 
     // Update is called once per frame
@@ -122,6 +124,36 @@ public class PlayerPunches : MonoBehaviour
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
 
+
+    private void InitializeVariables()
+    {
+        gravity = Physics.gravity.y;
+        tanAlpha = Mathf.Tan(launchAngle * Mathf.Deg2Rad);
+        cosAlpha = Mathf.Cos(launchAngle * Mathf.Deg2Rad);
+        sinAlpha = Mathf.Sin(launchAngle * Mathf.Deg2Rad);
+
+
+        Uz = Mathf.Sqrt((gravity*rangeZ * rangeZ)/(2*(heightY - rangeZ*tanAlpha)));
+        Uy = tanAlpha * Uz;
+
+        Uo = Mathf.Sqrt((Uz * Uz) + (Uy * Uy));
+
+        timeTaken = -(Uo * sinAlpha * 2 / gravity);
+
+        //Uo = -(timeTaken * gravity / sinAlpha * 2);
+        //rangeZ = Uo * cosAlpha * timeTaken;
+
+        //Uo = rangeZ / (timeTaken * cosAlpha);
+
+        Uz = Uo * cosAlpha;
+        Uy = Uo * sinAlpha;
+
+       
+        initialVelocity = new Vector3(0, Uy , Uz) * gravityScale;
+    }
+    
+    
+    
     private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.55f,  groundMask);
@@ -233,9 +265,13 @@ public class PlayerPunches : MonoBehaviour
                     
 
                     //apply forces
-                    punchForce = distancePushed * 2f / timePushed;
-                    Vector3 criticalVelocity = punchForce * hit.rigidbody.mass * (transform.forward + transform.up);
-                    hit.rigidbody.AddForce(criticalVelocity, ForceMode.Impulse);
+                    //punchForce = distancePushed * 2f / timePushed;
+                    //Vector3 criticalVelocity = punchForce * hit.rigidbody.mass * (transform.forward + transform.up);
+                    
+                    globalVelocity = hit.transform.TransformDirection(initialVelocity);
+                    //hit.rigidbody.AddForce(criticalVelocity, ForceMode.Impulse);
+                    
+                    hit.rigidbody.linearVelocity = globalVelocity;
 
                     //show particle FX
                     GameObject hypeFX = GameObject.Instantiate(upperCutFX, transform.position + (transform.forward * 1.5f), Quaternion.identity);
