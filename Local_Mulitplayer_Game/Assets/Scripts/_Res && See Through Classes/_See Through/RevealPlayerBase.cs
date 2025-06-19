@@ -50,6 +50,8 @@ public class RevealPlayerBase : MonoBehaviour
     {
         if (cam && players.Count > 0)
         {
+            players.RemoveAll(i => i == null);
+            
             objectsCurrentlyBeingHit.Clear();
 
             foreach(var player in players)

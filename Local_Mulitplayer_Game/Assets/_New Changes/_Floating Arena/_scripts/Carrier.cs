@@ -9,7 +9,7 @@ public class Carrier : MonoBehaviour
         player.SetParent(null);
         player.GetComponent<Rigidbody>().useGravity = true;
         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        playerHealth.TakeDamage(100,gameObject);
+        playerHealth.TakeDamage(50,gameObject);
     }
 
     public void DestroyObject()

@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         Vector3 moveDirection = new Vector3(movementInput.x, 0, movementInput.y);
         isWalking = moveDirection.magnitude > 0.1f;
 
-        if (isWalking && !CollidingWithObstacle())
+        if (isWalking )
         {
             // Smooth acceleration
             Vector3 targetVelocity = moveDirection.normalized * moveSpeed;
