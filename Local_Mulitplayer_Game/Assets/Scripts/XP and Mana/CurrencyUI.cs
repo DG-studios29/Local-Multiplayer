@@ -4,7 +4,7 @@ using TMPro;
 
 public class CurrencyUI : MonoBehaviour
 {
-    [SerializeField]private Image manaFillImage;
+    [SerializeField]private Slider manaFillImage;
     [SerializeField]private TextMeshProUGUI xpText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +23,7 @@ public class CurrencyUI : MonoBehaviour
     public void ManaBarUpdate(float fillRatio)
     {
         if(!manaFillImage) return;
-        manaFillImage.fillAmount = fillRatio;
+        manaFillImage.value = fillRatio;
     }
 
     public void XpTextUpdate(float xp)
