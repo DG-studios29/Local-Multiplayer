@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
-  m_Name: Introduction
+  m_Name: Pickups
   m_EditorClassIdentifier: 
-  textLine: "Welcome great ones. \nTo the stage and battle for 50 000 summons"
+  textLine: There will pickups which will provide you with boosts when in the game
   isToBePerformed: 0
-  hasVisualInfo: 0
+  hasVisualInfo: 1
   actionToPerform: 
   visualInfoImage: {fileID: 0}

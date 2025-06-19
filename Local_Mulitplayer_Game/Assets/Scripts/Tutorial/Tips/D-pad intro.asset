@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
-  m_Name: Introduction
+  m_Name: D-pad intro
   m_EditorClassIdentifier: 
-  textLine: "Welcome great ones. \nTo the stage and battle for 50 000 summons"
+  textLine: "Use your D-pad to spawn your armies\nHowever it will cost you Mana.
+    \nAnd you can't just spam your guys either, so take note of that"
   isToBePerformed: 0
-  hasVisualInfo: 0
+  hasVisualInfo: 1
   actionToPerform: 
   visualInfoImage: {fileID: 0}
