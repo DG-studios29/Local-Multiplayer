@@ -16,6 +16,6 @@ MonoBehaviour:
     Dio which damage enemy units on contact. And the auto-shooting protection of
     Dio which will attack the nearest enemy.
   isToBePerformed: 0
-  hasVisualInfo: 0
+  hasVisualInfo: 1
   actionToPerform: 
   visualInfoImage: {fileID: 0}

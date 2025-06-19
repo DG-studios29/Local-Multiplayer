@@ -62,6 +62,7 @@ public class TutorialManager : MonoBehaviour
         successText.enabled = false;
         visualInfoHolder.SetActive(false);
         tutorialTextButtons.SetActive(false);
+        tutorialFilter.SetActive(false);
         
         ShowTutorialTip();
     }
@@ -194,6 +195,7 @@ public class TutorialManager : MonoBehaviour
             successText.enabled = currentTip.IsToBePerformed;
             
             tutorialTextButtons.SetActive(true);
+            tutorialFilter.SetActive(true);
         }
         
     }
@@ -201,6 +203,7 @@ public class TutorialManager : MonoBehaviour
     private void ToggleOffPrevious()
     {
         //SwitchToPlayerMap();
+        tutorialFilter.SetActive(false);
         tutorialTextButtons.SetActive(false);
         visualInfoHolder.SetActive(false);
     }    
