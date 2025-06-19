@@ -15,19 +15,19 @@ MonoBehaviour:
   heroName: Stonewarden
   ability1:
     abilityName: Rockball
-    projectilePrefab: {fileID: 6294508013172393196, guid: 7a167110d27a657448f482f6c1f6735c, type: 3}
+    projectilePrefab: {fileID: 7830049661036488358, guid: 64e3cd41f775d42459e5156b8dd8dd91, type: 3}
     cooldown: 5
     damage: 5
     icon: {fileID: -2135217138, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ability2:
     abilityName: Rockroll
-    projectilePrefab: {fileID: 919132149155446097, guid: d0bd3227554f45c45bb1c4d5d626f93b, type: 3}
+    projectilePrefab: {fileID: 3576762469267970302, guid: 1d4eb932ee3260e4a838d6a48de718fb, type: 3}
     cooldown: 10
     damage: 10
     icon: {fileID: -1812065656, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ultimate:
     abilityName: EarthCrack
-    projectilePrefab: {fileID: 919132149155446097, guid: dcbddf98e656e3d488401f2701fd453b, type: 3}
+    projectilePrefab: {fileID: 8636638807628191489, guid: 9aa92dfeb8c253149b667286b6afb3c6, type: 3}
     cooldown: 20
     damage: 20
     icon: {fileID: -63915906, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}

@@ -77,11 +77,19 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     {
         if (isShielded) return;
 
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        UpdateHealthUI(); // 🔹 Ensure UI updates every time damage is taken
+        // Check for StatusEffects and apply damage reduction
+        StatusEffects effects = GetComponent<StatusEffects>();
+        int finalDamage = damage;
 
-        Debug.Log($"{gameObject.name} took {damage} damage. Current Health: {currentHealth}");
+        if (effects != null)
+        {
+            finalDamage = effects.ModifyIncomingDamage(damage);
+            Debug.Log($"[Damage] {gameObject.name} took reduced damage: {damage} → {finalDamage}");
+        }
+
+        currentHealth -= finalDamage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
 
         if (!alreadyHurting && !isFrozen)
             StartCoroutine(ShowHurt());
@@ -90,8 +98,8 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         {
             Die(attacker);
         }
-
     }
+
 
     public void Heal(int amount)
     {

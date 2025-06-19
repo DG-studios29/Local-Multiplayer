@@ -99,7 +99,7 @@ public class Nightshade : HeroBase, IPlayerEffect
         if (abilities.ultimate.projectilePrefab != null)
         {
             GameObject effect = Instantiate(abilities.ultimate.projectilePrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
-            Destroy(effect, 3f);
+            Destroy(effect, 10f);
         }
 
         Collider[] enemies = Physics.OverlapSphere(transform.position, 10f);

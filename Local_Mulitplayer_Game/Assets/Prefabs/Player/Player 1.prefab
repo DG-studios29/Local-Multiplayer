@@ -576,7 +576,7 @@ MonoBehaviour:
     m_ActionId: 722248de-8e56-45ea-a566-022e34411c78
     m_ActionName: 'Player/SpawnArmyByKey4[/Keyboard/4,/DualSenseGamepadHID/dpad/left]'
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -916,7 +916,7 @@ Transform:
   m_GameObject: {fileID: 4742957218830955432}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003996174, y: 0.47702655, z: -0.0067224903}
+  m_LocalPosition: {x: 0.003996174, y: 0.47702655, z: 0.359}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []

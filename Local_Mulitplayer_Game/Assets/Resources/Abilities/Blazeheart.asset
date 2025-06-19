@@ -16,7 +16,7 @@ MonoBehaviour:
   ability1:
     abilityName: Fireball
     projectilePrefab: {fileID: 1551588586492170970, guid: 4b2a0d61e654f1d4ebad5b5a5b82c34f, type: 3}
-    cooldown: 0
+    cooldown: 5
     damage: 5
     icon: {fileID: -1043601413, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ability2:

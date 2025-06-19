@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53c4c6ba6f420a42ab58c98ed5f89b0, type: 3}
+  m_Name: Controller
+  m_EditorClassIdentifier: 
+  Ability1: {fileID: 21300000, guid: 52b23784f6810604eb5d78d53b54408f, type: 3}
+  Ability2: {fileID: 21300000, guid: df992d4ee0a498747a36210496a31e44, type: 3}
+  Ability3: {fileID: 21300000, guid: bc440c3ac56c80549876a4fa2f794da6, type: 3}
+  Tank: {fileID: 21300000, guid: b09b7e7cc754bb148a599d20c0ce5508, type: 3}
+  Warrior: {fileID: 21300000, guid: a3165d6ca45443a4c9b177a9fa10f0f4, type: 3}
+  Healer: {fileID: 21300000, guid: 6e61617dec1701e45b7a9e134e6e15dd, type: 3}
+  Mini: {fileID: 21300000, guid: 2a7d2adb4a10f1a4fa0f715c74380a86, type: 3}

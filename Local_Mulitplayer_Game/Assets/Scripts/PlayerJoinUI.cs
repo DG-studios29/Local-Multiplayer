@@ -17,6 +17,7 @@ public class PlayerJoinUI : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         int index = playerInput.playerIndex;
+        Debug.Log($"[JoinUI] OnPlayerJoined ▶ index={index}, controlScheme={playerInput.currentControlScheme}");
 
         if (index < 0 || index >= playerPanels.Length)
         {
@@ -49,6 +50,15 @@ public class PlayerJoinUI : MonoBehaviour
             }
         }
 
+        var promptUI = playerPanels[index].GetComponent<PlayerPromptUI>();
+        if (promptUI == null)
+        {
+            Debug.LogWarning($"[JoinUI] No PlayerPromptUI found on panel {index}");
+        }
+        else
+        {
+            promptUI.SetupPrompts(playerInput);
+        }
 
         GameManager.Instance?.RegisterPlayer(playerInput);
     }

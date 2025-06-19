@@ -25,4 +25,4 @@ MonoBehaviour:
   triggerSuddenDeath: 0
   triggerChainReaction: 0
   triggerPlayerRespawner: 0
-  triggerSpamSpawner: 0
+  triggerSpamSpawner: 1

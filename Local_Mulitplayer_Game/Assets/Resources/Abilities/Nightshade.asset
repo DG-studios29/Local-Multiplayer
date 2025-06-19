@@ -15,19 +15,19 @@ MonoBehaviour:
   heroName: Nightshade
   ability1:
     abilityName: Shadeball
-    projectilePrefab: {fileID: 5112403345868107898, guid: 1181166aa412268428e2e2928579e655, type: 3}
+    projectilePrefab: {fileID: 7842011742220708181, guid: 3afcf0572730ca241b8d4d0b12400385, type: 3}
     cooldown: 5
     damage: 5
     icon: {fileID: 1934136739, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ability2:
     abilityName: Shades
-    projectilePrefab: {fileID: 919132149155446097, guid: 9eb19c7c36a502c4382bb0007017a0db, type: 3}
+    projectilePrefab: {fileID: 5501080130315217632, guid: 7582d701c2a1d7745ac06d778f93f3f6, type: 3}
     cooldown: 10
     damage: 10
     icon: {fileID: -1332751105, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ultimate:
     abilityName: Vortex
-    projectilePrefab: {fileID: 919132149155446097, guid: d0bd3227554f45c45bb1c4d5d626f93b, type: 3}
+    projectilePrefab: {fileID: 5824670795371433373, guid: f6fd568b816c64943a44efc3add3a881, type: 3}
     cooldown: 20
     damage: 20
     icon: {fileID: -837142218, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}

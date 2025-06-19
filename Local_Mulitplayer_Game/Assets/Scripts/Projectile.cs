@@ -4,17 +4,23 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
     private GameObject shooter;
+    public float speed = 20f;
     public static bool ChainReactionActive = false;
+
+    private Rigidbody rb;
 
     private void Start()
     {
-        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
+        rb = GetComponent<Rigidbody>();
+        rb.linearVelocity = transform.forward * speed;
 
+        ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
     }
+
     public void Initialize(GameObject owner, int damageAmount)
     {
         shooter = owner;
-        damage = damageAmount; 
+        damage = damageAmount;
     }
 
     public void SetShooter(GameObject owner)
@@ -44,7 +50,6 @@ public class Projectile : MonoBehaviour
                     obj.GetComponent<EnemyAI>()?.TakeDamage(damage / 2, gameObject);
                 }
 
-                //Add VFX or explosion sound here
                 Debug.Log("Chain Reaction triggered!");
             }
 
@@ -52,10 +57,9 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject,2f);
+            Destroy(gameObject, 2f);
         }
     }
-
 
     private void HandleArenaEvent(ArenaEventSO evt)
     {
@@ -66,5 +70,4 @@ public class Projectile : MonoBehaviour
     {
         ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
     }
-
 }

@@ -29,6 +29,8 @@ public abstract class HeroBase : MonoBehaviour
     public Image ultimateIcon;
 
     public int casterID;
+    public bool canCastAbilities = true;
+
     private Color originalAbility1Color;
     private Color originalAbility2Color;
     private Color originalUltimateColor;
@@ -48,15 +50,15 @@ public abstract class HeroBase : MonoBehaviour
         {
             playerInput.actions["Ability1"].performed += ctx =>
             {
-                if (!PlayerPunches.OnlyPunchesActive) UseAbility1();
+                if (canCastAbilities && !PlayerPunches.OnlyPunchesActive) UseAbility1();
             };
             playerInput.actions["Ability2"].performed += ctx =>
             {
-                if (!PlayerPunches.OnlyPunchesActive) UseAbility2();
+                if (canCastAbilities && !PlayerPunches.OnlyPunchesActive) UseAbility2();
             };
             playerInput.actions["Ultimate"].performed += ctx =>
             {
-                if (!PlayerPunches.OnlyPunchesActive) UseUltimate();
+                if (canCastAbilities && !PlayerPunches.OnlyPunchesActive) UseUltimate();
             };
         }
 
@@ -86,9 +88,10 @@ public abstract class HeroBase : MonoBehaviour
             return;
         }
 
+        // Determine spawn position and direction
         Vector3 spawnPosition = projectileSpawnPoint != null
-             ? projectileSpawnPoint.position
-             : transform.position + transform.forward * 1f;
+            ? projectileSpawnPoint.position
+            : transform.position + transform.forward * 1f;
 
         Vector3 shootDirection = projectileSpawnPoint != null
             ? projectileSpawnPoint.forward
@@ -97,7 +100,7 @@ public abstract class HeroBase : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(shootDirection);
         GameObject projectile = Instantiate(ability.projectilePrefab, spawnPosition, rotation);
 
-        // Initialize the projectile with damage and owner
+        // Initialize the projectile
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
         {
@@ -108,17 +111,18 @@ public abstract class HeroBase : MonoBehaviour
             Debug.LogWarning("Projectile prefab does not contain a Projectile script!");
         }
 
-        // Add forward force if Rigidbody exists
+    
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.linearVelocity = transform.forward * projectileSpeed;
+            rb.linearVelocity = shootDirection * projectileSpeed;
         }
         else
         {
             Debug.LogWarning("Projectile prefab has no Rigidbody for movement!");
         }
     }
+
 
     private void Update()
     {

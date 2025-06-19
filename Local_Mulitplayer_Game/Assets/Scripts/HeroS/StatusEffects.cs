@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 
@@ -10,21 +9,32 @@ public class StatusEffects : MonoBehaviour
     public bool IsSlowed { get; private set; }
     public bool IsSilenced { get; private set; }
     public bool HasArmorBuff { get; private set; }
-
     public bool IsBlinded { get; private set; }
 
     private float damageReductionMultiplier = 1f;
+
+    [Header("Visual Effect Prefabs")]
+    public GameObject burnEffectPrefab;
+    public GameObject freezeEffectPrefab;
+    public GameObject slowEffectPrefab;
+    public GameObject silenceEffectPrefab;
+    public GameObject armorEffectPrefab;
+    public GameObject blindEffectPrefab;
+
+    private float originalMoveSpeed = -1f;
 
     public void ApplyBurn(float duration, int dps)
     {
         if (burnRoutine != null) StopCoroutine(burnRoutine);
         burnRoutine = StartCoroutine(Burn(duration, dps));
+        SpawnEffect(burnEffectPrefab, duration);
     }
 
     public void ApplySlow(float duration, float slowFactor)
     {
         if (slowRoutine != null) StopCoroutine(slowRoutine);
         slowRoutine = StartCoroutine(Slow(duration, slowFactor));
+        SpawnEffect(slowEffectPrefab, duration);
     }
 
     private bool isStunned = false;
@@ -32,17 +42,9 @@ public class StatusEffects : MonoBehaviour
     public void ApplyStun(float duration)
     {
         if (isStunned) return;
-
         isStunned = true;
 
-        // Disable movement or input
-        var controller = GetComponent<PlayerController>();
-        if (controller != null)
-            controller.enabled = false;
-
-        //  spawn freeze effect
-        // SpawnEffect(freezeEffectPrefab);
-
+        SpawnEffect(freezeEffectPrefab, duration);
         StartCoroutine(Stun(duration));
     }
 
@@ -50,46 +52,45 @@ public class StatusEffects : MonoBehaviour
     {
         IsStunned = true;
 
-        // PLAYER: disable movement
         var controller = GetComponent<PlayerController>();
         if (controller != null)
             controller.enabled = false;
 
-        // ENEMY: disable AI
         var ai = GetComponent<EnemyAI>();
         if (ai != null)
             ai.enabled = false;
 
         yield return new WaitForSeconds(duration);
 
-        // PLAYER: enable movement
         if (controller != null)
             controller.enabled = true;
 
-        // ENEMY: re-enable AI
         if (ai != null)
             ai.enabled = true;
 
         IsStunned = false;
+        isStunned = false;
     }
-
 
     public void ApplySilence(float duration)
     {
         if (silenceRoutine != null) StopCoroutine(silenceRoutine);
         silenceRoutine = StartCoroutine(Silence(duration));
+        SpawnEffect(silenceEffectPrefab, duration);
     }
 
     public void ApplyArmorBuff(float duration, float reductionPercent)
     {
         if (armorRoutine != null) StopCoroutine(armorRoutine);
         armorRoutine = StartCoroutine(ArmorBuff(duration, reductionPercent));
+        SpawnEffect(armorEffectPrefab, duration);
     }
 
     public void ApplyBlind(float duration)
     {
         if (blindRoutine != null) StopCoroutine(blindRoutine);
         blindRoutine = StartCoroutine(Blind(duration));
+        SpawnEffect(blindEffectPrefab, duration);
     }
 
     private IEnumerator Burn(float duration, int dps)
@@ -107,17 +108,41 @@ public class StatusEffects : MonoBehaviour
     private IEnumerator Slow(float duration, float factor)
     {
         IsSlowed = true;
-        // Reduce speed here using your movement system (e.g., player movement multiplier)
+
+        var move = GetComponent<PlayerController>();
+        if (move != null)
+        {
+            if (originalMoveSpeed < 0f)
+                originalMoveSpeed = move.moveSpeed;
+
+            move.moveSpeed *= factor;
+        }
+
         yield return new WaitForSeconds(duration);
+
+        if (move != null && originalMoveSpeed > 0f)
+            move.moveSpeed = originalMoveSpeed;
+
         IsSlowed = false;
     }
-
 
     private IEnumerator Silence(float duration)
     {
         IsSilenced = true;
-        // Prevent ability casting logic
+
+        var hero = GetComponent<HeroBase>();
+        if (hero != null)
+        {
+            hero.canCastAbilities = false;
+        }
+
         yield return new WaitForSeconds(duration);
+
+        if (hero != null)
+        {
+            hero.canCastAbilities = true;
+        }
+
         IsSilenced = false;
     }
 
@@ -138,9 +163,17 @@ public class StatusEffects : MonoBehaviour
         IsBlinded = false;
     }
 
-
     public int ModifyIncomingDamage(int baseDamage)
     {
         return Mathf.RoundToInt(baseDamage * damageReductionMultiplier);
+    }
+
+    private GameObject SpawnEffect(GameObject effectPrefab, float duration)
+    {
+        if (effectPrefab == null) return null;
+
+        GameObject vfx = Instantiate(effectPrefab, transform.position, Quaternion.identity, transform);
+        Destroy(vfx, duration);
+        return vfx;
     }
 }

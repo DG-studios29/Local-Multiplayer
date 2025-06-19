@@ -13,7 +13,7 @@ public class PlayerSelectorInput : MonoBehaviour
     private float lastScrollTime = -1f;
     private bool confirmReleased = false;
     private bool inputDelayActive = true;
-    private float inputDelayDuration = 0.3f;
+    private float inputDelayDuration = 0.1f;
 
     void Awake()
     {
