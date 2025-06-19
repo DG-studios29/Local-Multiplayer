@@ -288,9 +288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 0}
-  gravityScale: 1.96
-  launchAngle: 60
-  rangeZ: 30
+  gravityScale: 1.4
+  launchAngle: 45
+  rangeZ: 60
   heightY: 0
   isPunchR: 0
   punchDamage: 1
