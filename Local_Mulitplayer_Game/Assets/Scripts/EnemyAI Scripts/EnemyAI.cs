@@ -54,6 +54,8 @@ public class EnemyAI : MonoBehaviour
         EnemyAI.onEnemyDeath += RemoveFromMyTargetList;
 
         EnemyAI.findEnemyTargets += AddToMyTargetList;
+
+        PlayerHealth.onPlayerDeath += GameOverState;
     }
 
     private void OnDisable()
@@ -64,6 +66,8 @@ public class EnemyAI : MonoBehaviour
         EnemyAI.onEnemyDeath -= RemoveFromMyTargetList;
 
         EnemyAI.findEnemyTargets -= AddToMyTargetList;
+
+        PlayerHealth.onPlayerDeath -= GameOverState;
     }
 
 
@@ -194,35 +198,7 @@ void GetEnemyData()
         }
     }
 
-
-    //void RandomizeParent()
-    //{
-    //    List<GameObject> adopters = new List<GameObject>();
-
-    //    GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(playerTag);
-
-    //    foreach (GameObject parent in gameObjects)
-    //    {
-    //        adopters.Add(parent);
-    //    }
-
-
-    //    if (adopters.Count > 1)
-    //    {
-    //        int randNo;
-    //        randNo = UnityEngine.Random.Range(0, adopters.Count - 1);
-    //        enemyParent = adopters[randNo];
-    //    }
-    //    else if (adopters.Count == 1)
-    //    {
-    //        enemyParent = adopters[0];
-    //    }
-    //    else
-    //    {
-    //        enemyParent = null;
-    //    }
-
-    //}
+    
 
     //finds all existing enemies, and stores them in the item object's list on its awake
     public void AddToEnemyList(ItemObject itemObject)
@@ -509,5 +485,11 @@ void GetEnemyData()
         // After the freeze duration ends, re-enable movement
         GetComponent<NavMeshAgent>().isStopped = false;
         isFrozen = false;
+    }
+
+
+    void GameOverState()
+    {
+        
     }
 }

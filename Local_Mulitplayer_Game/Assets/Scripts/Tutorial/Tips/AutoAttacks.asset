@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
-  m_Name: Introduction
+  m_Name: AutoAttacks
   m_EditorClassIdentifier: 
-  textLine: "Welcome great ones. \nTo the stage and battle for 50 000 summons"
+  textLine: For your protection against the armies, you have the rotating orbs of
+    Dio which damage enemy units on contact. And the auto-shooting protection of
+    Dio which will attack the nearest enemy.
   isToBePerformed: 0
-  hasVisualInfo: 0
+  hasVisualInfo: 1
   actionToPerform: 
   visualInfoImage: {fileID: 0}

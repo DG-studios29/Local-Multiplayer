@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerHealth : MonoBehaviour, IPlayerEffect
 {
@@ -34,6 +35,8 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     private int preSuddenDeathHealth = -1;
 
     public bool IsAlive => currentHealth > 0;
+    
+    public static event Action onPlayerDeath;
 
 
     #region Interface Vars
@@ -49,7 +52,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     private void Start()
     {
         playerMeshRenderers = GetComponentsInChildren<MeshRenderer>();
-        baseMaterial = playerMeshRenderers[0].material;
+        //baseMaterial = playerMeshRenderers[0].material;
         StartCoroutine(ValidatePlayer());
         currentHealth = maxHealth;
         UpdateHealthUI();
@@ -57,20 +60,25 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
         ArenaEventManager.OnArenaEventEnd += HandleArenaEventEnd; 
     }
-
+    
     private void OnDestroy()
     {
         ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
         ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd; 
     }
 
-
+    
 
     private IEnumerator ValidatePlayer()
     {
         yield return new WaitForSeconds(5f);
         if (gameObject.name == "Player 1") isPlayer = IsPlayer.PlayerOne;
         if (gameObject.name == "Player 2") isPlayer = IsPlayer.PlayerTwo;
+    }
+
+    public void AssignBaseMaterial(Material material)
+    {
+        this.baseMaterial = material;
     }
 
     public void TakeDamage(int damage, GameObject attacker)
@@ -144,9 +152,12 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         if (GameManager.Instance != null)
         {
             GameManager.Instance?.OnPlayerDeath(this.gameObject);
+            
 
         }
-
+        
+        onPlayerDeath?.Invoke(); // Can use PlayerHealth.onPlayerDeath += subscriptions
+                                 //         PlayerHealth.onPlayerDeath -= subscriptions
         Destroy(gameObject);
         Debug.Log(gameObject.name + " has died!");
 

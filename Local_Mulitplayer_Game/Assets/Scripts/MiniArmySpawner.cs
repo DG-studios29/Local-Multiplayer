@@ -12,7 +12,14 @@ public class MiniArmySpawner : MonoBehaviour
 
     private MiniArmySpawnerUI ui;
     private Coroutine spamRoutine;
+    
+    private PlayerCurrency pCurrency;
 
+    void Start()
+    {
+        pCurrency = GetComponent<PlayerCurrency>();
+    }
+    
     private void OnEnable()
     {
         ArenaEventManager.OnArenaEventStart += OnEventStart;
@@ -56,32 +63,51 @@ public class MiniArmySpawner : MonoBehaviour
     {
         ui = assignedUI;
         ui.SetupInitialUI();
+        
+        
     }
 
     public void SpawnArmyByKey1(InputAction.CallbackContext context)
     {
         if (context.performed) TrySpawn(0);
+        TutorialActionLinq("SpawnBase");
     }
 
     public void SpawnArmyByKey2(InputAction.CallbackContext context)
     {
         if (context.performed) TrySpawn(1);
+        TutorialActionLinq("SpawnDemon");
     }
 
     public void SpawnArmyByKey3(InputAction.CallbackContext context)
     {
         if (context.performed) TrySpawn(2);
+        TutorialActionLinq("SpawnTank");
     }
 
     public void SpawnArmyByKey4(InputAction.CallbackContext context)
     {
         if (context.performed) TrySpawn(3);
+        TutorialActionLinq("SpawnHealer");
     }
 
     private void TrySpawn(int index)
     {
         if (ui != null && ui.CanSpawn(index))
         {
+
+            var typeToSpawn = armyTypes[index].GetComponent<EnemyAI>().enemyData;
+            
+            if (pCurrency.CheckManaCost(typeToSpawn.ManaCost) == false)
+            {
+                Debug.Log($"Can't spawn {typeToSpawn.ManaCost}");
+                //We cannot pay the cost and must therefore exit
+                return;
+            }
+
+            pCurrency.ManaLoss(typeToSpawn.ManaCost);
+
+
             int spawnCount = 1;
             if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerDoubleArmy"))
             {
@@ -121,4 +147,16 @@ public class MiniArmySpawner : MonoBehaviour
             }
         }
     }
+    
+    private void TutorialActionLinq(string context)
+    {
+        //Checking if its null
+        if (!TutorialManager.instance) return;
+        if (TutorialManager.instance.isTutorialActive)
+        {
+            TutorialManager.instance.CheckTutorialPerform(context);
+        }
+    }
+    
+    
 }

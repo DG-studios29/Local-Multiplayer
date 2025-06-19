@@ -10,10 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
-  m_Name: Introduction
+  m_Name: SpawnTanks
   m_EditorClassIdentifier: 
-  textLine: "Welcome great ones. \nTo the stage and battle for 50 000 summons"
-  isToBePerformed: 0
+  textLine: 'Spawn your Tanks
+
+    Its in the name
+
+    Hard guys to knock down
+
+    [D-pad
+    / Keyboard Key ]'
+  isToBePerformed: 1
   hasVisualInfo: 0
-  actionToPerform: 
+  actionToPerform: SpawnTank
   visualInfoImage: {fileID: 0}

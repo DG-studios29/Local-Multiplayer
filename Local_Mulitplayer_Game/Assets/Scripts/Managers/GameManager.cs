@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("✅ All conditions met. Starting game...");
             StartGame();
+            TutorialManager.instance.TutorialStarted();
         }
     }
 
@@ -266,6 +267,7 @@ public class GameManager : MonoBehaviour
             AssignHeroScript(player, selectedHeroes[index]);
             AssignPlayerMaterials(player, index);
             SetupPlayerUI(player, player.name);
+            SetupCurrency(player);
             SetupHeroAbilitiesUI(player);
 
             if (player.GetComponent<PlayerStats>() == null)
@@ -350,9 +352,15 @@ public class GameManager : MonoBehaviour
         string heroName = selectedHeroes[index];
         Material mat = playerMaterials.Find(m => m.name.StartsWith(heroName));
         if (mat == null) return;
+        
+        var baseHealthMaterial = player.GetComponent<PlayerHealth>();
+        baseHealthMaterial.AssignBaseMaterial(mat);
 
         foreach (var r in player.GetComponentsInChildren<MeshRenderer>())
+        {
             r.material = mat;
+        }
+           
     }
 
     public void SetupPlayerUI(GameObject player, string playerName)

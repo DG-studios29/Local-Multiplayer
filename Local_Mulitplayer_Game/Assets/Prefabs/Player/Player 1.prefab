@@ -192,6 +192,8 @@ GameObject:
   - component: {fileID: -1367476590841090514}
   - component: {fileID: 3813123546783778120}
   - component: {fileID: 1999980281684454691}
+  - component: {fileID: 8914817970744884849}
+  - component: {fileID: 3474271923225937153}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -544,19 +546,67 @@ MonoBehaviour:
     m_ActionId: d5588f4a-72ea-4d92-9a0a-84cf62bbe6d1
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3474271923225937153}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: NextTutorial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: de1f65ab-5284-4e85-9b69-65824367b5e6
     m_ActionName: 'Tutorial/Next[/Keyboard/space,/DualSenseGamepadHID/buttonSouth]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3474271923225937153}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: PreviousTutorial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7dc893c1-2f5a-4073-87b8-279251cd2888
     m_ActionName: 'Tutorial/Previous[/Keyboard/backspace,/DualSenseGamepadHID/buttonEast]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3474271923225937153}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: abd46041-ef28-4b6c-9736-73ee42809f31
     m_ActionName: 'Tutorial/Start Game[/Keyboard/enter,/DualSenseGamepadHID/start]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3474271923225937153}
+        m_TargetAssemblyTypeName: InputTutorial, Assembly-CSharp
+        m_MethodName: PauseTutorial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9a4d61cb-93b4-42ac-b1c8-c684f090b83f
     m_ActionName: 'Tutorial/Pause Game[/Keyboard/escape,/DualSenseGamepadHID/select]'
   - m_PersistentCalls:
@@ -774,6 +824,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputCooldown: 0.2
+--- !u!114 &8914817970744884849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093234706080368204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a11a7011ad4ad0448d64818d8130233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 100
+  currentMana: 0
+  playerXp: 0
+  manaGainTime: 0.25
+  manaGainAmount: 1
+--- !u!114 &3474271923225937153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093234706080368204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9222815da3a57e44885daaeb6ebec1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3408003879747189824
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
@@ -26,8 +27,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Image visualInfoImage;
     [SerializeField] private TMP_Text successText;
     [SerializeField] private TMP_Text tutorialTipText;
+    [SerializeField] private GameObject tutorialFilter;
 
-    [SerializeField] private GameObject tutorialTextPanel;
+    //[SerializeField] private GameObject tutorialTextPanel;
 
     private void Awake()
     {
@@ -61,6 +63,7 @@ public class TutorialManager : MonoBehaviour
         successText.enabled = false;
         visualInfoHolder.SetActive(false);
         tutorialTextButtons.SetActive(false);
+        tutorialFilter.SetActive(false);
         
         ShowTutorialTip();
     }
@@ -174,16 +177,26 @@ public class TutorialManager : MonoBehaviour
             //Check Match
             if (currentTip.ActionToPerform == actionName)
             {
-                //Success has been met, and we can now progress 
-                canGetNextTip = true;
-                
-                //Activate Prev and Next Buttons
-                ToggleTutorialButtons();
+
+                StartCoroutine(DelayNextTip(2f));
+             
             }
             
         }
     }
 
+    IEnumerator DelayNextTip(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        //Success has been met, and we can now progress 
+        canGetNextTip = true;
+                
+        //Activate Prev and Next Buttons
+        ToggleTutorialButtons();
+    }
+    
+    
     private void ToggleTutorialButtons()
     {
         if (!tutorialTextButtons.activeSelf)
@@ -193,6 +206,7 @@ public class TutorialManager : MonoBehaviour
             successText.enabled = currentTip.IsToBePerformed;
             
             tutorialTextButtons.SetActive(true);
+            tutorialFilter.SetActive(true);
         }
         
     }
@@ -200,6 +214,7 @@ public class TutorialManager : MonoBehaviour
     private void ToggleOffPrevious()
     {
         //SwitchToPlayerMap();
+        tutorialFilter.SetActive(false);
         tutorialTextButtons.SetActive(false);
         visualInfoHolder.SetActive(false);
     }    

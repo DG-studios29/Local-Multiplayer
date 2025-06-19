@@ -103,7 +103,8 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
             auto.TestClear();
         }
     }
-    public void TutorialActionLinq(InputAction.CallbackContext context)
+
+    private void TutorialActionLinq(InputAction.CallbackContext context)
     {
         //Checking if its null
         if (!TutorialManager.instance) return;

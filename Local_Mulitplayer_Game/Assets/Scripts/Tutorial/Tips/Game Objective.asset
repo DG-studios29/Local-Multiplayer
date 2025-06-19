@@ -12,17 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
   m_Name: Game Objective
   m_EditorClassIdentifier: 
-  textLine: Your objective is to reduce your opponents health to zero
+  textLine: Your goal is to reduce your opponents life force to zero
   isToBePerformed: 0
   hasVisualInfo: 0
   actionToPerform: 
-  actionMade:
-    m_Name: Action Made
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: f6988c78-37db-431b-88af-31eac5590d53
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   visualInfoImage: {fileID: 0}

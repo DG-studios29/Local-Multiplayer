@@ -15,7 +15,9 @@ MonoBehaviour:
   textLine: 'Thanks for playing the tutorial. You are now ready to raze hell
 
     and
-    harness the power of 50 000 summons'
+    harness the power of 50 000 summons
+
+'
   isToBePerformed: 0
   hasVisualInfo: 0
   actionToPerform: 
