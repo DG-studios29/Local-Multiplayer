@@ -68,8 +68,16 @@ public class PlayerCurrency : MonoBehaviour
         if (currentMana > maxMana) currentMana = maxMana;
 
         //Update any ui
-        if(currencyUI)
-            currencyUI.ManaBarUpdate(currentMana/maxMana);
+        if (currencyUI)
+        {
+            var ratio = currentMana/maxMana ;
+            currencyUI.ManaBarUpdate(ratio);   
+        }
+        else
+        {
+            Debug.Log($"Can't gain {amount}");
+        }
+           
     }
 
 

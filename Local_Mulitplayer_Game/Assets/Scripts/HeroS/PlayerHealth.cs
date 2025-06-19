@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerHealth : MonoBehaviour, IPlayerEffect
 {
@@ -34,6 +35,8 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     private int preSuddenDeathHealth = -1;
 
     public bool IsAlive => currentHealth > 0;
+    
+    public static event Action onPlayerDeath;
 
 
     #region Interface Vars
@@ -136,9 +139,11 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         if (GameManager.Instance != null)
         {
             GameManager.Instance?.OnPlayerDeath(this.gameObject);
+            
 
         }
-
+        
+        onPlayerDeath?.Invoke(); // Can use PlayerHealth.onPlayerDeath += subscriptions
         Destroy(gameObject);
         Debug.Log(gameObject.name + " has died!");
 

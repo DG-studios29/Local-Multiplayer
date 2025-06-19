@@ -12,7 +12,14 @@ public class MiniArmySpawner : MonoBehaviour
 
     private MiniArmySpawnerUI ui;
     private Coroutine spamRoutine;
+    
+    private PlayerCurrency pCurrency;
 
+    void Start()
+    {
+        pCurrency = GetComponent<PlayerCurrency>();
+    }
+    
     private void OnEnable()
     {
         ArenaEventManager.OnArenaEventStart += OnEventStart;
@@ -56,6 +63,8 @@ public class MiniArmySpawner : MonoBehaviour
     {
         ui = assignedUI;
         ui.SetupInitialUI();
+        
+        
     }
 
     public void SpawnArmyByKey1(InputAction.CallbackContext context)
@@ -82,6 +91,19 @@ public class MiniArmySpawner : MonoBehaviour
     {
         if (ui != null && ui.CanSpawn(index))
         {
+
+            var typeToSpawn = armyTypes[index].GetComponent<EnemyAI>().enemyData;
+            
+            if (pCurrency.CheckManaCost(typeToSpawn.ManaCost) == false)
+            {
+                Debug.Log($"Can't spawn {typeToSpawn.ManaCost}");
+                //We cannot pay the cost and must therefore exit
+                return;
+            }
+
+            pCurrency.ManaLoss(typeToSpawn.ManaCost);
+
+
             int spawnCount = 1;
             if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerDoubleArmy"))
             {
