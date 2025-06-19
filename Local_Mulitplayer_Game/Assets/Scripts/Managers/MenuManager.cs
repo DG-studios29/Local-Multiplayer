@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-   
+   MainMenu mainMenu;
+
     private void Start()
     {
         
@@ -35,6 +36,7 @@ public class MenuManager : MonoBehaviour
     {
 
         SceneManager.LoadScene("MainMenu");
+       // mainMenu.controlsPanel.SetActive(false);
 
     }
 
