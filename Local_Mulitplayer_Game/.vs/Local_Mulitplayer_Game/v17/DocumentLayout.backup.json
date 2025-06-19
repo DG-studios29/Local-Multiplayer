@@ -1,30 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
+  "WorkspaceRootPath": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\playerselectorinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\playerselectorinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|c:\\users\\succe\\desktop\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\_res \u0026\u0026 see through classes\\_see through\\revealplayerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_res \u0026\u0026 see through classes\\_see through\\revealplayerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|d:\\unity\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heroselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heroselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|c:\\users\\succe\\desktop\\local-multiplayer\\local_mulitplayer_game\\assets\\_new changes\\_floating arena\\_scripts\\carrier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\_new changes\\_floating arena\\_scripts\\carrier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\mapselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mapselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|c:\\users\\succe\\desktop\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\statuseffects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\statuseffects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\managers\\heromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\heromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\herobase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\herobase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\managers\\playerjoinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\playerjoinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +42,107 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayerSelectorInput.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroS\\PlayerSelectorInput.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAwDUAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T23:22:38.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HeroManager.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\HeroManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\HeroManager.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\HeroManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Managers\\HeroManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAQwAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T23:14:49.596Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MapSelectionUI.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\MapSelectionUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MapSelectionUI.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\MapSelectionUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MapSelectionUI.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCgAAAAAAAAAAAAAAA==",
+              "Title": "StatusEffects.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\StatusEffects.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\StatusEffects.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\StatusEffects.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\StatusEffects.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAUwC0AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T23:11:26.816Z",
+              "WhenOpened": "2025-06-18T23:45:30.508Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RevealPlayerBase.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_See Through\\RevealPlayerBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_See Through\\RevealPlayerBase.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_See Through\\RevealPlayerBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_Res \u0026\u0026 See Through Classes\\_See Through\\RevealPlayerBase.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAlwDUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T07:27:04.726Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HeroSelectionUI.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroSelectionUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroSelectionUI.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroSelectionUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HeroSelectionUI.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAAAL8AAAAAAAAAAAAAAA==",
+              "Title": "Carrier.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\_New Changes\\_Floating Arena\\_scripts\\Carrier.cs",
+              "RelativeDocumentMoniker": "Assets\\_New Changes\\_Floating Arena\\_scripts\\Carrier.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\_New Changes\\_Floating Arena\\_scripts\\Carrier.cs",
+              "RelativeToolTip": "Assets\\_New Changes\\_Floating Arena\\_scripts\\Carrier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T23:11:22.965Z",
+              "WhenOpened": "2025-06-19T07:21:32.254Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HeroBase.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\HeroBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\HeroBase.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\HeroBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\HeroBase.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAcwGAAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T01:37:37.384Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "PlayerJoinManager.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Managers\\PlayerJoinManager.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Title": "Stonewarden.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T23:11:18.526Z"
+              "WhenOpened": "2025-06-18T23:46:23.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Nightshade.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Nightshade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T23:46:21.48Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ToolTip": "D:\\Unity\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Managers\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAIwKoAAAAVAAAAAAAAAA==",
+              "Title": "Frost.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Frost.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Frost.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Frost.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Frost.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAGQAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T20:38:07.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T23:46:18.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Blazeheart.cs",
+              "DocumentMoniker": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Blazeheart.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Blazeheart.cs",
+              "ToolTip": "C:\\Users\\succe\\Desktop\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Blazeheart.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroS\\Blazeheart.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAEkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T23:36:23.686Z"
             }
           ]
         }
