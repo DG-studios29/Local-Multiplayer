@@ -11,7 +11,7 @@ public class PlayerPunches : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]private Transform groundCheck;
     
-    [SerializeField]private float gravityScale = 1f;
+    [SerializeField]private float gravityScale = 1.96f;
     private float globalGravity = -9.81f;
     
     //Projectile Motion 
@@ -104,24 +104,8 @@ public class PlayerPunches : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Apply Better force of gravity on self
-        /*
-        if (!IsGrounded())
-        {
-            Debug.Log("Is not grounded");
-            //Fall faster
-            gravityScale = 1.96f; 
-        }
-        else
-        {
-            Debug.Log("Is grounded");
-            gravityScale = 1f;
-        }
-        */
-        gravityScale = 2f;
-        
-        Vector3 gravity = Vector3.up * (globalGravity * gravityScale);
-        rb.AddForce(gravity, ForceMode.Acceleration);
+        Vector3 appliedGravity = Vector3.up * (globalGravity * gravityScale * gravityScale);
+        rb.AddForce(appliedGravity, ForceMode.Acceleration);
     }
 
 
