@@ -18,7 +18,7 @@ public class UINavigationManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(this);
+       // DontDestroyOnLoad(this);
     }
 
     private void OnEnable()
