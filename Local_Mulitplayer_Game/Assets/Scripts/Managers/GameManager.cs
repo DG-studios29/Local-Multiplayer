@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public List<Material> playerMaterials;
     public List<GameObject> activePlayers = new List<GameObject>();
 
+    //mats 
+    private Material playerMat;
 
     [Header("Spawn Points")]
     public List<Transform> forestSpawnPoints;
