@@ -26,8 +26,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Image visualInfoImage;
     [SerializeField] private TMP_Text successText;
     [SerializeField] private TMP_Text tutorialTipText;
+    [SerializeField] private GameManager tutorialFilter;
 
-    [SerializeField] private GameObject tutorialTextPanel;
+    //[SerializeField] private GameObject tutorialTextPanel;
 
     private void Awake()
     {
