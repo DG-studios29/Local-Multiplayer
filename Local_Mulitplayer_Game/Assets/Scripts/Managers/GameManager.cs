@@ -266,6 +266,7 @@ public class GameManager : MonoBehaviour
             AssignHeroScript(player, selectedHeroes[index]);
             AssignPlayerMaterials(player, index);
             SetupPlayerUI(player, player.name);
+            SetupCurrency(player);
             SetupHeroAbilitiesUI(player);
 
             if (player.GetComponent<PlayerStats>() == null)

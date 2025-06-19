@@ -75,7 +75,7 @@ public class PlayerCurrency : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Can't gain {amount}");
+                Debug.Log($"Can't gain {amount}");
         }
            
     }
