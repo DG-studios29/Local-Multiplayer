@@ -13,8 +13,12 @@ public class ArenaEventUI : MonoBehaviour
     public GameObject gbActiveIcon;
     public Image fillImage;  
     private Coroutine fillCoroutine;
+    public Animator display;
+
 
     public float showDuration = 4f;
+
+
 
     private void OnEnable()
     {
@@ -37,10 +41,13 @@ public class ArenaEventUI : MonoBehaviour
         eventTitle.text = evt.eventName;
         eventDescription.text = evt.description;
 
+        display.SetBool("isOpen", true);
+
         if (eventIcon != null && evt.icon != null)
             eventIcon.sprite = evt.icon;
 
         panel.SetActive(true);
+        
         StopAllCoroutines();
         StartCoroutine(HideAfterDelay());
     }
@@ -49,19 +56,25 @@ public class ArenaEventUI : MonoBehaviour
     {
         eventTitle.text = evt.eventName + " Ended";
         eventDescription.text = "The effect has worn off.";
+
+        display.SetBool("isOpen", false);
+
         panel.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(HideAfterDelay());
+       
     }
 
     private IEnumerator HideAfterDelay()
     {
         yield return new WaitForSeconds(showDuration);
         panel.SetActive(false);
+
     }
 
     private void ShowActiveIcon(ArenaEventSO evt)
     {
+       
         if (activeIcon != null && evt.icon != null)
         {
             activeIcon.sprite = evt.icon;
@@ -71,7 +84,8 @@ public class ArenaEventUI : MonoBehaviour
             if (fillCoroutine != null) StopCoroutine(fillCoroutine);
             fillCoroutine = StartCoroutine(FillCountdown(evt.duration));
 
-            gbActiveIcon.SetActive(true); // Enable the icon's GameObject
+            gbActiveIcon.SetActive(true);
+           
         }
     }
 
@@ -91,10 +105,12 @@ public class ArenaEventUI : MonoBehaviour
 
     private void HideActiveIcon(ArenaEventSO evt)
     {
+        display.SetBool("isOpen", false);
         if (fillCoroutine != null) StopCoroutine(fillCoroutine);
         activeIcon.fillAmount = 0f;
         activeIcon.enabled = false;
         gbActiveIcon.SetActive(false);
+        
     }
 
 }

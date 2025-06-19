@@ -66,10 +66,7 @@ public class HeroSelectionUI : MonoBehaviour
 
         continueButton.gameObject.SetActive(false);
 
-        foreach (var button in heroButtons)
-        {
-            button.Initialize();
-        }
+        
     }
 
     public void OnHeroSelected(string heroName)
@@ -114,7 +111,7 @@ public class HeroSelectionUI : MonoBehaviour
 
         locked[playerIndex] = true;
         selectors[playerIndex].gameObject.SetActive(false);
-        playerTexts[playerIndex].text = "Locked In";
+        playerTexts[playerIndex].text = heroName;
 
         if (playerIndex == 0) p1Selected = true;
         if (playerIndex == 1) p2Selected = true;

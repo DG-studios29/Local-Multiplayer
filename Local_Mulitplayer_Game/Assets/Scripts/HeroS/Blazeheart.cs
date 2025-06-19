@@ -108,7 +108,7 @@ public class Blazeheart : HeroBase, IPlayerEffect
     private IEnumerator InfernalCage()
     {
         int pillarCount = 8;
-        float radius = 3f;
+        float radius = 5f;
         List<GameObject> pillars = new List<GameObject>();
 
         for (int i = 0; i < pillarCount; i++)
@@ -120,7 +120,7 @@ public class Blazeheart : HeroBase, IPlayerEffect
             {
                 GameObject pillar = Instantiate(abilities.ultimate.projectilePrefab, spawnPos, Quaternion.identity);
                 pillars.Add(pillar);
-                Destroy(pillar, 2f);
+                Destroy(pillar, 5f);
             }
         }
 
@@ -130,7 +130,7 @@ public class Blazeheart : HeroBase, IPlayerEffect
         {
             if (pillar != null)
             {
-                Collider[] enemies = Physics.OverlapSphere(pillar.transform.position, 2f);
+                Collider[] enemies = Physics.OverlapSphere(pillar.transform.position, 5f);
                 foreach (var enemy in enemies)
                 {
                     if (enemy == null || enemy.gameObject == null) continue;

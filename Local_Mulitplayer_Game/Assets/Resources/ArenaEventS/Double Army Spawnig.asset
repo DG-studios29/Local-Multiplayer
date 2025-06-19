@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Double Army Spawning
   description: All player army spawns summon two units instead of one.
   duration: 30
-  icon: {fileID: -1002565261, guid: 8f4e7703db77cf848a39fc9e86a3e0f9, type: 3}
+  icon: {fileID: 500295133, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   triggerDoubleArmy: 1
   triggerOnlyPunches: 0
   triggerNoHealing: 0

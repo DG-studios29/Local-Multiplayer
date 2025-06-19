@@ -465,8 +465,8 @@ public class GameManager : MonoBehaviour
             var p1Stats = p1.GetComponent<PlayerStats>();
             var p2Stats = p2.GetComponent<PlayerStats>();
 
-            player1KillsText.text = $"Kills: {p1Stats.armyKills}";
-            player2KillsText.text = $"Kills: {p2Stats.armyKills}";
+            player1KillsText.text = p1Stats.armyKills.ToString();
+            player2KillsText.text = p2Stats.armyKills.ToString();
         }
     }
 

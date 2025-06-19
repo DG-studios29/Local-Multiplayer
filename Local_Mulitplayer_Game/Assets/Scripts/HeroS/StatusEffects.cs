@@ -27,11 +27,52 @@ public class StatusEffects : MonoBehaviour
         slowRoutine = StartCoroutine(Slow(duration, slowFactor));
     }
 
+    private bool isStunned = false;
+
     public void ApplyStun(float duration)
     {
-        if (stunRoutine != null) StopCoroutine(stunRoutine);
-        stunRoutine = StartCoroutine(Stun(duration));
+        if (isStunned) return;
+
+        isStunned = true;
+
+        // Disable movement or input
+        var controller = GetComponent<PlayerController>();
+        if (controller != null)
+            controller.enabled = false;
+
+        //  spawn freeze effect
+        // SpawnEffect(freezeEffectPrefab);
+
+        StartCoroutine(Stun(duration));
     }
+
+    private IEnumerator Stun(float duration)
+    {
+        IsStunned = true;
+
+        // PLAYER: disable movement
+        var controller = GetComponent<PlayerController>();
+        if (controller != null)
+            controller.enabled = false;
+
+        // ENEMY: disable AI
+        var ai = GetComponent<EnemyAI>();
+        if (ai != null)
+            ai.enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        // PLAYER: enable movement
+        if (controller != null)
+            controller.enabled = true;
+
+        // ENEMY: re-enable AI
+        if (ai != null)
+            ai.enabled = true;
+
+        IsStunned = false;
+    }
+
 
     public void ApplySilence(float duration)
     {
@@ -71,13 +112,6 @@ public class StatusEffects : MonoBehaviour
         IsSlowed = false;
     }
 
-    private IEnumerator Stun(float duration)
-    {
-        IsStunned = true;
-        // Disable movement or actions in your movement/AI logic
-        yield return new WaitForSeconds(duration);
-        IsStunned = false;
-    }
 
     private IEnumerator Silence(float duration)
     {
