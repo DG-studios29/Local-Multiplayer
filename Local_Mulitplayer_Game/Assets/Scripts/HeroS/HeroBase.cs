@@ -87,10 +87,14 @@ public abstract class HeroBase : MonoBehaviour
         }
 
         Vector3 spawnPosition = projectileSpawnPoint != null
-            ? projectileSpawnPoint.position
-            : transform.position + transform.forward * 1f;
+             ? projectileSpawnPoint.position
+             : transform.position + transform.forward * 1f;
 
-        Quaternion rotation = Quaternion.LookRotation(transform.forward);
+        Vector3 shootDirection = projectileSpawnPoint != null
+            ? projectileSpawnPoint.forward
+            : transform.forward;
+
+        Quaternion rotation = Quaternion.LookRotation(shootDirection);
         GameObject projectile = Instantiate(ability.projectilePrefab, spawnPosition, rotation);
 
         // Initialize the projectile with damage and owner

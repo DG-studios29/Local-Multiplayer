@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Portal Mayhem
   description: Random portals spawn on the map. Use them to teleport around!
   duration: 60
-  icon: {fileID: 0}
+  icon: {fileID: -1436244541, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   triggerDoubleArmy: 0
   triggerOnlyPunches: 0
   triggerNoHealing: 0
@@ -23,5 +23,6 @@ MonoBehaviour:
   triggerPowerSurge: 0
   triggerPortalSpawn: 1
   triggerSuddenDeath: 0
-  triggerBlindBlitz: 0
   triggerChainReaction: 0
+  triggerPlayerRespawner: 0
+  triggerSpamSpawner: 0

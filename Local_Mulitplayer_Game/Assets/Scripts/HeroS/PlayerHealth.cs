@@ -112,7 +112,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
             healthSlider.value = (float)currentHealth / maxHealth; // 🔹 Ensure slider updates
 
         if (healthText != null)
-            healthText.text = $"{currentHealth} / {maxHealth}"; // 🔹 Ensure text updates
+            healthText.text = $"{currentHealth}%"; // 🔹 Ensure text updates
     }
 
     void Die(GameObject killer)

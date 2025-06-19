@@ -15,21 +15,21 @@ MonoBehaviour:
   heroName: Frost
   ability1:
     abilityName: Frostball
-    projectilePrefab: {fileID: 5112403345868107898, guid: 68ebf3fe465519a4eb5746736483159c, type: 3}
+    projectilePrefab: {fileID: 2155514991323536537, guid: 6352259b658ac8f438cb3e9470454ec7, type: 3}
     cooldown: 5
     damage: 5
-    icon: {fileID: -1414619173, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
+    icon: {fileID: 1516227579, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ability2:
     abilityName: Frostspikes
-    projectilePrefab: {fileID: 5112403345868107898, guid: 2318e41a4018dc2488248af7dff70b11, type: 3}
+    projectilePrefab: {fileID: 3169375469903360425, guid: d7a76bab259483449b9d6b83eb7a96e6, type: 3}
     cooldown: 10
     damage: 10
-    icon: {fileID: 227975844, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
+    icon: {fileID: 1957073221, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ultimate:
     abilityName: Iceage
-    projectilePrefab: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+    projectilePrefab: {fileID: 8441181604735567998, guid: 31b2e5011f1cd4a4395fe599de18113c, type: 3}
     cooldown: 20
     damage: 20
-    icon: {fileID: 1889782905, guid: 1d12f8c4ebe314c4784d325274005a59, type: 3}
+    icon: {fileID: 1238472857, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   itemRevolve: {fileID: 11400000, guid: 5b53601012df259429250480b69d91c5, type: 2}
   itemShoot: {fileID: 11400000, guid: b524336b0b327e94d85db1dc044e4814, type: 2}

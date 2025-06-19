@@ -5,7 +5,6 @@ public class HeroManager : MonoBehaviour
 {
     public Button heroButton;
     public string heroName;
-
     public Image heroPortrait;
 
     public void Initialize()

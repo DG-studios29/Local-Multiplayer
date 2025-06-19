@@ -465,8 +465,8 @@ public class GameManager : MonoBehaviour
             var p1Stats = p1.GetComponent<PlayerStats>();
             var p2Stats = p2.GetComponent<PlayerStats>();
 
-            player1KillsText.text = $"Kills: {p1Stats.armyKills}";
-            player2KillsText.text = $"Kills: {p2Stats.armyKills}";
+            player1KillsText.text = p1Stats.armyKills.ToString();
+            player2KillsText.text = p2Stats.armyKills.ToString();
         }
     }
 
@@ -481,17 +481,17 @@ public class GameManager : MonoBehaviour
         string result;
 
         if (p1Alive && !p2Alive)
-            result = "🏆 Player 1 wins by elimination!";
+            result = "Player 1 wins by elimination!";
         else if (!p1Alive && p2Alive)
-            result = "🏆 Player 2 wins by elimination!";
+            result = "Player 2 wins by elimination!";
         else
         {
             int p1Kills = p1?.GetComponent<PlayerStats>().GetArmyKills() ?? 0;
             int p2Kills = p2?.GetComponent<PlayerStats>().GetArmyKills() ?? 0;
 
-            if (p1Kills > p2Kills) result = "🏆 Player 1 wins by army kills!";
-            else if (p2Kills > p1Kills) result = "🏆 Player 2 wins by army kills!";
-            else result = "🤝 It's a draw!";
+            if (p1Kills > p2Kills) result = "Player 1 wins by army kills!";
+            else if (p2Kills > p1Kills) result = "Player 2 wins by army kills!";
+            else result = "It's a draw!";
         }
 
         Debug.Log(result);
@@ -502,7 +502,7 @@ public class GameManager : MonoBehaviour
     {
         if (deadPlayer == null)
         {
-            Debug.LogWarning("⚠️ OnPlayerDeath called with null player.");
+            Debug.LogWarning("OnPlayerDeath called with null player.");
             return;
         }
 

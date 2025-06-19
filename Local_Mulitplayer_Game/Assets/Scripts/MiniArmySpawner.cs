@@ -73,6 +73,11 @@ public class MiniArmySpawner : MonoBehaviour
         if (context.performed) TrySpawn(2);
     }
 
+    public void SpawnArmyByKey4(InputAction.CallbackContext context)
+    {
+        if (context.performed) TrySpawn(3);
+    }
+
     private void TrySpawn(int index)
     {
         if (ui != null && ui.CanSpawn(index))

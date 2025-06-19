@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
                     obj.GetComponent<EnemyAI>()?.TakeDamage(damage / 2, gameObject);
                 }
 
-                // Optional: Add VFX or explosion sound here
+                //Add VFX or explosion sound here
                 Debug.Log("Chain Reaction triggered!");
             }
 
@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject,2f);
         }
     }
 
