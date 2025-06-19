@@ -15,21 +15,21 @@ MonoBehaviour:
   heroName: Blazeheart
   ability1:
     abilityName: Fireball
-    projectilePrefab: {fileID: 6294508013172393196, guid: 87e032775b3be0a4aac19ea9ae37ceab, type: 3}
-    cooldown: 5
+    projectilePrefab: {fileID: 1551588586492170970, guid: 4b2a0d61e654f1d4ebad5b5a5b82c34f, type: 3}
+    cooldown: 0
     damage: 5
-    icon: {fileID: -906356090, guid: 9a2deeb3147f96b459ad744999629e03, type: 3}
+    icon: {fileID: -1043601413, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ability2:
     abilityName: Fire
-    projectilePrefab: {fileID: 919132149155446097, guid: 9eb19c7c36a502c4382bb0007017a0db, type: 3}
+    projectilePrefab: {fileID: 8172849020266659018, guid: 3e3c5256a84ff734da68319ee333ddcd, type: 3}
     cooldown: 10
     damage: 10
-    icon: {fileID: -1223058474, guid: 9a2deeb3147f96b459ad744999629e03, type: 3}
+    icon: {fileID: 1002236308, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   ultimate:
     abilityName: WorldFire
-    projectilePrefab: {fileID: 919132149155446097, guid: dcbddf98e656e3d488401f2701fd453b, type: 3}
+    projectilePrefab: {fileID: 6491059352237933951, guid: 8a096884195283549a3387b5778106e9, type: 3}
     cooldown: 20
-    damage: 20
-    icon: {fileID: -1200882007, guid: 9a2deeb3147f96b459ad744999629e03, type: 3}
+    damage: 5
+    icon: {fileID: 1772566642, guid: 24022d3e6bdbf2543a0e437a6f570082, type: 3}
   itemRevolve: {fileID: 11400000, guid: 08ed9a8593a90a747ae946ef6da2e19d, type: 2}
   itemShoot: {fileID: 11400000, guid: 7c0e0951c23484c41bdd8ccacdd9a7ff, type: 2}

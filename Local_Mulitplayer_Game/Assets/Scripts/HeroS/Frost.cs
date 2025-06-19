@@ -73,11 +73,11 @@ public class Frost : HeroBase, IPlayerEffect
     {
         GameObject wall = Instantiate(abilities.ability2.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         if (wall != null)
         {
-            Collider[] enemies = Physics.OverlapSphere(wall.transform.position, 3f);
+            Collider[] enemies = Physics.OverlapSphere(wall.transform.position, 5f);
             foreach (var enemy in enemies)
             {
                 if (enemy == null || enemy.gameObject == null) continue;
@@ -98,14 +98,14 @@ public class Frost : HeroBase, IPlayerEffect
     {
         GameObject zero = Instantiate(abilities.ultimate.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
 
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 4f);
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 8f);
         foreach (var enemy in enemies)
         {
             if (enemy == null || enemy.gameObject == null) continue;
             if ((enemy.CompareTag("Enemy") || enemy.CompareTag("Player")) && enemy.gameObject != gameObject)
             {
                 var status = enemy.GetComponent<StatusEffects>();
-                status?.ApplyStun(1.5f);
+                status?.ApplyStun(5f);
             }
         }
 

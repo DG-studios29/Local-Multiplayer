@@ -11,6 +11,9 @@ public class PlayerSelectorInput : MonoBehaviour
     public float inputCooldown = 0.2f;
     private float scrollCooldown = 0.2f;
     private float lastScrollTime = -1f;
+    private bool confirmReleased = false;
+    private bool inputDelayActive = true;
+    private float inputDelayDuration = 0.3f;
 
     void Awake()
     {
@@ -19,10 +22,18 @@ public class PlayerSelectorInput : MonoBehaviour
         playerIndex = input.playerIndex;
 
         if (selectionUI == null)
-            Debug.LogError($"❌ Player {playerIndex} couldn't find HeroSelectionUI!");
+            Debug.LogError($"Player {playerIndex} couldn't find HeroSelectionUI!");
         else
-            Debug.Log($"✅ Player {playerIndex} initialized input for selection.");
+            Debug.Log($"Player {playerIndex} initialized input for selection.");
+
+        Invoke(nameof(EnableInput), inputDelayDuration);
     }
+
+    void EnableInput()
+    {
+        inputDelayActive = false;
+    }
+    
 
     public void OnNavigate(InputAction.CallbackContext context)
     {
@@ -41,11 +52,20 @@ public class PlayerSelectorInput : MonoBehaviour
 
     public void OnConfirm(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (inputDelayActive) return;
+
+        if (context.canceled)
         {
+            confirmReleased = true; // Only allow next press after release
+        }
+
+        if (context.performed && confirmReleased)
+        {
+            confirmReleased = false; // Reset again
             selectionUI?.ConfirmSelection(playerIndex);
         }
     }
+
 
     public void OnCancel(InputAction.CallbackContext context)
     {
