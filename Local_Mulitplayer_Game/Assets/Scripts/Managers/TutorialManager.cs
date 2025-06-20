@@ -172,9 +172,10 @@ public class TutorialManager : MonoBehaviour
                     canGetNextTip = true;
                  
                     videoInfoHolder.SetActive(true);
-                    var targetTexture = new CustomRenderTexture(720,405,RenderTextureFormat.ARGB32);
-                    videoPlayer.targetTexture =  targetTexture;
+                    //var targetTexture = new CustomRenderTexture(720,405,RenderTextureFormat.ARGB32);
+                    //videoPlayer.targetTexture =  targetTexture;
                     videoPlayer.clip = currentTip.VideoClip;
+                    videoPlayer.Play();
             
                     //Activate Prev and Next Buttons
                     ToggleTutorialButtons();
@@ -254,6 +255,8 @@ public class TutorialManager : MonoBehaviour
         tutorialFilter.SetActive(false);
         tutorialTextButtons.SetActive(false);
         visualInfoHolder.SetActive(false);
+        videoPlayer.Stop();
         videoInfoHolder.SetActive(false);
+        
     }    
 }
