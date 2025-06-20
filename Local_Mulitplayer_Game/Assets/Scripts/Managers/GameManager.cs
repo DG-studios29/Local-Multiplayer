@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
-        timerText.text = $"{minutes:00}:{seconds:00}";
+        if(!TutorialManager.instance) timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
     public void NotifyPlayersJoined()

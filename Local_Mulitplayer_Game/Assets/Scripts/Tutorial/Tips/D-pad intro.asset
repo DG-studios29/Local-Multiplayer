@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
   m_Name: D-pad intro
   m_EditorClassIdentifier: 
-  textLine: "Use your D-pad to spawn your armies\nHowever it will cost you Mana.
-    \nAnd you can't just spam your guys either, so take note of that"
+  textLine: "Use your D-pad or keys to spawn your armies\nHowever it will cost you
+    Mana. \nAnd you can't just spam your guys either, so take note of that"
   isToBePerformed: 0
   hasVisualInfo: 1
   actionToPerform: 

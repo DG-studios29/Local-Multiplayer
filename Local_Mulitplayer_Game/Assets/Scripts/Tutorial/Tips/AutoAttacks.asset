@@ -19,5 +19,5 @@ MonoBehaviour:
   hasVisualInfo: 1
   actionToPerform: 
   visualInfoImage: {fileID: 0}
-  videoClip: {fileID: 0}
+  videoClip: {fileID: 32900000, guid: 479c129bc2d92cc44b993787a5c7a9c2, type: 3}
   visualInfoType: 1

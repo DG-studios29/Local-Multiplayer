@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
         
     }
     public void PlayScene()
