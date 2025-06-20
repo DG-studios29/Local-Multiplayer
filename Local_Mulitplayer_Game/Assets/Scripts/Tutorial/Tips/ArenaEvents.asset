@@ -17,8 +17,11 @@ MonoBehaviour:
     Things might get a little crazy with
     some cool Arena events
 
-    The locals thought it would things up which I agree'
+    The locals thought it would spice things up which
+    I agree'
   isToBePerformed: 0
   hasVisualInfo: 1
   actionToPerform: 
-  visualInfoImage: {fileID: 0}
+  visualInfoImage: {fileID: 21300000, guid: e382a678e39f50e498a35a6e72ba1e3e, type: 3}
+  videoClip: {fileID: 0}
+  visualInfoType: 2
