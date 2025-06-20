@@ -101,7 +101,7 @@ public class HeroSelectionUI : MonoBehaviour
         
 
         chosenHeroes[playerIndex] = heroName;
-        SetArrowColorForPlayer(playerIndex, heroName);
+        SetArrowColorForPlayer(playerIndex);
 
         Image portrait = heroButtons[selectedIndex].heroPortrait;
         if (playerHeroIcons != null && playerHeroIcons.Length > playerIndex)
@@ -199,16 +199,17 @@ public class HeroSelectionUI : MonoBehaviour
             continueButton.gameObject.SetActive(false);
     }
 
-    private void SetArrowColorForPlayer(int playerIndex, string heroName)
+    private void SetArrowColorForPlayer(int playerIndex)
     {
         Color arrowColor = Color.white;
 
-        switch (heroName)
+        // Define join colors by player index
+        switch (playerIndex)
         {
-            case "Blazeheart": arrowColor = Color.red; break;
-            case "Frost": arrowColor = Color.blue; break;
-            case "Nightshade": arrowColor = new Color(0.5f, 0f, 0.5f); break;
-            case "Stonewarden": arrowColor = new Color(0.6f, 0.4f, 0.2f); break;
+            case 0: arrowColor = Color.red; break;    // Player 1
+            case 1: arrowColor = Color.blue; break;   // Player 2
+            case 2: arrowColor = Color.yellow; break; // Player 3
+            case 3: arrowColor = Color.green; break;  // Player 4
         }
 
         var players = UnityEngine.Object.FindObjectsByType<PlayerInput>(FindObjectsSortMode.None);
@@ -220,7 +221,7 @@ public class HeroSelectionUI : MonoBehaviour
                 if (arrowImage != null)
                 {
                     arrowImage.color = arrowColor;
-                    Debug.Log($"🟢 Set arrow color for Player {playerIndex} to {arrowColor} ({heroName})");
+                    Debug.Log($"🟢 Set arrow color for Player {playerIndex} to {arrowColor}");
                 }
                 else
                 {
@@ -229,6 +230,7 @@ public class HeroSelectionUI : MonoBehaviour
             }
         }
     }
+
 
 
 }

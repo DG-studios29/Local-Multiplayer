@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heroselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heroselectionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\nightshade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\stonewarden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\frost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|e:\\gitproject\\local-multiplayer\\local_mulitplayer_game\\assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79437562-3B50-1341-9C43-B8FA8AD06420}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heros\\blazeheart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,6 +39,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "HeroSelectionUI.cs",
+              "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroSelectionUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeroSelectionUI.cs",
+              "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroSelectionUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeroSelectionUI.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAqwGcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T12:21:27.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Projectile.cs",
               "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\Projectile.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
@@ -47,7 +64,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Stonewarden.cs",
               "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Stonewarden.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
@@ -55,12 +72,11 @@
               "RelativeToolTip": "Assets\\Scripts\\HeroS\\Stonewarden.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T12:00:11.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-20T12:00:11.755Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Nightshade.cs",
               "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Nightshade.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Nightshade.cs",
@@ -68,12 +84,11 @@
               "RelativeToolTip": "Assets\\Scripts\\HeroS\\Nightshade.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T12:00:10.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-20T12:00:10.796Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Frost.cs",
               "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Frost.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Frost.cs",
@@ -81,18 +96,17 @@
               "RelativeToolTip": "Assets\\Scripts\\HeroS\\Frost.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T12:00:08.837Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-20T12:00:08.837Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Blazeheart.cs",
               "DocumentMoniker": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Blazeheart.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HeroS\\Blazeheart.cs",
               "ToolTip": "E:\\GitProject\\Local-Multiplayer\\Local_Mulitplayer_Game\\Assets\\Scripts\\HeroS\\Blazeheart.cs",
               "RelativeToolTip": "Assets\\Scripts\\HeroS\\Blazeheart.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAqwEsAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAqwEsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T10:55:57.665Z",
               "EditorCaption": ""
