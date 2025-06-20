@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Splines.Interpolators;
 using UnityEngine.UI;
 
 public class HeroManager : MonoBehaviour
@@ -20,6 +21,8 @@ public class HeroManager : MonoBehaviour
             Debug.Log($"🧙‍♂️ Hero '{heroName}' clicked.");
             HeroSelectionUI.Instance.OnHeroSelected(heroName);
         }
+
+       
     }
 
 }

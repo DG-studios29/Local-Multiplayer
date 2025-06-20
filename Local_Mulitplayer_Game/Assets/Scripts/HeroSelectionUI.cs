@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class HeroSelectionUI : MonoBehaviour
@@ -22,6 +23,7 @@ public class HeroSelectionUI : MonoBehaviour
     public List<TextMeshProUGUI> playerHeroNames;
     public RectTransform[] selectors;
     public TextMeshProUGUI[] playerTexts;
+    public Image[] playerHeroIcons; 
 
     private int[] indices = new int[2];
     private bool[] locked = new bool[2];
@@ -96,8 +98,18 @@ public class HeroSelectionUI : MonoBehaviour
 
         int selectedIndex = indices[playerIndex];
         string heroName = heroButtons[selectedIndex].heroName;
+        
 
         chosenHeroes[playerIndex] = heroName;
+        SetArrowColorForPlayer(playerIndex, heroName);
+
+        Image portrait = heroButtons[selectedIndex].heroPortrait;
+        if (playerHeroIcons != null && playerHeroIcons.Length > playerIndex)
+        {
+            playerHeroIcons[playerIndex].sprite = portrait.sprite;
+            playerHeroIcons[playerIndex].enabled = true;
+        }
+
         playerHeroNames[playerIndex].text = heroName;
 
         foreach (var button in heroButtons)
@@ -186,5 +198,37 @@ public class HeroSelectionUI : MonoBehaviour
         if (!locked[0] || !locked[1])
             continueButton.gameObject.SetActive(false);
     }
+
+    private void SetArrowColorForPlayer(int playerIndex, string heroName)
+    {
+        Color arrowColor = Color.white;
+
+        switch (heroName)
+        {
+            case "Blazeheart": arrowColor = Color.red; break;
+            case "Frost": arrowColor = Color.blue; break;
+            case "Nightshade": arrowColor = new Color(0.5f, 0f, 0.5f); break;
+            case "Stonewarden": arrowColor = new Color(0.6f, 0.4f, 0.2f); break;
+        }
+
+        var players = UnityEngine.Object.FindObjectsByType<PlayerInput>(FindObjectsSortMode.None);
+        foreach (var input in players)
+        {
+            if (input.playerIndex == playerIndex)
+            {
+                var arrowImage = input.GetComponentInChildren<UnityEngine.UI.Image>();
+                if (arrowImage != null)
+                {
+                    arrowImage.color = arrowColor;
+                    Debug.Log($"🟢 Set arrow color for Player {playerIndex} to {arrowColor} ({heroName})");
+                }
+                else
+                {
+                    Debug.LogWarning($"⚠️ Arrow Image not found for Player {playerIndex}");
+                }
+            }
+        }
+    }
+
 
 }

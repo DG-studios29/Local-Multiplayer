@@ -35,6 +35,7 @@ public abstract class HeroBase : MonoBehaviour
     private Color originalAbility2Color;
     private Color originalUltimateColor;
 
+
     protected virtual void Start()
     {
         casterID = gameObject.GetInstanceID();
