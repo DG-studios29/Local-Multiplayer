@@ -29,7 +29,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Image visualInfoImage;
     [SerializeField] private GameObject videoInfoHolder;
     [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private VideoClip videoClip;
+    //[SerializeField] private VideoClip videoClip;
     [SerializeField] private TMP_Text successText;
     [SerializeField] private TMP_Text tutorialTipText;
     [SerializeField] private GameObject tutorialFilter;
@@ -254,5 +254,6 @@ public class TutorialManager : MonoBehaviour
         tutorialFilter.SetActive(false);
         tutorialTextButtons.SetActive(false);
         visualInfoHolder.SetActive(false);
+        videoInfoHolder.SetActive(false);
     }    
 }
