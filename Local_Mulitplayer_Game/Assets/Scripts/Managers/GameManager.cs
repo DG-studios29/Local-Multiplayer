@@ -91,6 +91,13 @@ public class GameManager : MonoBehaviour
     private bool heroesSelected = false;
     private bool mapSelected = false;
 
+    //Win Vars
+    public GameObject winner;
+    public GameObject focusCam;
+
+    public GameObject winPanel;
+    public GameObject[] uiCanvas;
+
     private void Awake()
     {
         Instance = this;
@@ -491,9 +498,32 @@ public class GameManager : MonoBehaviour
         string result;
 
         if (p1Alive && !p2Alive)
+
+        {
             result = "Player 1 wins by elimination!";
+            winner = p1;
+            focusCam.SetActive(true);
+            winPanel.SetActive(true);
+            winner.GetComponent<PlayerController>().enabled = false;
+            foreach (var canvas in uiCanvas)
+            {
+                canvas.SetActive(false);
+            }
+        }
+
         else if (!p1Alive && p2Alive)
+        {
             result = "Player 2 wins by elimination!";
+            winner = p2;
+            focusCam.SetActive(true);
+            winPanel.SetActive(true);
+            winner.GetComponent<PlayerController>().enabled = false;
+            foreach(var canvas in uiCanvas)
+            {
+                canvas.SetActive(false);
+            }
+        }
+
         else
         {
             int p1Kills = p1?.GetComponent<PlayerStats>().GetArmyKills() ?? 0;

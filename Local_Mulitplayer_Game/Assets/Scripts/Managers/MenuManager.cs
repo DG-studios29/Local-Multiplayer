@@ -42,7 +42,7 @@ public class MenuManager : MonoBehaviour
 
     public void BackToMenu()
     {
-
+        GameManager.Instance.focusCam.SetActive(false);
         SceneManager.LoadScene("MainMenu");
        // mainMenu.controlsPanel.SetActive(false);
 

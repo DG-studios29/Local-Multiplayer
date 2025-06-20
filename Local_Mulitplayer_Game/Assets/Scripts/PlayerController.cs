@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -93,6 +94,17 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
 
         }
 
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (PauseMenu.Instance)
+            {
+                PauseMenu.Instance.GamePaused();
+            }
+        }
     }
 
     public void OnClear(InputAction.CallbackContext context)

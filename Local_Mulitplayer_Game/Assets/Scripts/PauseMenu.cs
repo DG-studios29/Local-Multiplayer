@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Timeline.DirectorControlPlayable;
 
 public class PauseMenu : MonoBehaviour
@@ -7,31 +9,41 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausePanel;
     private PlayerInput playerInput;
     public GameObject controlsPanel;
-    bool isPaused = false;
 
-  
+    public GameObject playerUIPanel;
+    bool isPaused = false;
+    
+    public static PauseMenu Instance { get; private set; }
 
     private void Start()
     {
-        if (playerInput != null)
-        {
-            playerInput.actions["Pause"].performed += ctx => GamePaused();
-        }
-        
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        // if (playerInput != null)
+        // {
+        //     playerInput.actions["Pause"].performed += ctx => GamePaused();
+        // }
 
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
 
 
 
-            GamePaused();
+        //     GamePaused();
 
-        }
+        // }
 
        
+        // if (playerInput != null && playerInput.actions["Pause"].triggered)
+        // {
+        //     GamePaused();
+        // }
+
+
 
     }
 
@@ -54,9 +66,16 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.actions["Pause"].performed += ctx => GamePaused();
+        }
+
+        Instance = this;
+
     }
 
-    public void GamePaused ()
+    public void GamePaused()
     {
 
         pausePanel.SetActive(true);
@@ -65,7 +84,8 @@ public class PauseMenu : MonoBehaviour
 
         if (pausePanel != null)
         {
-            pausePanel.SetActive(isPaused);        
+            pausePanel.SetActive(isPaused);
+            playerUIPanel.SetActive(!isPaused);
         }
 
     }
@@ -74,7 +94,27 @@ public class PauseMenu : MonoBehaviour
     public void BackToGame()
     {
 
-        pausePanel.SetActive(false);
+
+        // pausePanel.SetActive(isPaused);
+        // playerUIPanel.SetActive(true);
+        // Time.timeScale = 1;
+
+         pausePanel.SetActive(false);
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(isPaused);
+            playerUIPanel.SetActive(!isPaused);
+        }
+
+    }
+    
+    public void BackToMainMenu()
+    {
+
+        SceneManager.LoadScene("MainMenu");
 
     }
 

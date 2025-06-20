@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
 
     public GameObject storyMenuPanel;
 
+
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
     void Awake()
     {
         controlsPanel.SetActive(false);
