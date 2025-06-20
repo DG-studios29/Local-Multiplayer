@@ -12,12 +12,20 @@ public class Blazeheart : HeroBase, IPlayerEffect
     private int availableInstantCooldowns = 0;
     private TMP_Text availableCooldownsTxt;
     #endregion
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
 
     protected override void UseAbility1()
     {
         if (ability1CooldownTimer <= 0f)
         {
-            ShootProjectile(abilities.ability1);
+
+            StartCoroutine(UseAbility1Routine());
             ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
         else
@@ -31,10 +39,22 @@ public class Blazeheart : HeroBase, IPlayerEffect
         }
     }
 
+    private IEnumerator UseAbility1Routine()
+    {
+        animator?.SetTrigger("CastFire");
+
+        // Wait for animation (can be matched with your actual animation length)
+        yield return new WaitForSeconds(0.2f); // ← replace with exact animation length
+
+        ShootProjectile(abilities.ability1);
+        ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+    }
+
     protected override void UseAbility2()
     {
         if (ability2CooldownTimer <= 0f)
         {
+            animator.SetTrigger("DashFlame");
             StartCoroutine(HeatwaveDash());
             ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
@@ -53,6 +73,7 @@ public class Blazeheart : HeroBase, IPlayerEffect
     {
         if (ultimateCooldownTimer <= 0f)
         {
+            animator.SetTrigger("CastInferno");
             StartCoroutine(InfernalCage());
             ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
