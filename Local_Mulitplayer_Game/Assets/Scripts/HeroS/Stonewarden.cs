@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,14 +10,17 @@ public class Stonewarden : HeroBase, IPlayerEffect
     private int availableInstantCooldowns = 0;
     private TMP_Text availableCooldownsTxt;
     #endregion
+    private Animator animator;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     protected override void UseAbility1()
     {
-        if (ability1CooldownTimer <= 0f)
-        {
-            ShootProjectile(abilities.ability1);
-            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
-        }
+            
+        if (ability1CooldownTimer <= 0f) StartCoroutine(UseAbility1Routine());
+
         else
         {
             if (availableInstantCooldowns > 0)
@@ -30,11 +33,22 @@ public class Stonewarden : HeroBase, IPlayerEffect
             Debug.LogWarning("Stone Fist is still on cooldown!");
         }
     }
+    private IEnumerator UseAbility1Routine()
+    {
+        animator?.SetTrigger("PunchStone");
+
+        // Wait for animation (can be matched with your actual animation length)
+        yield return new WaitForSeconds(0.2f); // replace with exact animation length
+
+        ShootProjectile(abilities.ability1);
+        ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+    }
 
     protected override void UseAbility2()
     {
         if (ability2CooldownTimer <= 0f)
         {
+            animator?.SetTrigger("RockArmor");
             StartCoroutine(Fortify());
             ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
@@ -55,6 +69,7 @@ public class Stonewarden : HeroBase, IPlayerEffect
     {
         if (ultimateCooldownTimer <= 0f)
         {
+            
             StartCoroutine(SeismicRift());
             ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
@@ -110,8 +125,11 @@ public class Stonewarden : HeroBase, IPlayerEffect
         float segmentSpacing = range / segments;
         Vector3 direction = transform.forward;
 
+        animator?.SetTrigger("SmashGround");
+        yield return new WaitForSeconds(0.7f);
         for (int i = 1; i <= segments; i++)
         {
+            
             Vector3 segmentPosition = transform.position + direction * (i * segmentSpacing);
             GameObject riftSegment = Instantiate(abilities.ultimate.projectilePrefab, segmentPosition, Quaternion.identity);
 
