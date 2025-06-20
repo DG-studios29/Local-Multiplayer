@@ -11,8 +11,8 @@ public class MenuManager : MonoBehaviour
     }
     public void PlayScene()
     {
-        
-        SceneManager.LoadScene("GamePlay");
+
+        SceneManager.LoadScene(1);
         
     }
 
@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour
     public void TutorialScene()
     {
 
-        SceneManager.LoadScene("TutorialTEST");
+        SceneManager.LoadScene(2);
 
     }
 

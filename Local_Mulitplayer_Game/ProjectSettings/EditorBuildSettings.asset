@@ -9,14 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2f90af09c9543b4429660c83911632d4
   - enabled: 1
-    path: Assets/Scenes/NOT Working.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Gamplay Scene.unity
+    guid: c480d0d0998a09d44aa6b54343d4ef8b
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: ba6474d21d8e386419cf8ced36f42462
-  - enabled: 0
-    path: Assets/Scenes/SuddenDeath.unity
-    guid: ee66e87c98d740944825c07e8b43be1b
+    path: Assets/Scenes/Tutorial.unity
+    guid: 5852920f099ca10469704afa20bb9e0a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d7f826bacb66afa479ac3f227ab2f3f1, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
