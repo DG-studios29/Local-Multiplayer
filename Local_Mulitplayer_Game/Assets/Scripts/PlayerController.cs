@@ -84,11 +84,13 @@ public class PlayerController : MonoBehaviour, IPlayerEffect
         if (context.performed)
         {
             playerPunches.ChargingCall(true);
+            playerPunches.OnPunchHoldStarted();
         }
 
         if (context.canceled)
         {
             playerPunches.PunchCall();
+            playerPunches.OnPunchReleased();
             TutorialActionLinq(context);
             //playerPunches.AnimatorChargeClear();
 
