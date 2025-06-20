@@ -19,8 +19,10 @@ MonoBehaviour:
     But, they
     too lost their life force to battle
 
-    [D-pad / Keyboard Key ]'
+    [D-pad Up / Keyboard Key 1]'
   isToBePerformed: 1
   hasVisualInfo: 0
   actionToPerform: SpawnBase
   visualInfoImage: {fileID: 0}
+  videoClip: {fileID: 0}
+  visualInfoType: 0

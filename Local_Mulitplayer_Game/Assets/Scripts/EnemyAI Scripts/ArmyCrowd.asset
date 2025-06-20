@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   damage: 5
-  moveSpeed: 6
+  moveSpeed: 8
   targetPlayerRange: 10
   openRange: 100
   attackRange: 3

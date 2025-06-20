@@ -17,8 +17,12 @@ MonoBehaviour:
     Special ones that for a change, actually care
     about you
 
-    And give you back life force'
+    And give you back life force
+
+    [D-pad Left / Keyboard Key 4]'
   isToBePerformed: 1
   hasVisualInfo: 0
   actionToPerform: SpawnHealer
   visualInfoImage: {fileID: 0}
+  videoClip: {fileID: 0}
+  visualInfoType: 0

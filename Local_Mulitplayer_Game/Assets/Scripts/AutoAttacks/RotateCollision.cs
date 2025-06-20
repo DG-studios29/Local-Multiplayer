@@ -35,7 +35,7 @@ public class RotateCollision : MonoBehaviour
 
     public void OnRotationCollision()
     {
-        projectileHP -= 30;
+        projectileHP -= 20;
 
         if (clashFX != null)
         {

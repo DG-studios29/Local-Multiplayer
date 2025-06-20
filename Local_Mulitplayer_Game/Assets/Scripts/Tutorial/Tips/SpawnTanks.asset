@@ -19,8 +19,10 @@ MonoBehaviour:
     Hard guys to knock down
 
     [D-pad
-    / Keyboard Key ]'
+    Down/ Keyboard Key 3]'
   isToBePerformed: 1
   hasVisualInfo: 0
   actionToPerform: SpawnTank
   visualInfoImage: {fileID: 0}
+  videoClip: {fileID: 0}
+  visualInfoType: 0

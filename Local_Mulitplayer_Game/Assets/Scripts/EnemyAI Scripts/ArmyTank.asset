@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3464e480b9f36a4f8646e969c0be243, type: 3}
   m_Name: ArmyTank
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 50
   damage: 10
   moveSpeed: 9
   targetPlayerRange: 10

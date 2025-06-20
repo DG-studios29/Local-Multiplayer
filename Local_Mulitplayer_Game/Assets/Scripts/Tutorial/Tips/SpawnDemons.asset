@@ -19,8 +19,10 @@ MonoBehaviour:
     Spent way too long in hell
 
     [D-pad
-    / Keyboard Key ]'
+    Right/ Keyboard Key 2]'
   isToBePerformed: 1
   hasVisualInfo: 0
   actionToPerform: SpawnDemon
   visualInfoImage: {fileID: 0}
+  videoClip: {fileID: 0}
+  visualInfoType: 0

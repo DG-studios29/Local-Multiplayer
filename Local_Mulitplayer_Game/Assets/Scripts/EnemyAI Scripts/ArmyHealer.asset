@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmyHealer
   m_EditorClassIdentifier: 
   maxHealth: 10
-  damage: 2
+  damage: 4
   moveSpeed: 6
   targetPlayerRange: 15
   openRange: 50
