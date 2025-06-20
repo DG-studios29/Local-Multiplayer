@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -25,9 +27,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TMP_Text tipCounterText;
     [SerializeField] private GameObject visualInfoHolder;
     [SerializeField] private Image visualInfoImage;
+    [SerializeField] private GameObject videoInfoHolder;
+    [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private VideoClip videoClip;
     [SerializeField] private TMP_Text successText;
     [SerializeField] private TMP_Text tutorialTipText;
     [SerializeField] private GameObject tutorialFilter;
+    
 
     //[SerializeField] private GameObject tutorialTextPanel;
 
@@ -62,6 +68,7 @@ public class TutorialManager : MonoBehaviour
         
         successText.enabled = false;
         visualInfoHolder.SetActive(false);
+        videoInfoHolder.SetActive(false);
         tutorialTextButtons.SetActive(false);
         tutorialFilter.SetActive(false);
         
@@ -100,6 +107,7 @@ public class TutorialManager : MonoBehaviour
          if (tipCounter >= tutorialTexts.Count - 1)
          {
              tipCounter = tutorialTexts.Count - 1;
+             if(MenuManager.instance) MenuManager.instance.PlayScene();
          }
          else
          {
@@ -143,13 +151,42 @@ public class TutorialManager : MonoBehaviour
 
         if (currentTip.HasVisualInfo)
         {
-            //Do what needs to be shown
-            canGetNextTip = true;
-            visualInfoHolder.SetActive(true);
-            visualInfoImage.sprite = currentTip.VisualInfoImage;
+            switch (currentTip.VisualType)
+            {
+                case TutorialText.VisualInfoType.Image:
+                
+                    //Do what needs to be shown
+                    canGetNextTip = true;
+                    visualInfoHolder.SetActive(true);
+                    visualInfoImage.sprite = currentTip.VisualInfoImage;
+
+                    //Activate Prev and Next Buttons
+                    ToggleTutorialButtons();
+                    break;
+                
+                case TutorialText.VisualInfoType.Video:
+                
+                    //To save space, may have to implement it through streaming assets and just pass through file locations
+                
+                    //Do what needs to be shown
+                    canGetNextTip = true;
+                 
+                    videoInfoHolder.SetActive(true);
+                    var targetTexture = new CustomRenderTexture(720,405,RenderTextureFormat.ARGB32);
+                    videoPlayer.targetTexture =  targetTexture;
+                    videoPlayer.clip = currentTip.VideoClip;
             
-            //Activate Prev and Next Buttons
-            ToggleTutorialButtons();    
+                    //Activate Prev and Next Buttons
+                    ToggleTutorialButtons();
+                    break;
+                case TutorialText.VisualInfoType.NoVisual:
+                    Debug.Log("No Visual Info");
+                    break;
+                
+                default:
+                    Debug.Log("No defaults");
+                    break;
+            }
         }
 
         //Initialize a condition

@@ -28,6 +28,7 @@ public class InputTutorial : MonoBehaviour
         if (context.performed)
         {
             //Go to the gameplay scene with SceneManager
+            if(MenuManager.instance) MenuManager.instance.PlayScene();
         }
     }
     
