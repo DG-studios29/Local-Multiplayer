@@ -15,7 +15,7 @@ MonoBehaviour:
   textLine: 'Perform your Ability 2
 
     Its got a bit more sting to it'
-  isToBePerformed: 0
+  isToBePerformed: 1
   hasVisualInfo: 0
   actionToPerform: AbilityTwo
   visualInfoImage: {fileID: 0}

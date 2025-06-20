@@ -17,4 +17,6 @@ MonoBehaviour:
   isToBePerformed: 0
   hasVisualInfo: 1
   actionToPerform: 
-  visualInfoImage: {fileID: 0}
+  visualInfoImage: {fileID: 21300000, guid: 53cab5d96c8022749ae1b7da79b4d5fd, type: 3}
+  videoClip: {fileID: 0}
+  visualInfoType: 2
