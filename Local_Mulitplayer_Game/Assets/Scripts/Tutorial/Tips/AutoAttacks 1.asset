@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
   m_Name: AutoAttacks 1
   m_EditorClassIdentifier: 
-  textLine: The spheres will need to be replenished, and will the blessing of the
-    auto shooter doesnt need to be refilled, and I hope Dio will forgive me for saying
-    this, but it is not as effective
+  textLine: The spheres will need to be replenished. But the blessing of the Auto
+    Shooter wont need to be replenished, ... however, and I hope Dio will forgive
+    me for saying this, it is not as effective
   isToBePerformed: 0
   hasVisualInfo: 0
   actionToPerform: 
   visualInfoImage: {fileID: 0}
+  videoClip: {fileID: 0}
+  visualInfoType: 0

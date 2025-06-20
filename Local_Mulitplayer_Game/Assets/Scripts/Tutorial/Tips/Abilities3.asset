@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
   m_Name: Abilities3
   m_EditorClassIdentifier: 
-  textLine: 
+  textLine: Perform Your Ultimate
   isToBePerformed: 0
   hasVisualInfo: 0
-  actionToPerform: 
+  actionToPerform: Ultimate
   visualInfoImage: {fileID: 0}
   videoClip: {fileID: 0}
   visualInfoType: 0

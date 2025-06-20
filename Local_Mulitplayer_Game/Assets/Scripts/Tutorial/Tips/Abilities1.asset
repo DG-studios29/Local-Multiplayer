@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
   m_Name: Abilities1
   m_EditorClassIdentifier: 
-  textLine: 
-  isToBePerformed: 0
+  textLine: 'Perform your standard shoot Ability
+
+    Ability 1'
+  isToBePerformed: 1
   hasVisualInfo: 0
-  actionToPerform: 
+  actionToPerform: AbilityOne
   visualInfoImage: {fileID: 0}
   videoClip: {fileID: 0}
   visualInfoType: 0

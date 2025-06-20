@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
   m_Name: Abilities2
   m_EditorClassIdentifier: 
-  textLine: 
+  textLine: 'Perform your Ability 2
+
+    Its got a bit more sting to it'
   isToBePerformed: 0
   hasVisualInfo: 0
-  actionToPerform: 
+  actionToPerform: AbilityTwo
   visualInfoImage: {fileID: 0}
   videoClip: {fileID: 0}
   visualInfoType: 0
