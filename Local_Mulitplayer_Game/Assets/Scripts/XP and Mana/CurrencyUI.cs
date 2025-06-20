@@ -24,11 +24,19 @@ public class CurrencyUI : MonoBehaviour
     {
         if(!manaFillImage) return;
         manaFillImage.value = fillRatio;
+        
+        var fillPercentage = fillRatio * 100f;
+        fillPercentage = Mathf.RoundToInt(fillPercentage);
+        
+        //xpText.text = fillPercentage.ToString("F2") + "%";
+        xpText.text = fillPercentage.ToString("F2") + "%";
     }
 
     public void XpTextUpdate(float xp)
     {
-        xpText.text = "XP : " + xp;
+        //xpText.text = "XP : " + xp;
     }
+
+   
     
 }
