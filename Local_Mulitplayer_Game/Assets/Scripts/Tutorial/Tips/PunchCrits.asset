@@ -17,6 +17,8 @@ MonoBehaviour:
     You will have the ability to
     perform a powerful Crit Punch that will send your opponent flying'
   isToBePerformed: 0
-  hasVisualInfo: 0
+  hasVisualInfo: 1
   actionToPerform: 
   visualInfoImage: {fileID: 0}
+  videoClip: {fileID: 0}
+  visualInfoType: 1
