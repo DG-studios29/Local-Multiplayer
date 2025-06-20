@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40dd71f3f153faf46b6d81dfb9dc899f, type: 3}
-  m_Name: PunchCrits
+  m_Name: Abilities1
   m_EditorClassIdentifier: 
-  textLine: 'If you hold your punch for 0.4secs
+  textLine: 'Perform your standard shoot Ability
 
-    You will have the ability to
-    perform a powerful Crit Punch that will send your opponent flying'
-  isToBePerformed: 0
-  hasVisualInfo: 1
-  actionToPerform: 
+    Ability 1'
+  isToBePerformed: 1
+  hasVisualInfo: 0
+  actionToPerform: AbilityOne
   visualInfoImage: {fileID: 0}
-  videoClip: {fileID: 32900000, guid: 25b0229dbcba1a1499e9075f57874cc8, type: 3}
-  visualInfoType: 1
+  videoClip: {fileID: 0}
+  visualInfoType: 0
