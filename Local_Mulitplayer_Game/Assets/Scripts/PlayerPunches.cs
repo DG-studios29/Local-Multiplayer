@@ -25,10 +25,8 @@ public class PlayerPunches : MonoBehaviour
     private float timeTaken;
     private Vector3 initialVelocity;
     private Vector3 globalVelocity;
-
     
-
-
+    
 
     //Punching
     public bool isPunchR = false;
@@ -42,10 +40,6 @@ public class PlayerPunches : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     Vector3 punchPosition;
     private RaycastHit hit;
-
-    [SerializeField] private PunchChargeUI punchUI;
-    private float currentCharge = 0f;
-    private bool isCharging = false;
 
     //Punch Force
     private float punchForce;
@@ -104,15 +98,9 @@ public class PlayerPunches : MonoBehaviour
     {
         lastPunchTimer += Time.deltaTime;
 
-        if (isCharging)
-        {
-            currentCharge += Time.deltaTime;
-            currentCharge = Mathf.Min(currentCharge, maxChargeTime);
-            punchUI.UpdateCharge(currentCharge, maxChargeTime);
-            punchUI.Follow(transform);
-        }
+        ChargeUpdate();
+        
     }
-
 
     private void FixedUpdate()
     {
@@ -147,28 +135,9 @@ public class PlayerPunches : MonoBehaviour
        
         initialVelocity = new Vector3(0, Uy , Uz) * gravityScale;
     }
-
-    public void OnPunchHoldStarted()
-    {
-        isCharging = true;
-        currentCharge = 0f;
-        punchUI.Show(true);
-    }
-
-    public void OnPunchReleased()
-    {
-        Debug.Log("OnPunchReleased called!");
-
-        isCharging = false;
-        punchUI.Show(false);
-
-       
-        chargeVal = Mathf.Clamp01(currentCharge / maxChargeTime);
-
-        PunchCall();
-    }
-
-
+    
+    
+    
     private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.55f,  groundMask);
@@ -389,8 +358,6 @@ public class PlayerPunches : MonoBehaviour
 
 
     }
-
-
 
     public void AnimatorChargeClear()
     {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerHealth : MonoBehaviour, IPlayerEffect
 {
@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     private int preSuddenDeathHealth = -1;
 
     public bool IsAlive => currentHealth > 0;
-
+    
     public static event Action onPlayerDeath;
 
 
@@ -58,16 +58,16 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
         UpdateHealthUI();
 
         ArenaEventManager.OnArenaEventStart += HandleArenaEvent;
-        ArenaEventManager.OnArenaEventEnd += HandleArenaEventEnd;
+        ArenaEventManager.OnArenaEventEnd += HandleArenaEventEnd; 
     }
-
+    
     private void OnDestroy()
     {
         ArenaEventManager.OnArenaEventStart -= HandleArenaEvent;
-        ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd;
+        ArenaEventManager.OnArenaEventEnd -= HandleArenaEventEnd; 
     }
 
-
+    
 
     private IEnumerator ValidatePlayer()
     {
@@ -135,32 +135,33 @@ public class PlayerHealth : MonoBehaviour, IPlayerEffect
     {
         Debug.Log(gameObject.name + " has died!");
 
-        bool shouldRespawn = ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerPlayerRespawner");
-
-        if (shouldRespawn)
+        if (ArenaEventManager.Instance != null && ArenaEventManager.Instance.IsActive("triggerPlayerRespawner"))
         {
             StartCoroutine(RespawnAfterDelay(2f));
         }
-        else
+
+        if (!ArenaEventManager.Instance.IsActive("triggerPlayerRespawner"))
         {
             GameManager.Instance?.OnPlayerDeath(this.gameObject);
+
         }
 
         var stats = killer?.GetComponent<PlayerStats>();
-        if (stats != null)
-            stats.AddArmyKill();
+        if (stats != null)stats.AddArmyKill();
 
-        // Only notify GameManager again if not respawning
-        if (!shouldRespawn && GameManager.Instance != null)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance?.OnPlayerDeath(this.gameObject);
+            
+
         }
-
-        onPlayerDeath?.Invoke();
+        
+        onPlayerDeath?.Invoke(); // Can use PlayerHealth.onPlayerDeath += subscriptions
+                                 //         PlayerHealth.onPlayerDeath -= subscriptions
         Destroy(gameObject);
+        Debug.Log(gameObject.name + " has died!");
+
     }
-
-
 
     public void Freeze(float duration)
     {

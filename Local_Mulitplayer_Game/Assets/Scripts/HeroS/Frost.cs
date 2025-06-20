@@ -9,15 +9,14 @@ public class Frost : HeroBase, IPlayerEffect
     private int availableInstantCooldowns = 0;
     private TMP_Text availableCooldownsTxt;
     #endregion
-    private Animator animator;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
     protected override void UseAbility1()
     {
-        if (ability1CooldownTimer <= 0f) StartCoroutine(UseAbility1Routine());
+        if (ability1CooldownTimer <= 0f)
+        {
+            ShootProjectile(abilities.ability1);
+            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+        }
         else
         {
             if (availableInstantCooldowns > 0)
@@ -31,22 +30,10 @@ public class Frost : HeroBase, IPlayerEffect
         }
     }
 
-    private IEnumerator UseAbility1Routine()
-    {
-        animator?.SetTrigger("CastIce");
-
-        // Wait for animation (can be matched with your actual animation length)
-        yield return new WaitForSeconds(0.2f); // replace with exact animation length
-
-        ShootProjectile(abilities.ability1);
-        ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
-    }
-
     protected override void UseAbility2()
     {
         if (ability2CooldownTimer <= 0f)
         {
-            animator?.SetTrigger("RaiseWall");
             StartCoroutine(FrozenWall());
             ability2CooldownTimer = abilities.ability2.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
@@ -67,7 +54,6 @@ public class Frost : HeroBase, IPlayerEffect
     {
         if (ultimateCooldownTimer <= 0f)
         {
-           
             StartCoroutine(AbsoluteZero());
             ultimateCooldownTimer = abilities.ultimate.cooldown / (PowerSurgeActive ? 2f : 1f);
         }
@@ -85,10 +71,7 @@ public class Frost : HeroBase, IPlayerEffect
 
     private IEnumerator FrozenWall()
     {
-        animator?.SetTrigger("RaiseWall");
-
-        yield return new WaitForSeconds(0.8f);
-        GameObject wall = Instantiate(abilities.ability2.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.LookRotation(transform.forward));
+        GameObject wall = Instantiate(abilities.ability2.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
 
         yield return new WaitForSeconds(5f);
 
@@ -113,8 +96,6 @@ public class Frost : HeroBase, IPlayerEffect
 
     private IEnumerator AbsoluteZero()
     {
-        animator?.SetTrigger("FreezePulse");
-        yield return new WaitForSeconds(0.8f);
         GameObject zero = Instantiate(abilities.ultimate.projectilePrefab, transform.position + transform.forward * 2f, Quaternion.identity);
 
         Collider[] enemies = Physics.OverlapSphere(transform.position, 8f);

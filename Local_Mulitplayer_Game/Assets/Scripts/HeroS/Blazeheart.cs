@@ -22,7 +22,12 @@ public class Blazeheart : HeroBase, IPlayerEffect
 
     protected override void UseAbility1()
     {
-        if (ability1CooldownTimer <= 0f) StartCoroutine(UseAbility1Routine());
+        if (ability1CooldownTimer <= 0f)
+        {
+
+            StartCoroutine(UseAbility1Routine());
+            ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);
+        }
         else
         {
             if (availableInstantCooldowns > 0)
@@ -39,7 +44,7 @@ public class Blazeheart : HeroBase, IPlayerEffect
         animator?.SetTrigger("CastFire");
 
         // Wait for animation (can be matched with your actual animation length)
-        yield return new WaitForSeconds(0.2f); // replace with exact animation length
+        yield return new WaitForSeconds(0.2f); // ← replace with exact animation length
 
         ShootProjectile(abilities.ability1);
         ability1CooldownTimer = abilities.ability1.cooldown / (PowerSurgeActive ? 2f : 1f);

@@ -23,20 +23,13 @@ public class HeroSelectionUI : MonoBehaviour
     public List<TextMeshProUGUI> playerHeroNames;
     public RectTransform[] selectors;
     public TextMeshProUGUI[] playerTexts;
-    public Image[] playerHeroIcons;
-    [SerializeField] private Sprite fireIcon;
-    [SerializeField] private Sprite iceIcon;
-    [SerializeField] private Sprite shadowIcon;
-    [SerializeField] private Sprite stoneIcon;
-
-
+    public Image[] playerHeroIcons; 
 
     private int[] indices = new int[2];
     private bool[] locked = new bool[2];
     private Dictionary<int, string> chosenHeroes = new Dictionary<int, string>();
     private int currentSelectingPlayer = 0;
     private bool p1Selected = false, p2Selected = false;
-
 
     private void Awake()
     {
@@ -110,36 +103,12 @@ public class HeroSelectionUI : MonoBehaviour
         chosenHeroes[playerIndex] = heroName;
         SetArrowColorForPlayer(playerIndex);
 
-        string selectedHeroName = heroButtons[selectedIndex].heroName; // assuming you store the hero name
-
-        Sprite selectedIcon = null;
-
-        switch (selectedHeroName)
+        Image portrait = heroButtons[selectedIndex].heroPortrait;
+        if (playerHeroIcons != null && playerHeroIcons.Length > playerIndex)
         {
-            case "Blazeheart":
-                selectedIcon = fireIcon;
-                break;
-            case "Frost":
-                selectedIcon = iceIcon;
-                break;
-            case "Nightshade":
-                selectedIcon = shadowIcon;
-                break;
-            case "Stonewarden":
-                selectedIcon = stoneIcon;
-                break;
-            default:
-                Debug.LogWarning($"No icon found for hero: {selectedHeroName}");
-                break;
-        }
-
-        if (selectedIcon != null && playerHeroIcons != null && playerHeroIcons.Length > playerIndex)
-        {
-            playerHeroIcons[playerIndex].sprite = selectedIcon;
+            playerHeroIcons[playerIndex].sprite = portrait.sprite;
             playerHeroIcons[playerIndex].enabled = true;
         }
-
-
 
         playerHeroNames[playerIndex].text = heroName;
 
